@@ -15,7 +15,7 @@ const StyledModal = Modal.styled`
 
 const DivInModal = styled.div`
   cursor: pointer;
-  color: ${(props) => props.theme.red};
+  color: ${props => props.theme.red};
   margin-left: 400px;
   background: ;
   text-align: center;
@@ -24,8 +24,8 @@ const DivInModal = styled.div`
 const FooterComp = styled.div`
   width: 100%;
   height: 100%;
-  background-color: ${(props) => props.theme.smoke};
-  border-top: 2px solid ${(props) => props.theme.lightblack};
+  background-color: ${props => props.theme.smoke};
+  border-top: 2px solid ${props => props.theme.lightblack};
   text-align: center;
   padding: 50px 0;
   display: flex;
@@ -38,7 +38,7 @@ const FooterComp = styled.div`
     justify-content: center;
     li {
       margin-left: 20px;
-      color: ${(props) => props.theme.black};
+      color: ${props => props.theme.black};
       cursor: pointer;
       transition: 0.3s;
     }
@@ -49,7 +49,7 @@ const FooterComp = styled.div`
   .copyright {
     margin-top: 20px;
     i {
-      color: ${(props) => props.theme.black};
+      color: ${props => props.theme.black};
       font-size: 18px;
     }
   }
@@ -62,20 +62,20 @@ const FooterComp = styled.div`
   }
 
   .info {
-    color: ${(props) => props.theme.black};
+    color: ${props => props.theme.black};
     margin-top: 20px;
     span {
-      color: ${(props) => props.theme.black};
+      color: ${props => props.theme.black};
       font-weight: 600;
     }
   }
 
   .tel {
-    color: ${(props) => props.theme.black};
+    color: ${props => props.theme.black};
     font-weight: 600;
     font-size: 24px;
     p {
-      color: ${(props) => props.theme.black};
+      color: ${props => props.theme.black};
       font-size: 20px;
       margin-top: 20px;
     }
@@ -90,14 +90,20 @@ const FooterComp = styled.div`
       display: none;
     }
   }
+
+  > div {
+    > img {
+      height: 200px;
+    }
+  }
 `;
 
 //기본 로고 triplogo8.png
-const Footer = ({ onGetMainTerms, modal }) => {
+const Footer = ({ onGetMainTerms, modal, mainTerms, mainInform }) => {
   return (
     <FooterComp>
       <div className="logo">
-        <img src="/assets/logo.jpg" alt="img" />
+        <img src="/assets/Logo.jpg" alt="img" />
       </div>
       <div>
         <ul className="footer-menu">
@@ -114,27 +120,28 @@ const Footer = ({ onGetMainTerms, modal }) => {
           onBackgroundClick={onGetMainTerms} //esc키 or 오버레이부분 클릭시 함수 실행
         >
           <div>
-            <div>약관안내</div>
+            <div>{mainTerms?.title}</div>
             <DivInModal onClick={onGetMainTerms}>X</DivInModal>
           </div>
-          <div>내용</div>
+          <div>{mainTerms?.content}</div>
         </StyledModal>
 
         <div className="info">
-          <span>상호</span> TripperMaker <br />
-          <span>주소</span> 서대구로 7길 2 영남안재교육원
+          <span>상호</span> {mainInform?.name} <br />
+          <span>주소</span> {mainInform?.addr}
           <br />
-          <span>개인정보관리책임자</span>
+          <span>개인정보관리책임자 </span>
+          {mainInform?.nick}
           <br />
         </div>
 
         <div className="copyright">
-          <i>Copyright 2023.TripperMaker.All rights reserved.</i>
+          <i>Copyright 2023.{mainInform?.name}.All rights reserved.</i>
         </div>
       </div>
       <div className="tel">
         전화번호
-        <p>053-635-0505</p>
+        <p>{mainInform?.phone}</p>
       </div>
     </FooterComp>
   );

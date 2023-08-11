@@ -11,12 +11,15 @@ const [GET_MAIN_STYLE, GET_MAIN_STYLE_SUCCESS, GET_MAIN_STYLE_FAILURE] =
   createRequestActionTypes("main/GET_MAIN_STYLE");
 const [GET_MAIN_TERMS, GET_MAIN_TERMS_SUCCESS, GET_MAIN_TERMS_FAILURE] =
   createRequestActionTypes("main/GET_MAIN_TERMS");
+const [GET_MAIN_INFORM, GET_MAIN_INFORM_SUCCESS, GET_MAIN_INFORM_FAILURE] =
+  createRequestActionTypes("main/GET_MAIN_INFORM");
 
 export const mainlistPosts = createAction(MAIN_LIST_POSTS);
 export const getMainStyle = createAction(GET_MAIN_STYLE);
 export const getMainTerms = createAction(GET_MAIN_TERMS, ({ type }) => ({
   type,
 }));
+export const getMainInform = createAction(GET_MAIN_INFORM);
 
 const mainListPostsSaga = createRequestSaga(
   MAIN_LIST_POSTS,
@@ -30,11 +33,16 @@ const getMainTermsSaga = createRequestSaga(
   GET_MAIN_TERMS,
   postsAPI.getMainTerms
 );
+const getMainInformSaga = createRequestSaga(
+  GET_MAIN_INFORM,
+  postsAPI.getMainInform
+);
 
 export function* mainSaga() {
   yield takeLatest(MAIN_LIST_POSTS, mainListPostsSaga);
   yield takeLatest(GET_MAIN_STYLE, getMainStyleSaga);
   yield takeLatest(GET_MAIN_TERMS, getMainTermsSaga);
+  yield takeLatest(GET_MAIN_INFORM, getMainInformSaga);
 }
 
 const initialState = {
@@ -44,6 +52,8 @@ const initialState = {
   styleError: null,
   mainTerms: null,
   mainTermsError: null,
+  mainInform: {},
+  mainInformError: null,
 };
 
 const MainMod = handleActions(
@@ -77,6 +87,16 @@ const MainMod = handleActions(
       ...state,
       mainTerms: null,
       mainTermsError,
+    }),
+    [GET_MAIN_INFORM_SUCCESS]: (state, { payload: { mainInform } }) => ({
+      ...state,
+      mainInform,
+      mainInformError: null,
+    }),
+    [GET_MAIN_INFORM_FAILURE]: (state, { payload: { mainInformError } }) => ({
+      ...state,
+      mainInform: null,
+      mainInformError,
     }),
   },
   initialState

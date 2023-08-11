@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { MONGO_ID, MONGO_PASSWORD, NODE_ENV } = process.env;
 // const MONGO_URL = `mongodb://${MONGO_ID}:${MONGO_PASSWORD}@localhost:27017/chat`;
-const MONGO_URL = `mongodb://192.168.10.104:27017/chat`;
+const MONGO_URL = `mongodb://127.0.0.1:27017/`;
 const connect = () => {
   console.log("MONGO_ID : ", MONGO_ID);
   console.log("MONGO_PASSWORD : ", MONGO_PASSWORD);
@@ -25,7 +25,7 @@ const connect = () => {
       dbName: "chat";
       useNewUrlParser: true;
     })
-    .catch((error) => {
+    .catch(error => {
       if (error) {
         console.log("몽고디비 연결 에러", error);
       } else {

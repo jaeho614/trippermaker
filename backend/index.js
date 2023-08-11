@@ -17,7 +17,12 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://192.168.10.102:3000", "http://192.168.10.100:3000", "http://192.168.10.107:3000"],
+    origin: [
+      "http://localhost:3000",
+      "http://127.0.0.1:3000",
+      "http://127.0.0.1:3000",
+      "http://127.0.0.1:3000",
+    ],
     methods: ["GET", "POST", "OPTIONS", "DELETE"],
     credentials: true,
   })
@@ -36,7 +41,7 @@ mongoose
   .then(() => {
     console.log("Connected to MongoDB");
   })
-  .catch((e) => {
+  .catch(e => {
     console.error("error : ", e);
   });
 

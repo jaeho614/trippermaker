@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('busType', {
+  return sequelize.define('bustype', {
     no: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'busType',
+    tableName: 'bustype',
     timestamps: false,
     indexes: [
       {
