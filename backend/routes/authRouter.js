@@ -1,6 +1,20 @@
 const express = require("express");
-const { login, check, logout, searchId, searchPwd, updatePwd } = require("../controllers/loginController");
-const { register, idChk, nickChk, phoneChk, authNumChk, replyUserNickChk } = require("../controllers/registerController");
+const {
+  login,
+  check,
+  logout,
+  searchId,
+  searchPwd,
+  updatePwd,
+} = require("../controllers/loginController");
+const {
+  register,
+  idChk,
+  nickChk,
+  phoneChk,
+  authNumChk,
+  replyUserNickChk,
+} = require("../controllers/registerController");
 const app = express();
 const auth = express.Router();
 

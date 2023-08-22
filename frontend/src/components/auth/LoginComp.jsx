@@ -245,7 +245,6 @@ const LoginComp = ({
           <Link to="/auth/register">
             <span className="ragister">회원가입</span>
           </Link>
-
           <StyledModal
             isOpen={modal} //true = 열림 / false = 닫힘
             ariahideapp={"false"} //없으면 에러 발생

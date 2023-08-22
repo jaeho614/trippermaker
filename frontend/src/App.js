@@ -98,7 +98,7 @@ function App() {
                 element={user ? <Navigate to="/" /> : <RegisterPage />}
               />
               <Route
-                path="/auth/searchPwd/:id"
+                path="/auth/searchPwd/:id/:sendTime"
                 element={user ? <Navigate to="/" /> : <SearchPwdPage />}
               />
             </Route>

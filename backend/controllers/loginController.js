@@ -97,9 +97,16 @@ exports.searchId = async (req, res) => {
 
 exports.searchPwd = async (req, res) => {
   const { email, phone } = req.body;
-  const algorithm = "aes-256-cbc"; //복호화 알고리즘
-  const key = "abcdefghijklmnopqrstuvwxyz123456"; //복호화 알고리즘
-  const iv = "1234567890123456"; //복호화 알고리즘
+
+  function encryptFunc(source) {
+    const algorithm = "aes-256-cbc"; //복호화 알고리즘
+    const key = "abcdefghijklmnopqrstuvwxyz123456"; //복호화 알고리즘
+    const iv = "1234567890123456"; //복호화 알고리즘
+    const cipher = crypto.createCipheriv(algorithm, key, iv); //복호화 알고리즘
+    let encryptedSource = cipher.update(source, "utf8", "base64"); //(암호화 할 이메일, utf8, base64)
+    encryptedSource += cipher.final("base64"); //복호화 알고리즘
+    return encryptedSource;
+  }
 
   try {
     const exUser = await user.findOne({
@@ -117,7 +124,8 @@ exports.searchPwd = async (req, res) => {
     //nodemailer 설정
     const EMAIL = "tripper.maker4@gmail.com"; //발신자 메일
     const EMAIL_PW = "ecxgyfjdoqoiunka"; //gmail의 경우 2단계인증 완료후 앱비밀번호를 생성하여 입력한다.
-    let receiverEmail = `${email}`; //수신자 email
+    let receiverEmail = email; //수신자 email
+    let sendTime = (Date.now() + 6000).toString();
     let transport = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -125,15 +133,15 @@ exports.searchPwd = async (req, res) => {
         pass: EMAIL_PW,
       },
     });
-    const cipher = crypto.createCipheriv(algorithm, key, iv); //복호화 알고리즘
-    let encryptedEmail = cipher.update(receiverEmail, "utf8", "base64"); //(암호화 할 변수, utf8, base64)
-    encryptedEmail += cipher.final("base64"); //복호화 알고리즘
+
+    const encryptedEmail = encryptFunc(receiverEmail);
+    const encryptedTime = encryptFunc(sendTime);
 
     let mailOptions = {
       from: EMAIL, //발신자
       to: receiverEmail, //수신자
       subject: "[Tripper Maker]비밀번호 변경 메일",
-      html: `http://localhost:3000/auth/SearchPwd/${encryptedEmail} 해당 링크를 클릭하여 비밀번호를 변경하세요.`,
+      html: `http://localhost:3000/auth/searchPwd/${encryptedEmail}/${encryptedTime} 해당 링크를 클릭하여 비밀번호를 변경하세요.`,
     };
 
     transport.sendMail(mailOptions, (error, info) => {
@@ -153,16 +161,20 @@ exports.searchPwd = async (req, res) => {
 
 exports.updatePwd = async (req, res) => {
   const { email, pwd } = req.body;
-  const algorithm = "aes-256-cbc"; //복호화 알고리즘
-  const key = "abcdefghijklmnopqrstuvwxyz123456"; //복호화 알고리즘
-  const iv = "1234567890123456"; //복호화 알고리즘
+
+  function dcryptFunc(source) {
+    const algorithm = "aes-256-cbc"; //복호화 알고리즘
+    const key = "abcdefghijklmnopqrstuvwxyz123456"; //복호화 알고리즘
+    const iv = "1234567890123456"; //복호화 알고리즘
+    const decipher = crypto.createDecipheriv(algorithm, key, iv); //복호화 알고리즘
+    let decryptedSource = decipher.update(source, "base64", "utf8"); //(복호화 할 변수, "base64", "utf8")
+    decryptedSource += decipher.final("utf8"); //복호화 알고리즘
+    return decryptedSource;
+  }
 
   try {
-    const decipher = crypto.createDecipheriv(algorithm, key, iv); //복호화 알고리즘
-    let decryptedEmail = decipher.update(email, "base64", "utf8"); //(복호화 할 변수, "base64", "utf8")
-    decryptedEmail += decipher.final("utf8"); //복호화 알고리즘
-
     const hashedPwd = await bcrypt.hash(pwd, 10);
+    const decryptedEmail = dcryptFunc(email);
 
     await user.update({ pwd: hashedPwd }, { where: { id: decryptedEmail } });
 

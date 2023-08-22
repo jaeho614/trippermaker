@@ -8,10 +8,11 @@ import {
 } from "../../modules/auth/LoginMod";
 import { useEffect, useState } from "react";
 import { updatePwd } from "../../modules/auth/LoginMod";
+import { AES, CryptoJS } from "crypto-js";
 
 const SearchPwdCntr = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { id, sendTime } = useParams();
   const [onPwdChk, setOnPwdChk] = useState("");
   const navigate = useNavigate();
   const { pwd, pwdConfirm, pwdAuth } = useSelector(({ LoginMod }) => ({
@@ -20,9 +21,9 @@ const SearchPwdCntr = () => {
     pwdAuth: LoginMod.pwdAuth,
   }));
 
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
-    const valid = (pwd) => {
+    const valid = pwd => {
       return /^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[!@#$%^*()-]).{8,15}$/.test(
         pwd
       );
@@ -44,7 +45,7 @@ const SearchPwdCntr = () => {
     }
   };
 
-  const onChange = (e) => {
+  const onChange = e => {
     const { name, value } = e.target;
 
     dispatch(
@@ -91,6 +92,23 @@ const SearchPwdCntr = () => {
       navigate("/");
     }
   }, [pwdAuth]);
+
+  useEffect(() => {
+    const nowTime = Date.now();
+
+    function dcryptFunc(source) {
+      const key = "abcdefghijklmnopqrstuvwxyz123456"; //복호화 알고리즘
+      const iv = "1234567890123456"; //복호화 알고리즘
+      let decryptedSource = CryptoJS.AES.decrypt(source, key);
+      return decryptedSource.toString(CryptoJS.enc.Utf8);
+    }
+    const decryptedTime = dcryptFunc(sendTime);
+    console.log(nowTime, "====", decryptedTime);
+    if (nowTime > decryptedTime) {
+      alert("이미 만료된 링크입니다.");
+      navigate("/");
+    }
+  });
 
   return (
     <SearchPwdComp
