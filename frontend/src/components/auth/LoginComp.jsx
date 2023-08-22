@@ -255,9 +255,14 @@ const LoginComp = ({
             {searchName === "id" ? (
               <div>
                 <h3>ID 찾기</h3>
-                전화번호
-                <input name="phone" onChange={onChange} />
-                <button onClick={onFindId}>ID 찾기</button>
+                <div>
+                  <span className="label">전화번호</span>
+                  <input name="phone" onChange={onChange} />
+                </div>
+                <div className="find-btn">
+                  <button onClick={onFindId}>ID 찾기</button>
+                  <button onClick={switchModal}>닫기</button>
+                </div>
                 <ErrorText>
                   {searchIdError && "해당 번호로 가입된 계정이 없습니다."}
                 </ErrorText>
@@ -270,7 +275,7 @@ const LoginComp = ({
                   <div>
                     <p>찾으시는 아이디는</p>
                     <p>
-                      <span>{findId} </span>입니다.
+                      <span>{findId}</span>&nbsp;입니다.
                     </p>
                   </div>
                   <button onClick={switchModal}>확인</button>
@@ -289,7 +294,7 @@ const LoginComp = ({
                 </div>
                 <div className="find-btn">
                   <button onClick={onFindPwd}>PW 찾기</button>
-                  <button onClick={switchModal}>취소</button>
+                  <button onClick={switchModal}>닫기</button>
                 </div>
                 <ErrorText>{searchPwdError && searchPwdError}</ErrorText>
               </div>
