@@ -26,9 +26,6 @@ const ReadContainer = () => {
       myLike: ReadMod?.myLike,
       userId: UserMod?.user?.id,
 
-      // userId: UserMod?.user?.id,
-      // myLike: ReadMod?.myLike,
-
       id: ReadMod?.post?.id,
       no: ReadMod?.post?.no,
     })
@@ -75,7 +72,7 @@ const ReadContainer = () => {
       console.log(error);
     }
   };
-  console.log(myLike, "==========");
+
   return (
     <ReadComp
       changeLike={changeLike}

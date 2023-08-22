@@ -120,7 +120,7 @@ const ProfileCntr = () => {
   const [cards, setCards] = useState(scheduleList);
   const subjectRef = useRef("");
   const moveCard = useCallback((dragIndex, hoverIndex) => {
-    setCards((prevCards) =>
+    setCards(prevCards =>
       update(prevCards, {
         $splice: [
           [dragIndex, 1],
@@ -135,11 +135,11 @@ const ProfileCntr = () => {
     dispatch(getBoardList({ id }));
   };
 
-  const onGetBoardDetail = (bno) => {
+  const onGetBoardDetail = bno => {
     navigate(`/board/read/${bno}`);
   };
 
-  const onDeleteBoard = (no) => {
+  const onDeleteBoard = no => {
     dispatch(
       deleteBoard({
         no,
@@ -152,11 +152,11 @@ const ProfileCntr = () => {
     dispatch(getReplyList({ uno }));
   };
 
-  const onGetReplyDetail = (bno) => {
+  const onGetReplyDetail = bno => {
     navigate(`/board/read/${bno}`);
   };
 
-  const onDeleteReply = (no) => {
+  const onDeleteReply = no => {
     dispatch(
       deleteReply({
         no,
@@ -173,11 +173,11 @@ const ProfileCntr = () => {
     );
   };
 
-  const onGetLikeDetail = (bno) => {
+  const onGetLikeDetail = bno => {
     navigate(`/board/read/${bno}`);
   };
 
-  const onDeleteLike = (no) => {
+  const onDeleteLike = no => {
     dispatch(
       deleteLike({
         no,
@@ -211,7 +211,7 @@ const ProfileCntr = () => {
     }
   };
 
-  const onDeleteWish = (no) => {
+  const onDeleteWish = no => {
     dispatch(
       deleteWish({
         no,
@@ -244,7 +244,7 @@ const ProfileCntr = () => {
     );
   };
 
-  const onSavedListDelete = (_id) => {
+  const onSavedListDelete = _id => {
     dispatch(
       deleteSavedList({
         id,
@@ -263,7 +263,7 @@ const ProfileCntr = () => {
     );
   };
 
-  const onChange = (e) => {
+  const onChange = e => {
     const { value } = e.target;
     dispatch(
       changeValue({
@@ -272,11 +272,11 @@ const ProfileCntr = () => {
     );
   };
 
-  const onUploadPhoto = (e) => {
+  const onUploadPhoto = e => {
     setContent(e.target.files[0]);
   };
 
-  const onChangePhoto = async (e) => {
+  const onChangePhoto = async e => {
     e.preventDefault();
     if (!content) {
       return alert("사진을 먼저 선택해주세요.");
@@ -286,7 +286,7 @@ const ProfileCntr = () => {
     await changePhoto({
       id,
       formData, //formData를 그대로 넘겨줘야 함. img:{formData} 이런식으로 넘기면 안됨
-    }).then((res) => {
+    }).then(res => {
       if (res.status === 200) {
         const { img } = res.data;
         setUserImg(img);
@@ -328,7 +328,7 @@ const ProfileCntr = () => {
   };
 
   const onNickCheck = () => {
-    const valid = (nick) => {
+    const valid = nick => {
       return /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,10}$/.test(nick);
     };
     if (nick === "" || nick === null) {
@@ -357,7 +357,7 @@ const ProfileCntr = () => {
     }
   };
 
-  const contentImgFilter = (content) => {
+  const contentImgFilter = content => {
     // 이미지태그 제거 정규표현식
     const imgTagReg = /<[^>]+>/gi;
     const textOnly = content.replace(imgTagReg, "");
@@ -453,7 +453,7 @@ const ProfileCntr = () => {
   }, [savedListDeleteError, saveScheduleListError]);
 
   useEffect(() => {
-    const valid = (subject) => {
+    const valid = subject => {
       return /^(?=.*[가-힣])[가-힣]{2,10}$/.test(subject);
     };
     if (!valid(getSubject)) {

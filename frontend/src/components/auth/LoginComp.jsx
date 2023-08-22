@@ -1,22 +1,10 @@
-import { styled } from "styled-components";
-import Modal from "styled-react-modal";
 import { Link } from "react-router-dom";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Navigation,
-  Pagination,
-  Mousewheel,
-  Keyboard,
-  Autoplay,
-} from "swiper/modules";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Modal from "styled-react-modal";
 import { motion } from "framer-motion";
-
-// Import Swiper styles
+import { styled } from "styled-components";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -35,18 +23,18 @@ const LoginLeftPic = styled.div`
 `;
 
 const LoginWrapper = styled.div`
-  width: 55%;
-  height: 100vh;
-  margin: 0 auto;
-  text-align: center;
-  background: ${(props) => props.theme.bgcolor};
   position: relative;
+  text-align: center;
+  height: 100vh;
+  width: 55%;
+  margin: 0 auto;
+  background: ${props => props.theme.bgcolor};
 
   .home {
     position: absolute;
     left: 30px;
     top: 20px;
-    color: ${(props) => props.theme.white};
+    color: ${props => props.theme.white};
   }
 
   form {
@@ -69,8 +57,8 @@ const LoginWrapper = styled.div`
   .logintext {
     margin: 24px 0;
     font-size: 20px;
-    color: ${(props) => props.theme.lightblack};
-    border-bottom: 2px solid ${(props) => props.theme.lightblack};
+    color: ${props => props.theme.lightblack};
+    border-bottom: 2px solid ${props => props.theme.lightblack};
     padding: 6px 0;
     display: inline-block;
     text-align: center;
@@ -82,129 +70,128 @@ const LoginWrapper = styled.div`
     align-items: center;
 
     .label {
-      width: 100px;
+      width: 110px;
       text-align: right;
-      color: ${(props) => props.theme.softblack};
+      color: ${props => props.theme.softblack};
     }
   }
 
   .login-btn {
-    width: 400px;
+    width: 315px;
     padding: 17px 20px;
-    background: ${(props) => props.theme.lightblack};
+    background: ${props => props.theme.lightblack};
     cursor: pointer;
     border: none;
-    color: ${(props) => props.theme.white};
+    color: ${props => props.theme.white};
     font-weight: 600;
     font-size: 18px;
-    margin: 20px 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
   }
 
   .login-btn:hover {
-    background: ${(props) => props.theme.softblack};
+    background: ${props => props.theme.softblack};
   }
 
   .find {
-    color: ${(props) => props.theme.lightblack};
+    color: ${props => props.theme.black};
     margin-left: 10px;
     cursor: pointer;
   }
 
   .find:hover {
-    opacity: 0.8;
+    font-weight: 700;
   }
 
   .ragister {
     margin-left: 14px;
-    color: ${(props) => props.theme.black};
+    color: ${props => props.theme.black};
     font-weight: 600;
   }
 `;
 
 const LoginInput = styled.input`
   border: none;
-  /* border-bottom: 1px solid black; */
   padding-left: 10px;
   padding: 17px;
-  /* border-radius: 40px; */
   margin-left: 20px;
   width: 100%;
-  background: ${(props) => props.theme.white};
-  border: 2px solid ${(props) => props.theme.white};
+  background: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme.white};
 `;
 
 const ErrorText = styled.p`
-  color: ${(props) => props.theme.red};
+  height: 20px;
+  color: ${props => props.theme.red};
 `;
 
 const StyledModal = Modal.styled`
-  background: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.smoke};
   height: 300px;
   width: 500px;
-  text-align :center;
-  display:flex;
+  text-align: center;
+  display: flex;
   justify-content: center;
-  align-items:center;
-  flex-direction : column;
-  border-radius:20px;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
   box-shadow: 2px 3px 3px 3px rgba(0, 0, 0, 0.3);
   position : relative;
 
-
   div{
-    margin-top:10px;
+    margin-top: 10px;
   }
 
   .label{
-    width :60px;
-    display:inline-block;
-    text-align:right;
-    margin-right:10px;
+    width: 70px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
   }
 
   input{
     padding: 10px;
-    width : 200px;
-    margin-left : 10px;
+    width: 200px;
+    margin-left: 10px;
   }
 
   button{
-    padding:10px 17px;
+    padding: 10px 17px;
     margin: 10px 8px;
-    background: ${(props) => props.theme.bgcolor};
-    border:none;
-    font-size:16px;
-    border-radius:10px;
-    cursor:pointer;
-    transition : .3s;
+    background: ${props => props.theme.bgcolor};
+    border: none;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
 
     &:hover{
-    background: ${(props) => props.theme.subcolor};
-    color : ${(props) => props.theme.white};
+    background: ${props => props.theme.subcolor};
+    color: ${props => props.theme.white};
     }
   }
   p{
-    font-size:20px;
+    font-size: 20px;
   }
   p span{
-    font-size : 24px;
-    font-weight : 600;
+    font-size: 24px;
+    font-weight: 600;
   }
 `;
 
 const LoginComp = ({
   error,
-  onChange,
-  onSubmit,
-  changeInform,
+  modal,
   searchName,
   findId,
-  onFindId,
-  onFindPwd,
-  modal,
-  switchModal,
   searchIdError,
   searchPwdError,
+  changeInform,
+  onChange,
+  onSubmit,
+  onFindId,
+  onFindPwd,
+  switchModal,
 }) => {
   return (
     <motion.div
@@ -245,7 +232,7 @@ const LoginComp = ({
                 onChange={onChange}
               />
             </div>
-            {error && <ErrorText>{error}</ErrorText>}
+            <ErrorText>{error && error}</ErrorText>
             <button className="login-btn">LOGIN</button>
           </form>
           <span onClick={changeInform} name="id" className="find">
@@ -257,36 +244,36 @@ const LoginComp = ({
           </span>
           <br />
           <br />
-          <span> 아직 회원이 아니세요?</span>
+          <span>아직 회원이 아니세요?</span>
           <Link to="/auth/register">
             <span className="ragister">회원가입</span>
           </Link>
 
           <StyledModal
             isOpen={modal} //true = 열림 / false = 닫힘
-            ariahideapp={"false"} //에러 안뜨게하기
-            onEscapeKeydown={changeInform} //esc키 눌렀을경우 함수 실행
-            onBackgroundClick={changeInform} //esc키 or 오버레이부분 클릭시 함수 실행
+            ariahideapp={"false"} //없으면 에러 발생
+            onEscapeKeydown={switchModal} //esc키 눌렀을경우 함수 실행
+            onBackgroundClick={switchModal} //esc키 or 오버레이부분 클릭시 함수 실행
           >
-            <h3> {searchName} 찾기</h3>
             {searchName === "id" ? (
               <div>
+                <h3>ID 찾기</h3>
                 전화번호
                 <input name="phone" onChange={onChange} />
-                <button onClick={onFindId}>{searchName}찾기</button>
-                {searchIdError && (
-                  <ErrorText>해당 번호로 가입된 계정이 없습니다.</ErrorText>
-                )}
+                <button onClick={onFindId}>ID 찾기</button>
+                <ErrorText>
+                  {searchIdError && "해당 번호로 가입된 계정이 없습니다."}
+                </ErrorText>
                 <StyledModal
-                  isOpen={findId} //true = 열림 / false = 닫힘
-                  ariahideapp={"false"} //에러 안뜨게하기
-                  onEscapeKeydown={changeInform} //esc키 눌렀을경우 함수 실행
-                  onBackgroundClick={changeInform} //esc키 or 오버레이부분 클릭시 함수 실행
+                  isOpen={findId}
+                  ariahideapp={"false"}
+                  onEscapeKeydown={switchModal}
+                  onBackgroundClick={switchModal}
                 >
                   <div>
                     <p>찾으시는 아이디는</p>
                     <p>
-                      <span>{findId}</span>입니다.
+                      <span>{findId} </span>입니다.
                     </p>
                   </div>
                   <button onClick={switchModal}>확인</button>
@@ -294,6 +281,7 @@ const LoginComp = ({
               </div>
             ) : (
               <div>
+                <h3>PW 찾기</h3>
                 <div>
                   <span className="label">이메일</span>
                   <input name="email" onChange={onChange} />
@@ -303,10 +291,10 @@ const LoginComp = ({
                   <input name="phone" onChange={onChange} />
                 </div>
                 <div className="find-btn">
-                  <button onClick={onFindPwd}>{searchName}찾기</button>
-                  <button onClick={switchModal}>확인</button>
+                  <button onClick={onFindPwd}>PW 찾기</button>
+                  <button onClick={switchModal}>취소</button>
                 </div>
-                {searchPwdError && <ErrorText>{searchPwdError}</ErrorText>}
+                <ErrorText>{searchPwdError && searchPwdError}</ErrorText>
               </div>
             )}
           </StyledModal>

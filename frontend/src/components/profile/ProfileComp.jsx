@@ -42,8 +42,8 @@ const StyledModal = Modal.styled`
     }
   }
   .modal-close{
-    background : ${(props) => props.theme.softblack};
-    color : ${(props) => props.theme.white};
+    background : ${props => props.theme.softblack};
+    color : ${props => props.theme.white};
     padding: 5px 10px;
     display:block;
     margin: 0 auto;
@@ -290,12 +290,12 @@ const NameTag = styled.span`
   width: 70px;
   padding: 0px 10px;
   display: inline-block;
-  /* background : ${(props) => props.theme.bgcolor}; */
+  /* background : ${props => props.theme.bgcolor}; */
   font-weight: 600;
 `;
 
 const ErrorMessage = styled.span`
-  color: ${(props) => props.theme.red};
+  color: ${props => props.theme.red};
   margin-left: 100px;
 `;
 
@@ -307,13 +307,13 @@ const Button = styled.button`
   display: inline-block;
   padding: 7px 15px;
   margin: 10px auto;
-  background: ${(props) => props.theme.bgcolor};
+  background: ${props => props.theme.bgcolor};
   border: none;
   border-radius: 10px;
   transition: 0.3s;
 
   &:hover {
-    background: ${(props) => props.theme.subcolor};
+    background: ${props => props.theme.subcolor};
     color: #fff;
   }
 
@@ -334,18 +334,18 @@ const SelectButton = styled.button`
   font-size: 15px;
   padding: 5px;
   margin: 5px;
-  border: 1px solid ${(props) => props.theme.softblack};
+  border: 1px solid ${props => props.theme.softblack};
   padding: 10px 20px;
   transition: 0.3s;
 
   &:focus {
-    background: ${(props) => props.theme.softblack};
-    color: ${(props) => props.theme.white};
+    background: ${props => props.theme.softblack};
+    color: ${props => props.theme.white};
   }
 
   &:hover {
-    background: ${(props) => props.theme.softblack};
-    color: ${(props) => props.theme.white};
+    background: ${props => props.theme.softblack};
+    color: ${props => props.theme.white};
   }
 
   @media (max-width: 1200px) {
@@ -364,7 +364,7 @@ const ListBox = styled.div`
   margin: 0 auto;
   height: 600px;
   margin-top: 20px;
-  background: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.smoke};
   padding: 50px;
 
   @media (max-width: 1200px) {
@@ -717,7 +717,7 @@ const ProfileComp = ({
               <li>조회수</li>
               <li></li>
             </BoardListTitle>
-            {boardList?.map((board) => (
+            {boardList?.map(board => (
               <Item key={board.no}>
                 <BoardInfo className="board-info">
                   <li onClick={() => onGetBoardDetail(board.no)}>
@@ -766,7 +766,7 @@ const ProfileComp = ({
               <li>작성일자</li>
               <li></li>
             </ListTitle>
-            {replyList.slice(offset, offset + limit).map((reply) => (
+            {replyList.slice(offset, offset + limit).map(reply => (
               <Item key={reply.no}>
                 <BoardInfo className="reply-boardinfo">
                   {/* <li onClick={() => onGetReplyDetail(reply.bno)}>{reply.nick}</li> */}
@@ -801,7 +801,7 @@ const ProfileComp = ({
               <li>글 제목</li>
               <li>좋아요</li>
             </LikeListTitle>
-            {likeList.slice(offset, offset + limit).map((like) => (
+            {likeList.slice(offset, offset + limit).map(like => (
               <Item key={like.no}>
                 <BoardInfo
                   className="like-boardinfo"
@@ -831,7 +831,7 @@ const ProfileComp = ({
         ) : (
           <AllScheduleBox>
             <WishListBox>
-              {wishList.map((Wish) => (
+              {wishList?.map(Wish => (
                 <Item key={Wish.no}>
                   <SchedulerBox
                     onClick={() =>
@@ -1045,7 +1045,7 @@ const ProfileComp = ({
               {cards ? <Container cards={cards} moveCard={moveCard} /> : null}
             </BeforeBox>
             <AfterBox>
-              {savedList?.map((list) => (
+              {savedList?.map(list => (
                 <SavedListBox key={list._id}>
                   <SavedList
                     onClick={() =>
@@ -1072,7 +1072,7 @@ const ProfileComp = ({
                   {savedListDetail?.name[0].subject}
                 </SheduleTitleBox>
                 <SavedListDetailBox>
-                  {savedListDetail?.name[0].scheduleList.map((detail) => (
+                  {savedListDetail?.name[0].scheduleList.map(detail => (
                     <ShceduleBox key={detail.items[0].contentId}>
                       {detail.items[0].title}
                     </ShceduleBox>
