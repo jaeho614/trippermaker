@@ -12,7 +12,7 @@ const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] =
 const LOGOUT = "login/LOGOUT";
 
 export const initializeUser = createAction(INITIALIZE_USER);
-export const tempSetUser = createAction(TEMP_SET_USER, (user) => user);
+export const tempSetUser = createAction(TEMP_SET_USER, user => user);
 export const check = createAction(CHECK);
 export const logout = createAction(LOGOUT);
 
@@ -44,12 +44,12 @@ export function* userSaga() {
 const initialState = {
   user: null,
   checkError: null,
-  replyUser: null
+  replyUser: null,
 };
 
 const UserMod = handleActions(
   {
-    [INITIALIZE_USER]: (state) => initialState,
+    [INITIALIZE_USER]: state => initialState,
     [TEMP_SET_USER]: (state, { payload: user }) => ({
       ...state,
       user,
@@ -59,15 +59,15 @@ const UserMod = handleActions(
       user,
       checkError: null,
     }),
-    [CHECK_FAILURE]: (state, { payload: checkError }) => ({
+    [CHECK_FAILURE]: (state, { payload: { checkError } }) => ({
       ...state,
       user: null,
       checkError,
     }),
-    [LOGOUT]: (state) => ({
+    [LOGOUT]: state => ({
       ...state,
       user: null,
-    })
+    }),
   },
   initialState
 );

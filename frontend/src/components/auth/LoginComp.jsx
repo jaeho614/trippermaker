@@ -57,8 +57,8 @@ const LoginWrapper = styled.div`
   .logintext {
     margin: 24px 0;
     font-size: 20px;
-    color: ${props => props.theme.lightblack};
-    border-bottom: 2px solid ${props => props.theme.lightblack};
+    color: ${props => props.theme.black};
+    border-bottom: 2px solid ${props => props.theme.black};
     padding: 6px 0;
     display: inline-block;
     text-align: center;
@@ -79,7 +79,7 @@ const LoginWrapper = styled.div`
   .login-btn {
     width: 315px;
     padding: 17px 20px;
-    background: ${props => props.theme.lightblack};
+    background: ${props => props.theme.black};
     cursor: pointer;
     border: none;
     color: ${props => props.theme.white};
@@ -97,9 +97,6 @@ const LoginWrapper = styled.div`
     color: ${props => props.theme.black};
     margin-left: 10px;
     cursor: pointer;
-  }
-
-  .find:hover {
     font-weight: 700;
   }
 
@@ -238,7 +235,7 @@ const LoginComp = ({
           <span onClick={changeInform} name="id" className="find">
             ID 찾기
           </span>
-          <span className="find">{"/"}</span>
+          <span>&nbsp;&nbsp;{"/"}</span>
           <span onClick={changeInform} name="pwd" className="find">
             PW 찾기
           </span>

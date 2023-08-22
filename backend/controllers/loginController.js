@@ -15,12 +15,11 @@ exports.login = async (req, res) => {
       },
     });
 
-    //코드 위치 수정 금지!!
-    if (id === "") {
+    if (id === null) {
       return res.status(401).json({ authError: "아이디를 입력해주세요" });
     }
 
-    if (pwd === "") {
+    if (pwd === null) {
       return res.status(401).json({ authError: "비밀번호를 입력해주세요" });
     }
 
@@ -30,21 +29,29 @@ exports.login = async (req, res) => {
 
     const hashedPwd = exUser.pwd;
     const pwdChk = await bcrypt.compare(pwd, hashedPwd); //결과값 true OR false
-    const token = generateToken(id, exUser.nick, exUser.gender, exUser.grade, exUser.style, exUser.no); //jwt token 발행
+    const token = generateToken(
+      id,
+      exUser.nick,
+      exUser.gender,
+      exUser.grade,
+      exUser.style,
+      exUser.no
+    );
+
+    if (!pwdChk) {
+      return res.status(401).json({ authError: "비밀번호가 틀렸습니다." }); //비밀번호 빈칸 및 확인
+    }
+
+    //jwt token 발행
     res.cookie("access_token", token, {
       //res cookie에 jwt token 담기
       maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: true,
     });
 
-    if (!pwdChk) {
-      return res.status(401).json({ authError: "비밀번호를 확인해주세요." }); //비밀번호 빈칸 및 확인
-    }
-
     //비밀번호 n회 틀릴경우 로그인 막고 전화인증 받아서 풀게하기 추가!!
     return res.json({ auth: true }); //유저정보 및 페이지이동 해야함
   } catch (e) {
-    console.error(e, "에러입니다");
     return res.status(500).json({ authError: "로그인 실패" });
   }
 };
@@ -55,6 +62,7 @@ exports.check = (req, res) => {
   if (!exUser) {
     return res.status(400).json({ checkError: true });
   }
+
   return res.json(jwt.verify(exUser, process.env.JWT_TOKEN));
 };
 
@@ -75,7 +83,9 @@ exports.searchId = async (req, res) => {
     const { id } = exUser;
 
     if (!exUser) {
-      return res.status(200).json({ searchIdError: "해당 정보로 가입된 계정이 없습니다." });
+      return res
+        .status(200)
+        .json({ searchIdError: "해당 정보로 가입된 계정이 없습니다." });
     }
 
     return res.status(200).json({ searchId: id });
@@ -100,7 +110,9 @@ exports.searchPwd = async (req, res) => {
     });
 
     if (!exUser) {
-      return res.status(401).json({ searchPwdError: "해당 정보로 가입된 계정이 없습니다." });
+      return res
+        .status(401)
+        .json({ searchPwdError: "해당 정보로 가입된 계정이 없습니다." });
     }
     //nodemailer 설정
     const EMAIL = "tripper.maker4@gmail.com"; //발신자 메일
