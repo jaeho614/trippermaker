@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import RegisterFormComp from "../../components/auth/RegisterFormComp";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -75,7 +75,7 @@ const RegisterCntr = () => {
   const chooseDomain = useRef();
   const address1 = useRef();
   const zipcode1 = useRef();
-  const onChange = (e) => {
+  const onChange = useCallback(e => {
     const { value, name } = e.target;
     dispatch(
       changeValue({
@@ -84,15 +84,15 @@ const RegisterCntr = () => {
         key: name,
       })
     );
-  };
+  }, []);
 
   //Modal창 컨트롤
-  const openSearchAddress = (e) => {
+  const openSearchAddress = e => {
     e.preventDefault();
     setModal(!modal);
   };
   //daum post code 함수
-  const onCompletePost = (data) => {
+  const onCompletePost = data => {
     const { roadAddress, zonecode } = data;
     setAddress({ roadAddress, zonecode });
     setModal(!modal); //주소찾기 완료시 modal창도 닫히게 하기
@@ -107,9 +107,9 @@ const RegisterCntr = () => {
   };
 
   //회원가입 정보 제출
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     //영문, 숫자, 특수기호 조합으로 8-15자리를 입력해주세요.
-    const valid = (pwd) => {
+    const valid = pwd => {
       return /^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[!@#$%^*()-]).{8,15}$/.test(
         pwd
       );
@@ -147,11 +147,11 @@ const RegisterCntr = () => {
   };
 
   //리팩토링해서 모듈로~
-  const onCheck = (e) => {
+  const onCheck = e => {
     const { name } = e.target;
 
     if (name === "emailChk") {
-      const valid = (email) => {
+      const valid = email => {
         return /^[A-Za-z0-9.\-_]+@([A-Za-z0-9-]+\.)+[A-Za-z]{2,6}$/.test(email);
       };
       if (valid(email)) {
@@ -166,7 +166,7 @@ const RegisterCntr = () => {
     }
 
     if (name === "nickChk") {
-      const valid = (nick) => {
+      const valid = nick => {
         return /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,10}$/.test(nick);
       };
       if (valid(nick)) {
@@ -183,7 +183,7 @@ const RegisterCntr = () => {
     }
 
     if (name === "phoneChk") {
-      const valid = (phone) => {
+      const valid = phone => {
         return /^[0-1]{3}[0-9]{4}[0-9]{4}$/.test(phone);
       };
       if (valid(phone)) {
@@ -219,7 +219,7 @@ const RegisterCntr = () => {
   };
 
   //domain 옵션 선택시 email 값 변경
-  const changeDomain = (e) => {
+  const changeDomain = e => {
     const { value } = e.target;
     e.preventDefault();
     if (value !== "directInput") {
@@ -240,6 +240,17 @@ const RegisterCntr = () => {
     }
   };
 
+  const doPwdChk = input => {
+    setOnPwdChk(input);
+    dispatch(
+      pwdChk({
+        form: "auth",
+        key: "pwdAuth",
+        value: input,
+      })
+    );
+  };
+
   useEffect(() => {
     dispatch(initializeRegisterForm());
   }, [dispatch]);
@@ -248,24 +259,10 @@ const RegisterCntr = () => {
   useEffect(() => {
     if (pwd !== null && pwdConfirm !== null) {
       if (pwd !== pwdConfirm) {
-        setOnPwdChk(false); //아래랑 리팩토링
-        dispatch(
-          pwdChk({
-            form: "auth",
-            key: "pwdAuth",
-            value: false,
-          })
-        );
+        doPwdChk(false);
       }
       if (pwd === pwdConfirm) {
-        setOnPwdChk(true); //여기랑 리팩토링
-        dispatch(
-          pwdChk({
-            form: "auth",
-            key: "pwdAuth",
-            value: true,
-          })
-        );
+        doPwdChk(true);
       }
     }
   }, [pwd, pwdConfirm]);
@@ -365,7 +362,7 @@ const RegisterCntr = () => {
     }, [delay]);
   }
   //새로고침 및 창닫기시 실행
-  const preventClose = (e) => {
+  const preventClose = e => {
     e.preventDefault();
     e.returnValue = ""; //Chrome에서 동작하려면 returnValue 설정이 필요; 현재 deprecated된 속성,
   };
@@ -402,29 +399,29 @@ const RegisterCntr = () => {
 
   return (
     <RegisterFormComp
-      onChange={onChange}
-      onSubmit={onSubmit}
-      onCheck={onCheck}
       onIdChk={onIdChk}
       onPwdChk={onPwdChk}
       onNickChk={onNickChk}
       onPhoneChk={onPhoneChk}
-      changeDomain={changeDomain}
       chooseDomain={chooseDomain}
       disabledDomain={disabledDomain}
       phoneAuth={phoneAuth}
       phoneMsg={phoneMsg}
       authNum={authNum}
       count={count}
-      openSearchAddress={openSearchAddress}
       modal={modal}
-      onCompletePost={onCompletePost}
       address={address}
       addr1={addr1}
       address1={address1}
       zipcode1={zipcode1}
+      onChange={onChange}
+      onSubmit={onSubmit}
+      onCheck={onCheck}
+      changeDomain={changeDomain}
+      openSearchAddress={openSearchAddress}
+      onCompletePost={onCompletePost}
     />
   );
 };
 
-export default RegisterCntr;
+export default React.memo(RegisterCntr);

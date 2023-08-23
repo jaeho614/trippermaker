@@ -14,7 +14,6 @@ const SearchPwdCntr = () => {
   const dispatch = useDispatch();
   const { id, sendTime } = useParams();
   const [onPwdChk, setOnPwdChk] = useState("");
-  const [urlChk, setUrlChk] = useState("");
   const navigate = useNavigate();
   const { pwd, pwdConfirm, pwdAuth, urlExist } = useSelector(
     ({ LoginMod }) => ({
@@ -101,6 +100,7 @@ const SearchPwdCntr = () => {
       })
     );
   }, [dispatch]);
+
   //비밀번호 변경 이메일 유효시간 경과시 돌려보냄.
   useEffect(() => {
     if (urlExist === false) {
