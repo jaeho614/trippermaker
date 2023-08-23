@@ -40,8 +40,7 @@ export const updatePwd = createAction(UPDATE_PWD, ({ email, pwd }) => ({
   email,
   pwd,
 }));
-export const urlCheck = createAction(URL_CHECK, ({ id, sendTime }) => ({
-  id,
+export const urlCheck = createAction(URL_CHECK, ({ sendTime }) => ({
   sendTime,
 }));
 

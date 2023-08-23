@@ -24,6 +24,6 @@ export const updatePwd = async ({ email, pwd }) => {
   return await client.post(`/auth/searchPwd/${email}`, { pwd });
 };
 
-export const urlCheck = async ({ id, sendTime }) => {
-  return await client.get(`/auth/searchPwd/${id}/${sendTime}`);
+export const urlCheck = async ({ sendTime }) => {
+  return await client.get(`/auth/searchPwd/:email/${sendTime}`);
 };

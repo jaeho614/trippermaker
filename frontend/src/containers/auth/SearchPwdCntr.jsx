@@ -97,7 +97,6 @@ const SearchPwdCntr = () => {
   useEffect(() => {
     dispatch(
       urlCheck({
-        id,
         sendTime,
       })
     );
