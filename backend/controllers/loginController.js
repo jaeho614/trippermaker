@@ -5,6 +5,16 @@ const { generateToken } = require("./authController");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 
+function dcryptFunc(input) {
+  const algorithm = "aes-256-cbc"; //복호화 알고리즘
+  const key = "abcdefghijklmnopqrstuvwxyz123456"; //복호화 알고리즘
+  const iv = "1234567890123456"; //복호화 알고리즘
+  const decipher = crypto.createDecipheriv(algorithm, key, iv); //복호화 알고리즘
+  let decryptedSource = decipher.update(input, "base64", "utf8"); //(복호화 할 변수, "base64", "utf8")
+  decryptedSource += decipher.final("utf8"); //복호화 알고리즘
+  return decryptedSource;
+}
+
 exports.login = async (req, res) => {
   const { id, pwd } = req.body;
 
@@ -98,12 +108,12 @@ exports.searchId = async (req, res) => {
 exports.searchPwd = async (req, res) => {
   const { email, phone } = req.body;
 
-  function encryptFunc(source) {
+  function encryptFunc(input) {
     const algorithm = "aes-256-cbc"; //복호화 알고리즘
     const key = "abcdefghijklmnopqrstuvwxyz123456"; //복호화 알고리즘
     const iv = "1234567890123456"; //복호화 알고리즘
     const cipher = crypto.createCipheriv(algorithm, key, iv); //복호화 알고리즘
-    let encryptedSource = cipher.update(source, "utf8", "base64"); //(암호화 할 이메일, utf8, base64)
+    let encryptedSource = cipher.update(input, "utf8", "base64"); //(암호화 할 이메일, utf8, base64)
     encryptedSource += cipher.final("base64"); //복호화 알고리즘
     return encryptedSource;
   }
@@ -125,7 +135,7 @@ exports.searchPwd = async (req, res) => {
     const EMAIL = "tripper.maker4@gmail.com"; //발신자 메일
     const EMAIL_PW = "ecxgyfjdoqoiunka"; //gmail의 경우 2단계인증 완료후 앱비밀번호를 생성하여 입력한다.
     let receiverEmail = email; //수신자 email
-    let sendTime = (Date.now() + 6000).toString();
+    let sendTime = (Date.now() + 60000).toString(); //이메일 발송시간에 1분(60000ms)의 유효시간 설정
     let transport = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -134,8 +144,8 @@ exports.searchPwd = async (req, res) => {
       },
     });
 
-    const encryptedEmail = encryptFunc(receiverEmail);
-    const encryptedTime = encryptFunc(sendTime);
+    const encryptedEmail = encryptFunc(receiverEmail); //암호화 이메일
+    const encryptedTime = encryptFunc(sendTime); //암호화 이메일 발송시간
 
     let mailOptions = {
       from: EMAIL, //발신자
@@ -160,17 +170,8 @@ exports.searchPwd = async (req, res) => {
 };
 
 exports.updatePwd = async (req, res) => {
-  const { email, pwd } = req.body;
-
-  function dcryptFunc(source) {
-    const algorithm = "aes-256-cbc"; //복호화 알고리즘
-    const key = "abcdefghijklmnopqrstuvwxyz123456"; //복호화 알고리즘
-    const iv = "1234567890123456"; //복호화 알고리즘
-    const decipher = crypto.createDecipheriv(algorithm, key, iv); //복호화 알고리즘
-    let decryptedSource = decipher.update(source, "base64", "utf8"); //(복호화 할 변수, "base64", "utf8")
-    decryptedSource += decipher.final("utf8"); //복호화 알고리즘
-    return decryptedSource;
-  }
+  const { pwd } = req.body;
+  const { email } = req.params;
 
   try {
     const hashedPwd = await bcrypt.hash(pwd, 10);
@@ -182,5 +183,23 @@ exports.updatePwd = async (req, res) => {
   } catch (e) {
     console.error(e);
     return res.status(401).json("비밀번호 변경 실패 오류");
+  }
+};
+
+exports.urlCheck = async (req, res) => {
+  const { sendTime } = req.params;
+
+  try {
+    let currentTime = Date.now(); //현재시간
+    let decryptedTime = dcryptFunc(sendTime); //복호화 이메일 발송시간
+
+    if (currentTime > decryptedTime) {
+      return res.status(200).json({ urlExist: false });
+    }
+
+    return res.status(200).json({ urlExist: true });
+  } catch (e) {
+    console.error(e);
+    return res.status(401).json({ urlExistError: true });
   }
 };

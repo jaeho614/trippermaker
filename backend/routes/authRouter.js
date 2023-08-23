@@ -6,6 +6,7 @@ const {
   searchId,
   searchPwd,
   updatePwd,
+  urlCheck,
 } = require("../controllers/loginController");
 const {
   register,
@@ -13,21 +14,21 @@ const {
   nickChk,
   phoneChk,
   authNumChk,
-  replyUserNickChk,
 } = require("../controllers/registerController");
-const app = express();
+
 const auth = express.Router();
 
-auth.post("/login", login);
+auth.get("/check", check);
 auth.get("/logout", logout);
+auth.get("/searchPwd/:email/:sendTime", urlCheck);
+auth.post("/login", login);
 auth.post("/register", register);
 auth.post("/register/idChk", idChk);
 auth.post("/register/nickChk", nickChk);
 auth.post("/register/phoneChk", phoneChk);
 auth.post("/register/authNumChk", authNumChk);
-auth.get("/check", check);
 auth.post("/searchId", searchId);
 auth.post("/searchPwd", searchPwd);
-auth.post("/searchPwd/:id", updatePwd);
+auth.post("/searchPwd/:email", updatePwd);
 
 module.exports = auth;

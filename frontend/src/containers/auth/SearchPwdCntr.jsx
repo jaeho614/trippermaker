@@ -5,21 +5,25 @@ import {
   changeValue,
   initializeLoginForm,
   pwdChk,
+  urlCheck,
 } from "../../modules/auth/LoginMod";
 import { useEffect, useState } from "react";
 import { updatePwd } from "../../modules/auth/LoginMod";
-import { AES, CryptoJS } from "crypto-js";
 
 const SearchPwdCntr = () => {
   const dispatch = useDispatch();
   const { id, sendTime } = useParams();
   const [onPwdChk, setOnPwdChk] = useState("");
+  const [urlChk, setUrlChk] = useState("");
   const navigate = useNavigate();
-  const { pwd, pwdConfirm, pwdAuth } = useSelector(({ LoginMod }) => ({
-    pwd: LoginMod.pwd,
-    pwdConfirm: LoginMod.pwdConfirm,
-    pwdAuth: LoginMod.pwdAuth,
-  }));
+  const { pwd, pwdConfirm, pwdAuth, urlExist } = useSelector(
+    ({ LoginMod }) => ({
+      pwd: LoginMod.pwd,
+      pwdConfirm: LoginMod.pwdConfirm,
+      pwdAuth: LoginMod.pwdAuth,
+      urlExist: LoginMod?.urlExist,
+    })
+  );
 
   const onSubmit = e => {
     e.preventDefault();
@@ -56,6 +60,17 @@ const SearchPwdCntr = () => {
     );
   };
 
+  const doPwdChk = input => {
+    setOnPwdChk(input);
+    dispatch(
+      pwdChk({
+        form: "auth",
+        key: "pwdAuth",
+        value: input,
+      })
+    );
+  };
+
   //비밀번호, 비밀번호확인 체크
   useEffect(() => {
     initializeLoginForm();
@@ -64,24 +79,10 @@ const SearchPwdCntr = () => {
   useEffect(() => {
     if (pwd !== null && pwdConfirm !== null) {
       if (pwd !== pwdConfirm) {
-        setOnPwdChk(false); //아래랑 리팩토링
-        dispatch(
-          pwdChk({
-            form: "auth",
-            key: "pwdAuth",
-            value: false,
-          })
-        );
+        doPwdChk(false);
       }
       if (pwd === pwdConfirm) {
-        setOnPwdChk(true); //여기랑 리팩토링
-        dispatch(
-          pwdChk({
-            form: "auth",
-            key: "pwdAuth",
-            value: true,
-          })
-        );
+        doPwdChk(true);
       }
     }
   }, [pwd, pwdConfirm]);
@@ -94,21 +95,20 @@ const SearchPwdCntr = () => {
   }, [pwdAuth]);
 
   useEffect(() => {
-    const nowTime = Date.now();
-
-    function dcryptFunc(source) {
-      const key = "abcdefghijklmnopqrstuvwxyz123456"; //복호화 알고리즘
-      const iv = "1234567890123456"; //복호화 알고리즘
-      let decryptedSource = CryptoJS.AES.decrypt(source, key);
-      return decryptedSource.toString(CryptoJS.enc.Utf8);
+    dispatch(
+      urlCheck({
+        id,
+        sendTime,
+      })
+    );
+  }, [dispatch]);
+  //비밀번호 변경 이메일 유효시간 경과시 돌려보냄.
+  useEffect(() => {
+    if (urlExist === false) {
+      alert("이미 만료된 주소입니다. 이메일을 다시 발급 받아주세요.");
+      navigate("/auth/login");
     }
-    const decryptedTime = dcryptFunc(sendTime);
-    console.log(nowTime, "====", decryptedTime);
-    if (nowTime > decryptedTime) {
-      alert("이미 만료된 링크입니다.");
-      navigate("/");
-    }
-  });
+  }, [urlExist]);
 
   return (
     <SearchPwdComp
