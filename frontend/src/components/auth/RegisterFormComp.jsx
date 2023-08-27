@@ -9,19 +9,31 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 import { motion } from "framer-motion";
 
-const StyledModal = Modal.styled`
+const ModalBox = Modal.styled`
+  background: white;
+  border-radius: 15px;
+  padding: 5px;
+`;
+
+const StyledModal = styled.div`
   background: white;
   height: 450px;
   width: 500px;
 
-  div{
+  div {
     display: flex;
+    align-items: center;
+    margin-top: 5px;
     padding: 5px;
     justify-contents: space-between;
   }
+
+  div:first-child {
+    border-bottom: 1px solid black;
+  }
 `;
 
-const DivInModal = styled.div`
+const ButtonInModal = styled.div`
   cursor: pointer;
   color: ${props => props.theme.red};
   margin-left: 400px;
@@ -421,18 +433,20 @@ const RegisterFormComp = ({
         </RegisterFormBlock>
       </RegisterContainer>
 
-      <StyledModal
+      <ModalBox
         isOpen={modal} //true = 열림 / false = 닫힘
-        ariahideapp={"false"} //에러 안뜨게하기
+        ariahideapp="false" //에러 안뜨게하기
         onEscapeKeydown={openSearchAddress} //esc키 눌렀을경우 함수 실행
         onBackgroundClick={openSearchAddress} //esc키 or 오버레이부분 클릭시 함수 실행
       >
-        <div>
-          <div>주소검색</div>
-          <DivInModal onClick={openSearchAddress}>X</DivInModal>
-        </div>
-        <DaumPostcode autoClose onComplete={onCompletePost} />
-      </StyledModal>
+        <StyledModal>
+          <div>
+            <span>주소검색</span>
+            <ButtonInModal onClick={openSearchAddress}>X</ButtonInModal>
+          </div>
+          <DaumPostcode autoClose onComplete={onCompletePost} />
+        </StyledModal>
+      </ModalBox>
     </motion.div>
   );
 };
