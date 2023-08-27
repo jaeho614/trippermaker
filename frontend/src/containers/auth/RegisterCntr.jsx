@@ -146,7 +146,6 @@ const RegisterCntr = () => {
     navigate("/");
   };
 
-  //리팩토링해서 모듈로~
   const onCheck = e => {
     const { name } = e.target;
 
@@ -266,7 +265,6 @@ const RegisterCntr = () => {
       }
     }
   }, [pwd, pwdConfirm]);
-
   //닉네임 중복확인 후 값 변경시 다시 중복확인 해야함
   useEffect(() => {
     if (nickAuth || nickAuth === false) {
@@ -398,30 +396,32 @@ const RegisterCntr = () => {
   }, []);
 
   return (
-    <RegisterFormComp
-      onIdChk={onIdChk}
-      onPwdChk={onPwdChk}
-      onNickChk={onNickChk}
-      onPhoneChk={onPhoneChk}
-      chooseDomain={chooseDomain}
-      disabledDomain={disabledDomain}
-      phoneAuth={phoneAuth}
-      phoneMsg={phoneMsg}
-      authNum={authNum}
-      count={count}
-      modal={modal}
-      address={address}
-      addr1={addr1}
-      address1={address1}
-      zipcode1={zipcode1}
-      onChange={onChange}
-      onSubmit={onSubmit}
-      onCheck={onCheck}
-      changeDomain={changeDomain}
-      openSearchAddress={openSearchAddress}
-      onCompletePost={onCompletePost}
-    />
+    <div>
+      <RegisterFormComp
+        onIdChk={onIdChk}
+        onPwdChk={onPwdChk}
+        onNickChk={onNickChk}
+        onPhoneChk={onPhoneChk}
+        chooseDomain={chooseDomain}
+        disabledDomain={disabledDomain}
+        phoneAuth={phoneAuth}
+        phoneMsg={phoneMsg}
+        authNum={authNum}
+        count={count}
+        modal={modal}
+        address={address}
+        addr1={addr1}
+        address1={address1}
+        zipcode1={zipcode1}
+        onChange={onChange}
+        onSubmit={onSubmit}
+        onCheck={onCheck}
+        changeDomain={changeDomain}
+        openSearchAddress={openSearchAddress}
+        onCompletePost={onCompletePost}
+      />
+    </div>
   );
 };
 
-export default React.memo(RegisterCntr);
+export default RegisterCntr;

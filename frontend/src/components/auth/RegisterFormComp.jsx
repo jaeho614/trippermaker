@@ -1,3 +1,4 @@
+import React from "react";
 import { css, styled } from "styled-components";
 import Modal from "styled-react-modal";
 import DaumPostcode from "react-daum-postcode";
@@ -22,14 +23,14 @@ const StyledModal = Modal.styled`
 
 const DivInModal = styled.div`
   cursor: pointer;
-  color: ${(props) => props.theme.red};
+  color: ${props => props.theme.red};
   margin-left: 400px;
   background: none;
   text-align: center;
 `;
 
 const RegisterContainer = styled.div`
-  background: ${(props) => props.theme.bgcolor};
+  background: ${props => props.theme.bgcolor};
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -43,35 +44,34 @@ const RegisterContainer = styled.div`
   }
 
   .join-text {
-    // font-size: 20px;
-    color: ${(props) => props.theme.softblack};
-    border-bottom: 2px solid ${(props) => props.theme.softblack};
+    color: ${props => props.theme.softblack};
+    border-bottom: 2px solid ${props => props.theme.softblack};
     padding: 6px 0;
     display: inline-block;
     text-align: center;
-    margin-top: 20px;
+    margin: 30px 0;
   }
 
   .logo {
-    color: ${(props) => props.theme.white};
+    color: ${props => props.theme.white};
     text-align: center;
     font-size: 30px;
   }
 
   button {
     padding: 10px;
-    margin: 5px 10px;
-    background: ${(props) => props.theme.lightblack};
-    color: ${(props) => props.theme.white};
+    background: ${props => props.theme.lightblack};
+    color: ${props => props.theme.white};
     border: none;
     cursor: pointer;
     transition: 0.3s;
-    /* color: ${(props) => props.theme.softblack}; */
+
     &:hover {
-      background: ${(props) => props.theme.softblack};
+      background: ${props => props.theme.softblack};
     }
+
     &.join-btn {
-      background: ${(props) => props.theme.bgcolor};
+      background: ${props => props.theme.bgcolor};
       border: none;
       margin: 0 auto;
       margin-top: 30px;
@@ -79,21 +79,18 @@ const RegisterContainer = styled.div`
       font-size: 16px;
       text-align: center;
       display: block;
-      background: ${(props) => props.theme.softblack};
+      background: ${props => props.theme.softblack};
       box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.3);
     }
+
     &.join-btn:hover {
-      background: ${(props) => props.theme.subcolor};
-    }
-    &.addr-btn {
-      display: inline-block;
-      margin-left: 0;
+      background: ${props => props.theme.subcolor};
     }
   }
 
   .gender {
     margin-top: 20px;
-    color: ${(props) => props.theme.softblack};
+    color: ${props => props.theme.softblack};
     input[type="radio"] {
       margin-left: 10px;
       width: 30px;
@@ -105,81 +102,82 @@ const RegisterFormBlock = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-color: ${(props) => props.theme.white};
-  margin-top: 30px;
+  border-color: ${props => props.theme.white};
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.3);
   padding: 50px;
+
   .emailat {
-    color: ${(props) => props.theme.softblack};
-    margin-right: 5px;
+    color: ${props => props.theme.softblack};
   }
 `;
 
 const RegisterInput = styled.input`
   height: 27px;
-  margin-top: 10px;
+  margin: 0 15px;
   padding: 7px 10px;
-  /* border-radius: 10px; */
-  border: 1px solid ${(props) => props.theme.lightblack};
-  background: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.softblack};
-  margin-right: 5px;
+  border: 1px solid ${props => props.theme.lightblack};
+  background: ${props => props.theme.white};
+  color: ${props => props.theme.softblack};
   width: 200px;
+
+  &.detailAddress {
+    margin-top: 25px;
+  }
 `;
 
 const SubIdInput = styled.input`
   height: 27px;
-  margin-top: 10px;
+  margin: 0 15px;
   padding: 7px 10px;
-  /* border-radius: 10px; */
-  border: 1px solid ${(props) => props.theme.lightblack};
-  background: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.softblack};
-  margin-right: 5px;
+  border: 1px solid ${props => props.theme.lightblack};
+  background: ${props => props.theme.white};
+  color: ${props => props.theme.black};
   width: 200px;
 
-  ${(props) =>
+  ${props =>
     props.disabled &&
     css`
       background: gray;
-      disabled
+      disabled;
+      
+      &::placeholder {
+        color: black;
+      }
     `}
 `;
 
 const SelectDomain = styled.select`
+  margin-right: 15px;
   padding: 10px 20px;
-  border: 1px solid ${(props) => props.theme.softblack};
-  background: ${(props) => props.theme.white};
+  border: 1px solid ${props => props.theme.softblack};
+  background: ${props => props.theme.white};
 `;
 
 const NameTag = styled.span`
-  width: 100px;
+  width: 110px;
   text-align: right;
   display: inline-block;
-  color: ${(props) => props.theme.softblack};
+  color: ${props => props.theme.softblack};
   font-weight: 500;
-  margin-right: 10px;
-  /* background: #232345; */
 `;
 
 const ConfirmMessage = styled.div`
-  /* background: skyblue; */
-  width: 600px;
-  margin-left: 100px;
-  margin-top: 5px;
+  margin: 5px 0 5px 125px;
   font-size: 15px;
   height: 20px;
-  ${(props) =>
+
+  ${props =>
     props.authok &&
     css`
-      color: ${(props) => props.theme.subcolor};
+      color: ${props => props.theme.subcolor};
     `}
-  ${(props) =>
+
+  ${props =>
     props.autherror &&
     css`
-      color: ${(props) => props.theme.red};
+      color: ${props => props.theme.red};
     `}
 
     &:nth-child(1) {
@@ -266,134 +264,141 @@ const RegisterFormComp = ({
               <button name="emailChk" onClick={onCheck}>
                 중복확인
               </button>
-              <ConfirmMessage>
-                {onIdChk === "empty" ? (
-                  <ConfirmMessage></ConfirmMessage>
-                ) : onIdChk === false ? (
-                  <ConfirmMessage autherror="true">
-                    이미 사용중인 이메일입니다.
-                  </ConfirmMessage>
-                ) : (
-                  <ConfirmMessage authok="true">
-                    사용가능한 닉네임입니다.
-                  </ConfirmMessage>
-                )}
-              </ConfirmMessage>
-            </div>
-            <NameTag>비밀번호</NameTag>
-            <RegisterInput
-              placeholder="비밀번호"
-              name="pwd"
-              type="password"
-              onChange={onChange}
-            />
-            <NameTag>비밀번호 확인</NameTag>
-            <RegisterInput
-              placeholder="비밀번호 확인"
-              name="pwdConfirm"
-              type="password"
-              onChange={onChange}
-            />
-            {onPwdChk === false ? (
-              <ConfirmMessage autherror="true">
-                비밀번호를 확인해주세요.
-              </ConfirmMessage>
-            ) : (
-              <ConfirmMessage></ConfirmMessage>
-            )}
-            <NameTag>닉네임</NameTag>{" "}
-            <RegisterInput
-              placeholder="닉네임"
-              name="nick"
-              type="text"
-              onChange={onChange}
-            />
-            <button name="nickChk" onClick={onCheck}>
-              중복확인
-            </button>
-            {onNickChk === "empty" ? (
-              <ConfirmMessage></ConfirmMessage>
-            ) : onNickChk === false ? (
-              <ConfirmMessage autherror="true">
-                이미 사용중인 닉네임입니다.
-              </ConfirmMessage>
-            ) : (
-              <ConfirmMessage authok="true">
-                사용가능한 닉네임입니다.
-              </ConfirmMessage>
-            )}
-            <NameTag>전화번호</NameTag>
-            <RegisterInput
-              placeholder="'-' 없이 입력하세요."
-              name="phone"
-              type="text"
-              onChange={onChange}
-            />
-            <button name="phoneChk" onClick={onCheck}>
-              인증번호 받기
-            </button>
-            {authNum === true ? (
-              <SubIdInput name="authNum" onChange={onCheck} disabled={true} />
-            ) : (
-              <SubIdInput
-                placeholder="인증번호를 입력해주세요"
-                name="authNum"
-                onChange={onCheck}
-              />
-            )}
-            <button name="phoneAuthChk" onClick={onCheck}>
-              인증확인
-            </button>
-            <ConfirmMessage>
-              {<span>{phoneMsg}</span>}
-              {count === 60 || authNum === true ? (
-                ""
-              ) : count !== 0 && phoneAuth ? (
-                <span className="count">인증 유효시간 {count}초</span>
+              {onIdChk === "empty" ? (
+                <ConfirmMessage></ConfirmMessage>
+              ) : onIdChk === false ? (
+                <ConfirmMessage autherror="true">
+                  이미 사용중인 이메일입니다.
+                </ConfirmMessage>
               ) : (
-                ""
+                <ConfirmMessage authok="true">
+                  사용가능한 닉네임입니다.
+                </ConfirmMessage>
               )}
-            </ConfirmMessage>
-            <NameTag>주소</NameTag>
-            <button className="addr-btn" onClick={openSearchAddress}>
-              주소찾기
-            </button>
-            {addr1 ? (
-              <span>
+            </div>
+            <div>
+              <NameTag>비밀번호</NameTag>
+              <RegisterInput
+                placeholder="비밀번호"
+                name="pwd"
+                type="password"
+                onChange={onChange}
+              />
+              <NameTag>비밀번호 확인</NameTag>
+              <RegisterInput
+                placeholder="비밀번호 확인"
+                name="pwdConfirm"
+                type="password"
+                onChange={onChange}
+              />
+              {onPwdChk === false ? (
+                <ConfirmMessage autherror="true">
+                  비밀번호를 확인해주세요.
+                </ConfirmMessage>
+              ) : (
+                <ConfirmMessage></ConfirmMessage>
+              )}
+            </div>
+            <div>
+              <NameTag>닉네임</NameTag>
+              <RegisterInput
+                placeholder="닉네임"
+                name="nick"
+                type="text"
+                onChange={onChange}
+              />
+              <button name="nickChk" onClick={onCheck}>
+                중복확인
+              </button>
+              {onNickChk === "empty" ? (
+                <ConfirmMessage></ConfirmMessage>
+              ) : onNickChk === false ? (
+                <ConfirmMessage autherror="true">
+                  이미 사용중인 닉네임입니다.
+                </ConfirmMessage>
+              ) : (
+                <ConfirmMessage authok="true">
+                  사용가능한 닉네임입니다.
+                </ConfirmMessage>
+              )}
+            </div>
+            <div>
+              <NameTag>전화번호</NameTag>
+              <RegisterInput
+                placeholder="'-' 없이 입력하세요."
+                name="phone"
+                type="text"
+                onChange={onChange}
+              />
+              <button name="phoneChk" onClick={onCheck}>
+                인증번호 받기
+              </button>
+              {authNum === true ? (
+                <SubIdInput name="authNum" onChange={onCheck} disabled={true} />
+              ) : (
                 <SubIdInput
-                  placeholder="우편번호"
-                  name="zipcode"
-                  ref={zipcode1}
-                  disabled={true}
+                  placeholder="인증번호를 입력해주세요"
+                  name="authNum"
+                  onChange={onCheck}
                 />
-                <SubIdInput
-                  placeholder="주소"
-                  name="addr1"
-                  type="text"
-                  ref={address1}
-                  disabled={true}
-                />
-              </span>
-            ) : (
-              <span>
-                <SubIdInput
-                  placeholder="우편번호"
-                  name="zipcode"
-                  ref={zipcode1}
-                  disabled={true}
-                />
-                <SubIdInput
-                  placeholder="주소"
-                  name="addr1"
-                  type="text"
-                  ref={address1}
-                  disabled={true}
-                />
-              </span>
-            )}
+              )}
+              <button name="phoneAuthChk" onClick={onCheck}>
+                인증확인
+              </button>
+              {
+                <ConfirmMessage autherror="true">
+                  {phoneMsg}
+                  {count === 60 || authNum === true ? (
+                    ""
+                  ) : count !== 0 && phoneAuth ? (
+                    <span className="count">인증 유효시간 {count}초</span>
+                  ) : (
+                    ""
+                  )}
+                </ConfirmMessage>
+              }
+            </div>
+            <div>
+              <NameTag>주소</NameTag>
+              {addr1 ? (
+                <span>
+                  <SubIdInput
+                    placeholder="우편번호"
+                    name="zipcode"
+                    ref={zipcode1}
+                    disabled={true}
+                  />
+                  <SubIdInput
+                    placeholder="주소"
+                    name="addr1"
+                    type="text"
+                    ref={address1}
+                    disabled={true}
+                  />
+                </span>
+              ) : (
+                <span>
+                  <SubIdInput
+                    placeholder="우편번호"
+                    name="zipcode"
+                    ref={zipcode1}
+                    disabled={true}
+                  />
+                  <SubIdInput
+                    placeholder="주소"
+                    name="addr1"
+                    type="text"
+                    ref={address1}
+                    disabled={true}
+                  />
+                </span>
+              )}
+              <button onClick={openSearchAddress}>주소찾기</button>
+            </div>
             <div>
               <NameTag>상세주소</NameTag>
               <RegisterInput
+                className="detailAddress"
                 placeholder="상세주소"
                 name="addr2"
                 type="text"
@@ -432,4 +437,4 @@ const RegisterFormComp = ({
   );
 };
 
-export default RegisterFormComp;
+export default React.memo(RegisterFormComp);
