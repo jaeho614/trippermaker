@@ -6,7 +6,6 @@ import { logout } from "../modules/auth/UserMod";
 import { initializeLoginForm } from "../modules/auth/LoginMod";
 import { getMainInform, getMainTerms } from "../modules/main/MainMod";
 import { useEffect, useState } from "react";
-import SideMenuComp from "../components/main/SideMenuComp";
 
 const LayoutCntr = () => {
   const dispatch = useDispatch();
@@ -64,7 +63,6 @@ const LayoutCntr = () => {
         onLogout={onLogout}
         onClick={onClick}
       />
-      {/* <SideMenuComp /> */}
       <Outlet />
       <Footer
         onGetMainTerms={onGetMainTerms}

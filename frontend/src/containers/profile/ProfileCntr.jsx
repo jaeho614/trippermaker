@@ -36,6 +36,10 @@ import ScheduleMod, {
   initializeError,
   deleteSavedList,
 } from "../../modules/schedule/ScheduleMod";
+import ProfileBlockComp from "../../components/profile/ProfileBlockComp";
+import ProfileFormComp from "../../components/profile/ProfileFormComp";
+import ProfileListComp from "../../components/profile/ProfileListComp";
+import ImageBoxComp from "../../components/profile/ImageBoxComp";
 
 const ProfileCntr = () => {
   const dispatch = useDispatch();
@@ -484,23 +488,30 @@ const ProfileCntr = () => {
       }
     }
   }, [duplicateCheck]);
-  ////작업중
-  // useEffect(() => {
-  //   if (!wish && !listModal) {
-  //     dispatch(wishDetailClear());
-  //   }
-  //   console.dir(wish?.response?.body?.items?.item[0]?.contentid);
-  // }, [wish]);
 
   return (
-    <div>
-      <ProfileComp
+    <ProfileBlockComp>
+      <ImageBoxComp
         user={user}
-        nick={nick}
+        onUploadPhoto={onUploadPhoto}
+        onChangePhoto={onChangePhoto}
+      />
+      <ProfileFormComp
+        user={user}
         nickAuth={nickAuth}
         nickError={nickError}
-        modal={modal}
         changeInform={changeInform}
+        onUploadPhoto={onUploadPhoto}
+        onChangePhoto={onChangePhoto}
+        onChange={onChange}
+        onChangeProfile={onChangeProfile}
+        onNickCheck={onNickCheck}
+        onWithdraw={onWithdraw}
+        onChangeProfileCancle={onChangeProfileCancle}
+      />
+      <ProfileListComp
+        user={user}
+        modal={modal}
         boardType={boardType}
         boardList={boardList}
         totalBoard={totalBoard}
@@ -511,7 +522,11 @@ const ProfileCntr = () => {
         wishList={wishList}
         totalWish={totalWish}
         wish={wish}
-        wishError={wishError}
+        cards={cards}
+        subjectRef={subjectRef}
+        savedList={savedList}
+        savedListDetail={savedListDetail}
+        listModal={listModal}
         onGetBoardList={onGetBoardList}
         onGetBoardDetail={onGetBoardDetail}
         onDeleteBoard={onDeleteBoard}
@@ -521,31 +536,17 @@ const ProfileCntr = () => {
         onGetLikeList={onGetLikeList}
         onGetLikeDetail={onGetLikeDetail}
         onDeleteLike={onDeleteLike}
+        onGetWishList={onGetWishList}
         onGetWishDetail={onGetWishDetail}
         onDeleteWish={onDeleteWish}
-        onGetWishList={onGetWishList}
-        onUploadPhoto={onUploadPhoto}
-        onChangePhoto={onChangePhoto}
-        onChange={onChange}
-        onNickCheck={onNickCheck}
-        onChangeProfile={onChangeProfile}
-        onWithdraw={onWithdraw}
         onAddSchedule={onAddSchedule}
-        scheduleList={scheduleList}
         onSaveScheduleList={onSaveScheduleList}
-        cards={cards}
         moveCard={moveCard}
-        subjectRef={subjectRef}
-        savedList={savedList}
         onGetSavedListDetail={onGetSavedListDetail}
-        savedListDetail={savedListDetail}
-        listModal={listModal}
-        onChangeProfileCancle={onChangeProfileCancle}
         onSavedListDelete={onSavedListDelete}
-        addScheduleError={addScheduleError}
         contentImgFilter={contentImgFilter}
       />
-    </div>
+    </ProfileBlockComp>
   );
 };
 
