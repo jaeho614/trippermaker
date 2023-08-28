@@ -8,8 +8,8 @@ const Label = styled.label`
 
 const ImageBox = styled.img`
   cursor: pointer;
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   border-radius: 25px;
   border: 1px solid black;
 `;
@@ -23,9 +23,8 @@ const Button = styled.button`
   background: white;
   cursor: pointer;
   font-size: 14px;
-  display: inline-block;
   padding: 7px 15px;
-  margin: 10px auto;
+  margin-top: 20px;
   background: ${props => props.theme.bgcolor};
   border: none;
   border-radius: 10px;
@@ -34,11 +33,6 @@ const Button = styled.button`
   &:hover {
     background: ${props => props.theme.subcolor};
     color: #fff;
-  }
-
-  &.change-btn {
-    display: block;
-    margin: 28px auto;
   }
 `;
 
@@ -52,9 +46,7 @@ const ImageBoxComp = ({ user, onUploadPhoto, onChangePhoto }) => {
           <ImageBox src={"/assets/triplogo.png"} alt="img" />
         )}
         <ImgInput type="file" onChange={onUploadPhoto} name="img" />
-        <Button onClick={onChangePhoto} className="change-btn">
-          사진변경
-        </Button>
+        <Button onClick={onChangePhoto}>사진변경</Button>
       </Label>
     </form>
   );

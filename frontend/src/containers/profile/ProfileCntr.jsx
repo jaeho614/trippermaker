@@ -40,6 +40,12 @@ import ProfileBlockComp from "../../components/profile/ProfileBlockComp";
 import ProfileFormComp from "../../components/profile/ProfileFormComp";
 import ProfileListComp from "../../components/profile/ProfileListComp";
 import ImageBoxComp from "../../components/profile/ImageBoxComp";
+import UserProfileComp from "../../components/profile/UserProfileComp";
+import SelectButtonBoxComp from "../../components/profile/SelectButtonBoxComp";
+import BoardBoxComp from "../../components/profile/BoardBoxComp";
+import ReplyBoxComp from "../../components/profile/ReplyBoxComp";
+import LikeBoxComp from "../../components/profile/LikeBoxComp";
+import WishListBoxComp from "../../components/profile/WishListBoxComp";
 
 const ProfileCntr = () => {
   const dispatch = useDispatch();
@@ -99,7 +105,7 @@ const ProfileCntr = () => {
     likeList: ProfileMod.likeList,
     totalLike: ProfileMod.totalLike,
     deleteLikeError: ProfileMod.deleteLikeError,
-    wishList: ProfileMod.wishList,
+    wishList: ProfileMod?.wishList,
     totalWish: ProfileMod.totalWish,
     wishListError: ProfileMod.wishListError,
     wish: ProfileMod.wish,
@@ -491,61 +497,75 @@ const ProfileCntr = () => {
 
   return (
     <ProfileBlockComp>
-      <ImageBoxComp
-        user={user}
-        onUploadPhoto={onUploadPhoto}
-        onChangePhoto={onChangePhoto}
-      />
-      <ProfileFormComp
-        user={user}
-        nickAuth={nickAuth}
-        nickError={nickError}
-        changeInform={changeInform}
-        onUploadPhoto={onUploadPhoto}
-        onChangePhoto={onChangePhoto}
-        onChange={onChange}
-        onChangeProfile={onChangeProfile}
-        onNickCheck={onNickCheck}
-        onWithdraw={onWithdraw}
-        onChangeProfileCancle={onChangeProfileCancle}
-      />
-      <ProfileListComp
-        user={user}
-        modal={modal}
-        boardType={boardType}
-        boardList={boardList}
+      <UserProfileComp>
+        <ImageBoxComp
+          user={user}
+          onUploadPhoto={onUploadPhoto}
+          onChangePhoto={onChangePhoto}
+        />
+        <ProfileFormComp
+          user={user}
+          nickAuth={nickAuth}
+          nickError={nickError}
+          changeInform={changeInform}
+          onChange={onChange}
+          onChangeProfile={onChangeProfile}
+          onNickCheck={onNickCheck}
+          onWithdraw={onWithdraw}
+          onChangeProfileCancle={onChangeProfileCancle}
+        />
+      </UserProfileComp>
+      <SelectButtonBoxComp
         totalBoard={totalBoard}
-        replyList={replyList}
         totalReply={totalReply}
-        likeList={likeList}
         totalLike={totalLike}
-        wishList={wishList}
         totalWish={totalWish}
-        wish={wish}
-        cards={cards}
-        subjectRef={subjectRef}
-        savedList={savedList}
-        savedListDetail={savedListDetail}
-        listModal={listModal}
         onGetBoardList={onGetBoardList}
-        onGetBoardDetail={onGetBoardDetail}
-        onDeleteBoard={onDeleteBoard}
         onGetReplyList={onGetReplyList}
-        onGetReplyDetail={onGetReplyDetail}
-        onDeleteReply={onDeleteReply}
         onGetLikeList={onGetLikeList}
-        onGetLikeDetail={onGetLikeDetail}
-        onDeleteLike={onDeleteLike}
         onGetWishList={onGetWishList}
-        onGetWishDetail={onGetWishDetail}
-        onDeleteWish={onDeleteWish}
-        onAddSchedule={onAddSchedule}
-        onSaveScheduleList={onSaveScheduleList}
-        moveCard={moveCard}
-        onGetSavedListDetail={onGetSavedListDetail}
-        onSavedListDelete={onSavedListDelete}
-        contentImgFilter={contentImgFilter}
       />
+      <ProfileListComp>
+        {boardType === "BOARD" ? (
+          <BoardBoxComp
+            boardList={boardList}
+            onGetBoardDetail={onGetBoardDetail}
+            onDeleteBoard={onDeleteBoard}
+            contentImgFilter={contentImgFilter}
+          />
+        ) : boardType === "REPLY" ? (
+          <ReplyBoxComp
+            replyList={replyList}
+            onGetReplyDetail={onGetReplyDetail}
+            onDeleteReply={onDeleteReply}
+          />
+        ) : boardType === "LIKELIST" ? (
+          <LikeBoxComp
+            likeList={likeList}
+            onGetLikeDetail={onGetLikeDetail}
+            onDeleteLike={onDeleteLike}
+          />
+        ) : (
+          <WishListBoxComp
+            user={user}
+            modal={modal}
+            wishList={wishList}
+            wish={wish}
+            cards={cards}
+            subjectRef={subjectRef}
+            savedList={savedList}
+            savedListDetail={savedListDetail}
+            listModal={listModal}
+            moveCard={moveCard}
+            onGetWishDetail={onGetWishDetail}
+            onDeleteWish={onDeleteWish}
+            onAddSchedule={onAddSchedule}
+            onSaveScheduleList={onSaveScheduleList}
+            onGetSavedListDetail={onGetSavedListDetail}
+            onSavedListDelete={onSavedListDelete}
+          />
+        )}
+      </ProfileListComp>
     </ProfileBlockComp>
   );
 };

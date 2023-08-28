@@ -3,11 +3,13 @@ import { styled } from "styled-components";
 const UserInformBox = styled.div`
   height: 240px;
   margin-left: 30px;
-  margin: 0 auto;
 `;
 
 const UserInform = styled.div`
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid black;
+  height: 40px;
   &:last-child {
     border: none;
   }
@@ -39,7 +41,6 @@ const Button = styled.button`
   font-size: 14px;
   display: inline-block;
   padding: 7px 15px;
-  margin: 10px auto;
   background: ${props => props.theme.bgcolor};
   border: none;
   border-radius: 10px;
@@ -62,6 +63,10 @@ const InputBox = styled.input`
   height: 28px;
   padding: 0 10px;
   border-radius: 14px;
+`;
+
+const ButtonBox = styled.div`
+  margin-top: 17px;
 `;
 
 const ProfileFormComp = ({
@@ -136,7 +141,7 @@ const ProfileFormComp = ({
       ) : (
         ""
       )}
-      <div className="buttons">
+      <ButtonBox>
         <Button onClick={onChangeProfile}>정보수정</Button>
         {changeInform ? (
           ""
@@ -153,7 +158,7 @@ const ProfileFormComp = ({
             수정취소
           </Button>
         )}
-      </div>
+      </ButtonBox>
     </UserInformBox>
   );
 };
