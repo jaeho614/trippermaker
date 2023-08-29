@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "styled-components";
 
 const UserInformBox = styled.div`
-  height: 240px;
+  height: 200px;
   margin-left: 30px;
 `;
 
@@ -11,8 +11,9 @@ const UserInform = styled.div`
   align-items: center;
   border-bottom: 1px solid black;
   height: 40px;
-  &:last-child {
-    border: none;
+
+  &.gender {
+    border-bottom: none;
   }
 `;
 
@@ -26,7 +27,6 @@ const NameTag = styled.span`
   width: 70px;
   padding: 0px 10px;
   display: inline-block;
-  /* background : ${props => props.theme.bgcolor}; */
   font-weight: 600;
 `;
 
@@ -67,14 +67,16 @@ const InputBox = styled.input`
 `;
 
 const ButtonBox = styled.div`
-  margin-top: 17px;
+  display: flex;
+  justify-content: right;
+  margin-top: 18px;
 `;
 
 const ProfileFormComp = ({
   user,
+  changeInform,
   nickAuth,
   nickError,
-  changeInform,
   onChange,
   onChangeProfile,
   onNickCheck,
@@ -99,9 +101,11 @@ const ProfileFormComp = ({
           </UserInform>
           <UserInform>
             <NameTag>주소</NameTag>
-            <Detail>{user.addr1 + user.addr2}</Detail>
+            <Detail>
+              {user.addr1} {user.addr2}
+            </Detail>
           </UserInform>
-          <UserInform>
+          <UserInform className="gender">
             <NameTag>성별</NameTag>
             <Detail>{user.gender === false ? "남자" : "여자"}</Detail>
           </UserInform>
@@ -112,19 +116,17 @@ const ProfileFormComp = ({
             <NameTag>아이디</NameTag>
             <Detail>{user.id}</Detail>
           </UserInform>
-          <UserInform>
+          <UserInform className="nickName">
             <NameTag>닉네임</NameTag>
             <InputBox placeholder={"닉네임"} onChange={onChange} />
             <Button onClick={onNickCheck}>중복확인</Button>
-            <div>
-              {nickError ? (
-                <ErrorMessage>이미 존재하는 닉네임입니다.</ErrorMessage>
-              ) : nickAuth ? (
-                <ErrorMessage>사용가능한 아이디 입니다.</ErrorMessage>
-              ) : (
-                ""
-              )}
-            </div>
+            {nickError ? (
+              <ErrorMessage>이미 존재하는 닉네임입니다.</ErrorMessage>
+            ) : nickAuth ? (
+              <ErrorMessage>사용가능한 아이디 입니다.</ErrorMessage>
+            ) : (
+              ""
+            )}
           </UserInform>
           <UserInform>
             <NameTag>전화번호</NameTag>
@@ -132,9 +134,11 @@ const ProfileFormComp = ({
           </UserInform>
           <UserInform>
             <NameTag>주소</NameTag>
-            <Detail>{user.addr1 + user.addr2}</Detail>
+            <Detail>
+              {user.addr1} {user.addr2}
+            </Detail>
           </UserInform>
-          <UserInform>
+          <UserInform className="gender">
             <NameTag>성별</NameTag>
             <Detail>{user.gender === "0" ? "남자" : "여자"}</Detail>
           </UserInform>
