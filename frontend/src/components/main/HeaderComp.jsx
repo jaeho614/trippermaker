@@ -26,7 +26,7 @@ const HeaderContainer = styled.div`
   }
 
   &.change_header {
-    background: ${(props) => props.theme.white};
+    background: ${props => props.theme.white};
   }
 
   .welecome {
@@ -109,7 +109,7 @@ const NavList = styled.li`
   }
   span {
     &.click {
-      color: ${(props) => props.theme.subcolor};
+      color: ${props => props.theme.subcolor};
       font-weight: 600;
     }
   }
@@ -122,7 +122,7 @@ const NavList = styled.li`
 
 const LoginCategory = styled.span`
   margin-left: 20px;
-  /* background: ${(props) => props.theme.lightblack}; */
+  /* background: ${props => props.theme.lightblack}; */
   padding: 5px 15px;
   border-radius: 20px;
   .logout {
@@ -131,7 +131,7 @@ const LoginCategory = styled.span`
   }
   span {
     &.click {
-      color: ${(props) => props.theme.subcolor};
+      color: ${props => props.theme.subcolor};
       font-weight: 600;
     }
   }

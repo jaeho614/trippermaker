@@ -10,6 +10,7 @@ const [GET_PROFILE, GET_PROFILE_SUCCESS, GET_PROFILE_FAILURE] =
   createRequestActionTypes("profile/GET_PROFILE");
 const [CHANGE_PROFILE, CHANGE_PROFILE_SUCCESS, CHANGE_PROFILE_FAILURE] =
   createRequestActionTypes("profile/CHANGE_PROFILE");
+const NICKERROR_CLEAR = "profile/NICKERROR_CLEAR";
 const CHANGE_VALUE = "profile/CHANGE_VALUE";
 const [NICK_CHECK, NICK_CHECK_SUCCESS, NICK_CHECK_FAILURE] =
   createRequestActionTypes("profile/NICK_CHECK");
@@ -24,6 +25,7 @@ export const changeProfile = createAction(CHANGE_PROFILE, ({ id, nick }) => ({
   id,
   nick,
 }));
+export const nickErrorClear = createAction(NICKERROR_CLEAR);
 export const changeValue = createAction(CHANGE_VALUE, ({ value }) => ({
   value,
 }));
@@ -203,7 +205,7 @@ const initialState = {
 
 const ProfileMod = handleActions(
   {
-    [INITIALIZE_PROFILE]: (state) => initialState,
+    [INITIALIZE_PROFILE]: state => initialState,
     [GET_PROFILE_SUCCESS]: (state, { payload: { user } }) => ({
       ...state,
       user,
@@ -228,6 +230,11 @@ const ProfileMod = handleActions(
       nick: null,
       nickAuth: null,
       nickError,
+    }),
+    [NICKERROR_CLEAR]: state => ({
+      ...state,
+      nickAuth: null,
+      nickError: null,
     }),
     [CHANGE_VALUE]: (state, { payload: { value } }) => ({
       ...state,
@@ -363,7 +370,7 @@ const ProfileMod = handleActions(
       wish: null,
       wishError,
     }),
-    [WISH_DETAIL_CLEAR]: (state) => ({
+    [WISH_DETAIL_CLEAR]: state => ({
       ...state,
       wish: null,
     }),

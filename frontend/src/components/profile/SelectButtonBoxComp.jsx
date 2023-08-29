@@ -1,3 +1,4 @@
+import React from "react";
 import { styled } from "styled-components";
 
 const SelectButtonBox = styled.div`
@@ -55,4 +56,4 @@ const SelectButtonBoxComp = ({
   );
 };
 
-export default SelectButtonBoxComp;
+export default React.memo(SelectButtonBoxComp);

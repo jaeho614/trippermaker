@@ -1,3 +1,4 @@
+import React from "react";
 import { styled } from "styled-components";
 
 const Label = styled.label`
@@ -52,4 +53,4 @@ const ImageBoxComp = ({ user, onUploadPhoto, onChangePhoto }) => {
   );
 };
 
-export default ImageBoxComp;
+export default React.memo(ImageBoxComp);

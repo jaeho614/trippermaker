@@ -1,3 +1,4 @@
+import React from "react";
 import { styled } from "styled-components";
 
 const UserInformBox = styled.div`
@@ -31,7 +32,7 @@ const NameTag = styled.span`
 
 const ErrorMessage = styled.span`
   color: ${props => props.theme.red};
-  margin-left: 100px;
+  margin-left: 10px;
 `;
 
 const Button = styled.button`
@@ -163,4 +164,4 @@ const ProfileFormComp = ({
   );
 };
 
-export default ProfileFormComp;
+export default React.memo(ProfileFormComp);

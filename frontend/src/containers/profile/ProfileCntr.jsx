@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import ProfileComp from "../../components/profile/ProfileComp";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +24,7 @@ import ProfileMod, {
   deleteWish,
   getWishDetail,
   wishDetailClear,
+  nickErrorClear,
 } from "../../modules/profile/ProfileMod";
 import { check, initializeUser } from "../../modules/auth/UserMod";
 import ScheduleMod, {
@@ -84,7 +85,6 @@ const ProfileCntr = () => {
     savedListError,
     savedListDeleteError,
     savedListDetail,
-    scheduleListError,
     duplicateCheck,
   } = useSelector(({ UserMod, ProfileMod, ScheduleMod }) => ({
     id: UserMod.user.id,
@@ -113,7 +113,6 @@ const ProfileCntr = () => {
     deleteWishError: ProfileMod.deleteWishError,
     addScheduleError: ScheduleMod.addScheduleError,
     scheduleList: ScheduleMod.scheduleList,
-    scheduleListError: ScheduleMod.scheduleListError,
     savedList: ScheduleMod.savedList,
     scheduleListError: ScheduleMod.scheduleListError,
     saveScheduleListError: ScheduleMod.saveScheduleListError,
@@ -122,13 +121,13 @@ const ProfileCntr = () => {
     duplicateCheck: ScheduleMod.duplicateCheck,
   }));
   const [changeInform, setChangeInform] = useState(false);
-  const [boardType, setBoardType] = useState();
-  const [content, setContent] = useState();
-  const [userImg, setUserImg] = useState();
-  const [newSchedule, setNewSchedule] = useState();
+  const [boardType, setBoardType] = useState(null);
+  const [content, setContent] = useState(null);
+  const [userImg, setUserImg] = useState(null);
   const [getSubject, setGetSubject] = useState(null);
   const [cards, setCards] = useState(scheduleList);
-  const subjectRef = useRef("");
+  const subjectRef = useRef(null);
+
   const moveCard = useCallback((dragIndex, hoverIndex) => {
     setCards(prevCards =>
       update(prevCards, {
@@ -230,7 +229,6 @@ const ProfileCntr = () => {
   };
 
   const onAddSchedule = ({ id, contentId, title, contentTypeId }) => {
-    setNewSchedule(contentId);
     dispatch(
       addSchedule({
         id,
@@ -373,6 +371,12 @@ const ProfileCntr = () => {
     const textOnly = content.replace(imgTagReg, "");
     return textOnly;
   };
+
+  useEffect(() => {
+    if (!changeInform) {
+      dispatch(nickErrorClear());
+    }
+  }, [changeInform]);
 
   useEffect(() => {
     dispatch(
@@ -570,4 +574,4 @@ const ProfileCntr = () => {
   );
 };
 
-export default ProfileCntr;
+export default React.memo(ProfileCntr);
