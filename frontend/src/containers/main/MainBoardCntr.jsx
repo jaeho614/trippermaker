@@ -14,8 +14,6 @@ const MainBoardListContainer = () => {
     user: UserMod.user,
   }));
 
-  // console.log("mainboardcntr====>", posts);
-
   useEffect(() => {
     const page = parseInt(searchParams.get("page"), 10) || 1;
     dispatch(mainlistPosts({ page }));

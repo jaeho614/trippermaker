@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import PaginationComp from "../common/PaginationComp";
-import { useState } from "react";
+import React, { useState } from "react";
 import { makeCreatedAt } from "../../lib/makeCreatedAt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -189,4 +189,4 @@ const BoardBoxComp = ({
   );
 };
 
-export default BoardBoxComp;
+export default React.memo(BoardBoxComp);

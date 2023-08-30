@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
-import ProfileComp from "../../components/profile/ProfileComp";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changePhoto } from "../../lib/api/profile";
@@ -47,12 +46,13 @@ import BoardBoxComp from "../../components/profile/BoardBoxComp";
 import ReplyBoxComp from "../../components/profile/ReplyBoxComp";
 import LikeBoxComp from "../../components/profile/LikeBoxComp";
 import WishListBoxComp from "../../components/profile/WishListBoxComp";
+import WishListComp from "../../components/profile/WishListComp";
+import BeforeSaveComp from "../../components/profile/BeforeSaveComp";
+import AfterSaveComp from "../../components/profile/AfterSaveComp";
 
 const ProfileCntr = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [modal, setModal] = useState(false);
-  const [listModal, setListModal] = useState(false);
   const {
     id,
     uno,
@@ -87,39 +87,41 @@ const ProfileCntr = () => {
     savedListDetail,
     duplicateCheck,
   } = useSelector(({ UserMod, ProfileMod, ScheduleMod }) => ({
-    id: UserMod.user.id,
-    uno: UserMod.user.no,
-    img_: ProfileMod.img,
-    user: ProfileMod.user,
-    nick: ProfileMod.nick,
-    nickAuth: ProfileMod.nickAuth,
-    nickError: ProfileMod.nickError,
-    withdrawAuth: ProfileMod.withdrawAuth,
-    withdrawError: ProfileMod.withdrawError,
-    boardList: ProfileMod.boardList,
-    totalBoard: ProfileMod.totalBoard,
-    deleteBoardError: ProfileMod.deleteBoardError,
-    replyList: ProfileMod.replyList,
-    totalReply: ProfileMod.totalReply,
-    deleteReplyError: ProfileMod.deleteReplyError,
-    likeList: ProfileMod.likeList,
-    totalLike: ProfileMod.totalLike,
-    deleteLikeError: ProfileMod.deleteLikeError,
+    id: UserMod?.user.id,
+    uno: UserMod?.user.no,
+    img_: ProfileMod?.img,
+    user: ProfileMod?.user,
+    nick: ProfileMod?.nick,
+    nickAuth: ProfileMod?.nickAuth,
+    nickError: ProfileMod?.nickError,
+    withdrawAuth: ProfileMod?.withdrawAuth,
+    withdrawError: ProfileMod?.withdrawError,
+    boardList: ProfileMod?.boardList,
+    totalBoard: ProfileMod?.totalBoard,
+    deleteBoardError: ProfileMod?.deleteBoardError,
+    replyList: ProfileMod?.replyList,
+    totalReply: ProfileMod?.totalReply,
+    deleteReplyError: ProfileMod?.deleteReplyError,
+    likeList: ProfileMod?.likeList,
+    totalLike: ProfileMod?.totalLike,
+    deleteLikeError: ProfileMod?.deleteLikeError,
     wishList: ProfileMod?.wishList,
-    totalWish: ProfileMod.totalWish,
-    wishListError: ProfileMod.wishListError,
-    wish: ProfileMod.wish,
-    wishError: ProfileMod.wishError,
-    deleteWishError: ProfileMod.deleteWishError,
-    addScheduleError: ScheduleMod.addScheduleError,
-    scheduleList: ScheduleMod.scheduleList,
-    savedList: ScheduleMod.savedList,
-    scheduleListError: ScheduleMod.scheduleListError,
-    saveScheduleListError: ScheduleMod.saveScheduleListError,
-    savedListDeleteError: ScheduleMod.savedListDeleteError,
-    savedListDetail: ScheduleMod.savedListDetail,
-    duplicateCheck: ScheduleMod.duplicateCheck,
+    totalWish: ProfileMod?.totalWish,
+    wishListError: ProfileMod?.wishListError,
+    wish: ProfileMod?.wish,
+    wishError: ProfileMod?.wishError,
+    deleteWishError: ProfileMod?.deleteWishError,
+    addScheduleError: ScheduleMod?.addScheduleError,
+    scheduleList: ScheduleMod?.scheduleList,
+    savedList: ScheduleMod?.savedList,
+    scheduleListError: ScheduleMod?.scheduleListError,
+    saveScheduleListError: ScheduleMod?.saveScheduleListError,
+    savedListDeleteError: ScheduleMod?.savedListDeleteError,
+    savedListDetail: ScheduleMod?.savedListDetail,
+    duplicateCheck: ScheduleMod?.duplicateCheck,
   }));
+  const [modal, setModal] = useState(false);
+  const [listModal, setListModal] = useState(false);
   const [changeInform, setChangeInform] = useState(false);
   const [boardType, setBoardType] = useState(null);
   const [content, setContent] = useState(null);
@@ -128,73 +130,94 @@ const ProfileCntr = () => {
   const [cards, setCards] = useState(scheduleList);
   const subjectRef = useRef(null);
 
-  const moveCard = useCallback((dragIndex, hoverIndex) => {
-    setCards(prevCards =>
-      update(prevCards, {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, prevCards[dragIndex]],
-        ],
-      })
-    );
-  }, []);
+  const moveCard = useCallback(
+    (dragIndex, hoverIndex) => {
+      setCards(prevCards =>
+        update(prevCards, {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, prevCards[dragIndex]],
+          ],
+        })
+      );
+    },
+    [setCards]
+  );
 
-  const onGetBoardList = () => {
+  const onGetBoardList = useCallback(() => {
     setBoardType("BOARD");
     dispatch(getBoardList({ id }));
-  };
+  }, [id]);
 
-  const onGetBoardDetail = bno => {
-    navigate(`/board/read/${bno}`);
-  };
+  const onGetBoardDetail = useCallback(
+    bno => {
+      navigate(`/board/read/${bno}`);
+    },
+    [navigate]
+  );
 
-  const onDeleteBoard = no => {
-    dispatch(
-      deleteBoard({
-        no,
-      })
-    );
-  };
+  const onDeleteBoard = useCallback(
+    no => {
+      dispatch(
+        deleteBoard({
+          no,
+        })
+      );
+    },
+    [dispatch]
+  );
 
-  const onGetReplyList = () => {
+  const onGetReplyList = useCallback(() => {
     setBoardType("REPLY");
     dispatch(getReplyList({ uno }));
-  };
+  }, [dispatch, uno]);
 
-  const onGetReplyDetail = bno => {
-    navigate(`/board/read/${bno}`);
-  };
+  const onGetReplyDetail = useCallback(
+    bno => {
+      navigate(`/board/read/${bno}`);
+    },
+    [navigate]
+  );
 
-  const onDeleteReply = no => {
-    dispatch(
-      deleteReply({
-        no,
-      })
-    );
-  };
+  const onDeleteReply = useCallback(
+    no => {
+      dispatch(
+        deleteReply({
+          no,
+        })
+      );
+    },
+    [dispatch]
+  );
 
-  const onGetLikeList = () => {
+  const onGetLikeList = useCallback(() => {
     setBoardType("LIKELIST");
     dispatch(
       getLikeList({
         id,
       })
     );
-  };
+  }, [id]);
 
-  const onGetLikeDetail = bno => {
-    navigate(`/board/read/${bno}`);
-  };
+  const onGetLikeDetail = useCallback(
+    bno => {
+      navigate(`/board/read/${bno}`);
+    },
+    [navigate]
+  );
 
-  const onDeleteLike = no => {
-    dispatch(
-      deleteLike({
-        no,
-      })
-    );
-  };
+  const onDeleteLike = useCallback(
+    no => {
+      dispatch(
+        deleteLike({
+          no,
+        })
+      );
+    },
+    [dispatch]
+  );
 
-  const onGetWishList = () => {
+  const onGetWishList = useCallback(() => {
     setBoardType("SCHEDULER");
     setCards(scheduleList);
     dispatch(
@@ -202,122 +225,154 @@ const ProfileCntr = () => {
         id,
       })
     );
-  };
+  }, [scheduleList]);
 
-  const onGetWishDetail = (title, contentId, contentTypeId) => {
+  const switchModal = useCallback(() => {
     setModal(!modal);
-    if (!wish) {
+  }, [modal]);
+
+  const onGetWishDetail = useCallback(
+    (title, contentId, contentTypeId) => {
+      switchModal();
+      if (!wish) {
+        dispatch(
+          getWishDetail({
+            title,
+            contentId,
+            contentTypeId,
+          })
+        );
+      }
+      if (wish) {
+        dispatch(wishDetailClear());
+      }
+    },
+    [wish, modal]
+  );
+
+  const onDeleteWish = useCallback(
+    no => {
       dispatch(
-        getWishDetail({
-          title,
+        deleteWish({
+          no,
+        })
+      );
+    },
+    [dispatch]
+  );
+
+  const onAddSchedule = useCallback(
+    ({ id, contentId, title, contentTypeId }) => {
+      dispatch(
+        addSchedule({
+          id,
           contentId,
+          title,
           contentTypeId,
         })
       );
-    }
-    if (wish) {
-      dispatch(wishDetailClear());
-    }
-  };
+      setCards(scheduleList);
+    },
+    [scheduleList]
+  );
 
-  const onDeleteWish = no => {
-    dispatch(
-      deleteWish({
-        no,
-      })
-    );
-  };
-
-  const onAddSchedule = ({ id, contentId, title, contentTypeId }) => {
-    dispatch(
-      addSchedule({
-        id,
-        contentId,
-        title,
-        contentTypeId,
-      })
-    );
-    setCards(scheduleList);
-  };
-
-  const onSaveScheduleList = () => {
+  const onSaveScheduleList = useCallback(() => {
     const subject = subjectRef.current.value;
     setGetSubject(subject);
-
     dispatch(
       getDuplicateCheck({
         id,
         subject,
       })
     );
-  };
+  }, [dispatch]);
 
-  const onSavedListDelete = _id => {
-    dispatch(
-      deleteSavedList({
-        id,
-        _id,
-      })
-    );
-  };
+  const onSavedListDelete = useCallback(
+    _id => {
+      dispatch(
+        deleteSavedList({
+          id,
+          _id,
+        })
+      );
+    },
+    [dispatch]
+  );
 
-  const onGetSavedListDetail = (id, subject) => {
+  const switchListModal = useCallback(() => {
     setListModal(!listModal);
-    dispatch(
-      getSavedListDetail({
-        id,
-        subject,
-      })
-    );
-  };
+  }, [listModal]);
 
-  const onChange = e => {
-    const { value } = e.target;
-    dispatch(
-      changeValue({
-        value,
-      })
-    );
-  };
+  const onGetSavedListDetail = useCallback(
+    (id, subject) => {
+      switchListModal();
+      dispatch(
+        getSavedListDetail({
+          id,
+          subject,
+        })
+      );
+    },
+    [listModal]
+  );
 
-  const onUploadPhoto = e => {
-    setContent(e.target.files[0]);
-  };
+  const onChange = useCallback(
+    e => {
+      const { value } = e.target;
+      dispatch(
+        changeValue({
+          value,
+        })
+      );
+    },
+    [dispatch]
+  );
 
-  const onChangePhoto = async e => {
-    e.preventDefault();
-    if (!content) {
-      return alert("사진을 먼저 선택해주세요.");
-    }
-    const formData = new FormData();
-    formData.append("img", content);
-    await changePhoto({
-      id,
-      formData, //formData를 그대로 넘겨줘야 함. img:{formData} 이런식으로 넘기면 안됨
-    }).then(res => {
-      if (res.status === 200) {
-        const { img } = res.data;
-        setUserImg(img);
-        dispatch(
-          changePhotoSuccess({
-            img,
-          })
-        );
-      } else {
-        const { imgError } = res.data;
-        dispatch(
-          changePhotoFailure({
-            imgError,
-          })
-        );
+  const onUploadPhoto = useCallback(
+    e => {
+      setContent(e.target.files[0]);
+    },
+    [setContent]
+  );
+
+  const onChangePhoto = useCallback(
+    async e => {
+      e.preventDefault();
+      if (!content) {
+        return alert("사진을 먼저 선택해주세요.");
       }
-    });
-  };
+      const formData = new FormData();
+      formData.append("img", content);
+      await changePhoto({
+        id,
+        formData, //formData를 그대로 넘겨줘야 함. img:{formData} 이런식으로 넘기면 안됨
+      }).then(res => {
+        if (res.status === 200) {
+          const { img } = res.data;
+          setUserImg(img);
+          dispatch(
+            changePhotoSuccess({
+              img,
+            })
+          );
+        } else {
+          const { imgError } = res.data;
+          dispatch(
+            changePhotoFailure({
+              imgError,
+            })
+          );
+        }
+      });
+    },
+    [dispatch, content]
+  );
 
-  const onChangeProfile = () => {
+  const onChangeProfile = useCallback(() => {
     if (!changeInform) {
       return setChangeInform(!changeInform);
     }
+
     if (changeInform && !nickAuth) {
       return alert("닉네임을 확인하여 주세요.");
     } else if (changeInform && nickAuth) {
@@ -329,13 +384,13 @@ const ProfileCntr = () => {
         })
       );
     }
-  };
+  }, [changeInform, nickAuth]);
 
-  const onChangeProfileCancle = () => {
+  const onChangeProfileCancle = useCallback(() => {
     setChangeInform(!changeInform);
-  };
+  }, [changeInform]);
 
-  const onNickCheck = () => {
+  const onNickCheck = useCallback(() => {
     const valid = nick => {
       return /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,10}$/.test(nick);
     };
@@ -353,9 +408,9 @@ const ProfileCntr = () => {
         "닉네임은 2자 이상, 10자 이하 한글, 영어, 숫자 조합이어야 합니다."
       );
     }
-  };
+  }, [nick]);
 
-  const onWithdraw = () => {
+  const onWithdraw = useCallback(() => {
     if (window.confirm("정말로 Tripper Maker를 탈퇴하시겠습니까?")) {
       dispatch(
         withdraw({
@@ -363,14 +418,14 @@ const ProfileCntr = () => {
         })
       );
     }
-  };
+  }, [dispatch]);
 
-  const contentImgFilter = content => {
+  const contentImgFilter = useCallback(content => {
     // 이미지태그 제거 정규표현식
     const imgTagReg = /<[^>]+>/gi;
     const textOnly = content.replace(imgTagReg, "");
     return textOnly;
-  };
+  }, []);
 
   useEffect(() => {
     if (!changeInform) {
@@ -497,7 +552,7 @@ const ProfileCntr = () => {
         return alert("제목은 2자 이상, 10자 이하 한글만 가능합니다.");
       }
     }
-  }, [duplicateCheck]);
+  }, [duplicateCheck, getSubject]);
 
   return (
     <ProfileBlockComp>
@@ -550,28 +605,36 @@ const ProfileCntr = () => {
             onDeleteLike={onDeleteLike}
           />
         ) : (
-          <WishListBoxComp
-            user={user}
-            modal={modal}
-            wishList={wishList}
-            wish={wish}
-            cards={cards}
-            subjectRef={subjectRef}
-            savedList={savedList}
-            savedListDetail={savedListDetail}
-            listModal={listModal}
-            moveCard={moveCard}
-            onGetWishDetail={onGetWishDetail}
-            onDeleteWish={onDeleteWish}
-            onAddSchedule={onAddSchedule}
-            onSaveScheduleList={onSaveScheduleList}
-            onGetSavedListDetail={onGetSavedListDetail}
-            onSavedListDelete={onSavedListDelete}
-          />
+          <WishListBoxComp>
+            <WishListComp
+              user={user}
+              modal={modal}
+              wishList={wishList}
+              wish={wish}
+              switchModal={switchModal}
+              onGetWishDetail={onGetWishDetail}
+              onDeleteWish={onDeleteWish}
+              onAddSchedule={onAddSchedule}
+            />
+            <BeforeSaveComp
+              cards={cards}
+              subjectRef={subjectRef}
+              moveCard={moveCard}
+              onSaveScheduleList={onSaveScheduleList}
+            />
+            <AfterSaveComp
+              savedList={savedList}
+              savedListDetail={savedListDetail}
+              listModal={listModal}
+              switchListModal={switchListModal}
+              onGetSavedListDetail={onGetSavedListDetail}
+              onSavedListDelete={onSavedListDelete}
+            />
+          </WishListBoxComp>
         )}
       </ProfileListComp>
     </ProfileBlockComp>
   );
 };
 
-export default React.memo(ProfileCntr);
+export default ProfileCntr;

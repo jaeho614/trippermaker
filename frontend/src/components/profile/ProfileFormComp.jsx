@@ -36,8 +36,6 @@ const ErrorMessage = styled.span`
 `;
 
 const Button = styled.button`
-  border: none;
-  background: white;
   cursor: pointer;
   font-size: 14px;
   display: inline-block;
@@ -85,67 +83,43 @@ const ProfileFormComp = ({
 }) => {
   return (
     <UserInformBox>
+      <UserInform>
+        <NameTag>아이디</NameTag>
+        <Detail>{user?.id}</Detail>
+      </UserInform>
       {user && !changeInform ? (
-        <>
-          <UserInform>
-            <NameTag>아이디</NameTag>
-            <Detail>{user.id}</Detail>
-          </UserInform>
-          <UserInform>
-            <NameTag>닉네임</NameTag>
-            <Detail>{user.nick}</Detail>
-          </UserInform>
-          <UserInform>
-            <NameTag>전화번호</NameTag>
-            <Detail>{user.phone}</Detail>
-          </UserInform>
-          <UserInform>
-            <NameTag>주소</NameTag>
-            <Detail>
-              {user.addr1} {user.addr2}
-            </Detail>
-          </UserInform>
-          <UserInform className="gender">
-            <NameTag>성별</NameTag>
-            <Detail>{user.gender === false ? "남자" : "여자"}</Detail>
-          </UserInform>
-        </>
-      ) : user && changeInform ? (
-        <>
-          <UserInform>
-            <NameTag>아이디</NameTag>
-            <Detail>{user.id}</Detail>
-          </UserInform>
-          <UserInform className="nickName">
-            <NameTag>닉네임</NameTag>
-            <InputBox placeholder={"닉네임"} onChange={onChange} />
-            <Button onClick={onNickCheck}>중복확인</Button>
-            {nickError ? (
-              <ErrorMessage>이미 존재하는 닉네임입니다.</ErrorMessage>
-            ) : nickAuth ? (
-              <ErrorMessage>사용가능한 아이디 입니다.</ErrorMessage>
-            ) : (
-              ""
-            )}
-          </UserInform>
-          <UserInform>
-            <NameTag>전화번호</NameTag>
-            <Detail>{user.phone}</Detail>
-          </UserInform>
-          <UserInform>
-            <NameTag>주소</NameTag>
-            <Detail>
-              {user.addr1} {user.addr2}
-            </Detail>
-          </UserInform>
-          <UserInform className="gender">
-            <NameTag>성별</NameTag>
-            <Detail>{user.gender === "0" ? "남자" : "여자"}</Detail>
-          </UserInform>
-        </>
+        <UserInform>
+          <NameTag>닉네임</NameTag>
+          <Detail>{user?.nick}</Detail>
+        </UserInform>
       ) : (
-        ""
+        <UserInform className="nickName">
+          <NameTag>닉네임</NameTag>
+          <InputBox placeholder={"닉네임"} onChange={onChange} />
+          <Button onClick={onNickCheck}>중복확인</Button>
+          {nickError ? (
+            <ErrorMessage>이미 존재하는 닉네임입니다.</ErrorMessage>
+          ) : nickAuth ? (
+            <ErrorMessage>사용가능한 아이디 입니다.</ErrorMessage>
+          ) : (
+            ""
+          )}
+        </UserInform>
       )}
+      <UserInform>
+        <NameTag>전화번호</NameTag>
+        <Detail>{user?.phone}</Detail>
+      </UserInform>
+      <UserInform>
+        <NameTag>주소</NameTag>
+        <Detail>
+          {user?.addr1} {user?.addr2}
+        </Detail>
+      </UserInform>
+      <UserInform className="gender">
+        <NameTag>성별</NameTag>
+        <Detail>{user?.gender === false ? "남자" : "여자"}</Detail>
+      </UserInform>
       <ButtonBox>
         <Button onClick={onChangeProfile}>정보수정</Button>
         {changeInform ? (

@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { useState } from "react";
+import React, { useState } from "react";
 import PaginationComp from "../common/PaginationComp";
 import { makeCreatedAt } from "../../lib/makeCreatedAt";
 
@@ -161,4 +161,4 @@ const ReplyBoxComp = ({ replyList, onGetReplyDetail, onDeleteReply }) => {
   );
 };
 
-export default ReplyBoxComp;
+export default React.memo(ReplyBoxComp);

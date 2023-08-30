@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
 import PaginationComp from "../common/PaginationComp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -157,4 +157,4 @@ const LikeBoxComp = ({ likeList, onGetLikeDetail, onDeleteLike }) => {
   );
 };
 
-export default LikeBoxComp;
+export default React.memo(LikeBoxComp);

@@ -1,3 +1,4 @@
+import React from "react";
 import { styled } from "styled-components";
 
 const ProfileBlock = styled.div`
@@ -5,7 +6,7 @@ const ProfileBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  margin: 60px auto;
+  margin: 20px auto;
   justify-content: space-around;
 
   @media (max-width: 1200px) {
@@ -28,4 +29,4 @@ const ProfileBlockComp = ({ children }) => {
   return <ProfileBlock>{children}</ProfileBlock>;
 };
 
-export default ProfileBlockComp;
+export default React.memo(ProfileBlockComp);

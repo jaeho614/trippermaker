@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "./ItemTypes";
+
 const style = {
   display: "flex",
   border: "1px solid black",
@@ -71,7 +72,7 @@ export const Card = ({ id, text, index, moveCard }) => {
     item: () => {
       return { id, index };
     },
-    collect: (monitor) => ({
+    collect: monitor => ({
       isDragging: monitor.isDragging(),
     }),
   });

@@ -1,3 +1,4 @@
+import React from "react";
 import { styled } from "styled-components";
 
 const UserProfile = styled.div`
@@ -9,4 +10,4 @@ const UserProfileComp = ({ children }) => {
   return <UserProfile>{children}</UserProfile>;
 };
 
-export default UserProfileComp;
+export default React.memo(UserProfileComp);

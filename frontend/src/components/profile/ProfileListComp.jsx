@@ -1,3 +1,4 @@
+import React from "react";
 import { styled } from "styled-components";
 
 const ListBox = styled.div`
@@ -5,6 +6,7 @@ const ListBox = styled.div`
   margin: 0 auto;
   height: 600px;
   background: ${props => props.theme.smoke};
+
   padding: 50px;
 
   @media (max-width: 1200px) {
@@ -17,4 +19,4 @@ const ProfileListComp = ({ children }) => {
   return <ListBox>{children}</ListBox>;
 };
 
-export default ProfileListComp;
+export default React.memo(ProfileListComp);

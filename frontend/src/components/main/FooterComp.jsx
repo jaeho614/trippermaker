@@ -125,7 +125,6 @@ const Footer = ({ onGetMainTerms, modal, mainTerms, mainInform }) => {
           </div>
           <div>{mainTerms?.content}</div>
         </StyledModal>
-
         <div className="info">
           <span>상호</span> {mainInform?.name} <br />
           <span>주소</span> {mainInform?.addr}
@@ -134,7 +133,6 @@ const Footer = ({ onGetMainTerms, modal, mainTerms, mainInform }) => {
           {mainInform?.nick}
           <br />
         </div>
-
         <div className="copyright">
           <i>Copyright 2023.{mainInform?.name}.All rights reserved.</i>
         </div>

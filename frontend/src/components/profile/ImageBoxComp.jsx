@@ -20,8 +20,6 @@ const ImgInput = styled.input`
 `;
 
 const Button = styled.button`
-  border: none;
-  background: white;
   cursor: pointer;
   font-size: 14px;
   padding: 7px 15px;
