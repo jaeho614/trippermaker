@@ -21,9 +21,9 @@ const RegisterCntr = () => {
   const [email, setEmail] = useState(null);
   const [modal, setModal] = useState(false);
   const [address, setAddress] = useState({});
-  const [disabledDomain, setDisabledDomain] = useState("");
+  const [disabledDomain, setDisabledDomain] = useState(null);
   const [onIdChk, setOnIdChk] = useState("empty");
-  const [onPwdChk, setOnPwdChk] = useState("");
+  const [onPwdChk, setOnPwdChk] = useState(null);
   const [onNickChk, setOnNickChk] = useState("empty");
   const [onPhoneChk, setOnPhoneChk] = useState("empty");
   const navigate = useNavigate();
@@ -87,15 +87,15 @@ const RegisterCntr = () => {
   }, []);
 
   //Modal창 컨트롤
-  const openSearchAddress = e => {
-    e.preventDefault();
+  const switchModal = () => {
     setModal(!modal);
   };
+
   //daum post code 함수
   const onCompletePost = data => {
     const { roadAddress, zonecode } = data;
     setAddress({ roadAddress, zonecode });
-    setModal(!modal); //주소찾기 완료시 modal창도 닫히게 하기
+    switchModal();
     dispatch(
       inputAddress({
         addr1: roadAddress,
@@ -413,11 +413,11 @@ const RegisterCntr = () => {
         addr1={addr1}
         address1={address1}
         zipcode1={zipcode1}
+        switchModal={switchModal}
         onChange={onChange}
         onSubmit={onSubmit}
         onCheck={onCheck}
         changeDomain={changeDomain}
-        openSearchAddress={openSearchAddress}
         onCompletePost={onCompletePost}
       />
     </div>

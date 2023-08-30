@@ -216,7 +216,7 @@ const RegisterFormComp = ({
   phoneMsg,
   authNum,
   count,
-  openSearchAddress,
+  switchModal,
   modal,
   onCompletePost,
   addr1,
@@ -405,7 +405,7 @@ const RegisterFormComp = ({
                   />
                 </span>
               )}
-              <button onClick={openSearchAddress}>주소찾기</button>
+              <button onClick={switchModal}>주소찾기</button>
             </div>
             <div>
               <NameTag>상세주소</NameTag>
@@ -436,13 +436,13 @@ const RegisterFormComp = ({
       <ModalBox
         isOpen={modal} //true = 열림 / false = 닫힘
         ariahideapp="false" //에러 안뜨게하기
-        onEscapeKeydown={openSearchAddress} //esc키 눌렀을경우 함수 실행
-        onBackgroundClick={openSearchAddress} //esc키 or 오버레이부분 클릭시 함수 실행
+        onEscapeKeydown={switchModal} //esc키 눌렀을경우 함수 실행
+        onBackgroundClick={switchModal} //esc키 or 오버레이부분 클릭시 함수 실행
       >
         <StyledModal>
           <div>
             <span>주소검색</span>
-            <ButtonInModal onClick={openSearchAddress}>X</ButtonInModal>
+            <ButtonInModal onClick={switchModal}>X</ButtonInModal>
           </div>
           <DaumPostcode autoClose onComplete={onCompletePost} />
         </StyledModal>
