@@ -1,12 +1,11 @@
 import React from "react";
-import { css, styled } from "styled-components";
-import Modal from "styled-react-modal";
-import DaumPostcode from "react-daum-postcode";
 import { Link } from "react-router-dom";
 
+import { css, styled } from "styled-components";
+import DaumPostcode from "react-daum-postcode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
-
+import Modal from "styled-react-modal";
 import { motion } from "framer-motion";
 
 const ModalBox = Modal.styled`
@@ -23,9 +22,9 @@ const StyledModal = styled.div`
   div {
     display: flex;
     align-items: center;
+    justify-contents: space-between;
     margin-top: 5px;
     padding: 5px;
-    justify-contents: space-between;
   }
 
   div:first-child {
@@ -34,20 +33,20 @@ const StyledModal = styled.div`
 `;
 
 const ButtonInModal = styled.div`
-  cursor: pointer;
-  color: ${props => props.theme.red};
-  margin-left: 400px;
   background: none;
   text-align: center;
+  cursor: pointer;
+  color: ${props => props.theme.text};
+  margin-left: 400px;
 `;
 
 const RegisterContainer = styled.div`
-  background: ${props => props.theme.bgcolor};
-  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: ${props => props.theme.mainColor};
+  height: 100vh;
 
   .home {
     position: absolute;
@@ -56,53 +55,53 @@ const RegisterContainer = styled.div`
   }
 
   .join-text {
-    color: ${props => props.theme.softblack};
-    border-bottom: 2px solid ${props => props.theme.softblack};
-    padding: 6px 0;
     display: inline-block;
     text-align: center;
+    color: ${props => props.theme.text};
+    border-bottom: 2px solid ${props => props.theme.border};
     margin: 30px 0;
+    padding: 6px 0;
   }
 
   .logo {
-    color: ${props => props.theme.white};
     text-align: center;
-    font-size: 30px;
+    color: ${props => props.theme.nameColor};
+    font-size: 40px;
+    font-weight: 600;
   }
 
   button {
-    padding: 10px;
-    background: ${props => props.theme.lightblack};
-    color: ${props => props.theme.white};
-    border: none;
     cursor: pointer;
+    background: ${props => props.theme.button};
+    color: ${props => props.theme.hoverText};
+    border: none;
+    padding: 10px;
     transition: 0.3s;
 
     &:hover {
-      background: ${props => props.theme.softblack};
+      background: ${props => props.theme.hoverButton};
     }
 
     &.join-btn {
-      background: ${props => props.theme.bgcolor};
+      display: block;
+      text-align: center;
+      background: ${props => props.theme.button};
       border: none;
       margin: 0 auto;
       margin-top: 30px;
       padding: 14px 20px;
       font-size: 16px;
-      text-align: center;
-      display: block;
-      background: ${props => props.theme.softblack};
       box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.3);
     }
 
     &.join-btn:hover {
-      background: ${props => props.theme.subcolor};
+      background: ${props => props.theme.hoverButton};
     }
   }
 
   .gender {
+    color: ${props => props.theme.text};
     margin-top: 20px;
-    color: ${props => props.theme.softblack};
     input[type="radio"] {
       margin-left: 10px;
       width: 30px;
@@ -112,26 +111,22 @@ const RegisterContainer = styled.div`
 
 const RegisterFormBlock = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-color: ${props => props.theme.white};
+  justify-content: center;
+  background: ${props => props.theme.subColor};
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.3);
   padding: 50px;
+  box-shadow: ${props => props.theme.shadow};
 
   .emailat {
-    color: ${props => props.theme.softblack};
+    font-weight: 600;
   }
 `;
 
 const RegisterInput = styled.input`
-  height: 27px;
   margin: 0 15px;
   padding: 7px 10px;
-  border: 1px solid ${props => props.theme.lightblack};
-  background: ${props => props.theme.white};
-  color: ${props => props.theme.softblack};
+  height: 27px;
   width: 200px;
 
   &.detailAddress {
@@ -140,12 +135,9 @@ const RegisterInput = styled.input`
 `;
 
 const SubIdInput = styled.input`
-  height: 27px;
   margin: 0 15px;
   padding: 7px 10px;
-  border: 1px solid ${props => props.theme.lightblack};
-  background: ${props => props.theme.white};
-  color: ${props => props.theme.black};
+  height: 27px;
   width: 200px;
 
   ${props =>
@@ -155,7 +147,7 @@ const SubIdInput = styled.input`
       disabled;
       
       &::placeholder {
-        color: black;
+        color: ${props => props.theme.text};
       }
     `}
 `;
@@ -163,33 +155,31 @@ const SubIdInput = styled.input`
 const SelectDomain = styled.select`
   margin-right: 15px;
   padding: 10px 20px;
-  border: 1px solid ${props => props.theme.softblack};
-  background: ${props => props.theme.white};
 `;
 
 const NameTag = styled.span`
-  width: 110px;
-  text-align: right;
   display: inline-block;
-  color: ${props => props.theme.softblack};
-  font-weight: 500;
+  text-align: right;
+  color: ${props => props.theme.text};
+  font-weight: 800;
+  width: 110px;
 `;
 
 const ConfirmMessage = styled.div`
-  margin: 5px 0 5px 125px;
   font-size: 15px;
+  margin: 5px 0 5px 125px;
   height: 20px;
 
   ${props =>
     props.authok &&
     css`
-      color: ${props => props.theme.subcolor};
+      color: ${props => props.theme.trueMsg};
     `}
 
   ${props =>
     props.autherror &&
     css`
-      color: ${props => props.theme.red};
+      color: ${props => props.theme.falseMsg};
     `}
 
     &:nth-child(1) {
@@ -432,7 +422,6 @@ const RegisterFormComp = ({
           </div>
         </RegisterFormBlock>
       </RegisterContainer>
-
       <ModalBox
         isOpen={modal} //true = 열림 / false = 닫힘
         ariahideapp="false" //에러 안뜨게하기

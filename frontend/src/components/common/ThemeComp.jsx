@@ -30,6 +30,19 @@ export const greenTheme = {
   green: "#0055ff",
   red: "#ff3300",
   yellow: "#ebd258",
+
+  ///////////////
+  mainColor: "#69F0AE", //민트
+  subColor: "rgba(255, 255, 255, 0.7)", //연하게
+  nameColor: "#fff", //화이트
+  border: "#000000", //블랙
+  text: "#000000", //블랙
+  hoverText: "#fff", //화이트
+  button: "#333", //소프트 블랙?
+  hoverButton: "#666", //그레이
+  trueMsg: "#009966", //초록
+  falseMsg: "#ff3300", //레드
+  shadow: "2px 7px 15px 8px rgba(0, 0, 0, 0.3)",
 };
 
 export const darkTheme = {

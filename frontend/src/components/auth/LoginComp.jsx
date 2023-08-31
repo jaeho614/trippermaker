@@ -14,36 +14,35 @@ const LoginPageContainer = styled.div`
 `;
 
 const LoginLeftPic = styled.div`
-  width: 45%;
-  height: 100vh;
   background: url("/assets/mainslide4.jpeg");
   background-position: center;
   background-size: cover;
+  width: 45%;
+  height: 100vh;
   object-fit: cover;
 `;
 
 const LoginWrapper = styled.div`
   position: relative;
   text-align: center;
+  background: ${props => props.theme.mainColor};
+  margin: 0 auto;
   height: 100vh;
   width: 55%;
-  margin: 0 auto;
-  background: ${props => props.theme.bgcolor};
 
   .home {
     position: absolute;
-    left: 30px;
     top: 20px;
-    color: ${props => props.theme.white};
+    left: 30px;
   }
 
   form {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
-    width: 400px;
     margin: 0 auto;
+    width: 400px;
   }
 
   .logo {
@@ -55,116 +54,116 @@ const LoginWrapper = styled.div`
   }
 
   .logintext {
-    margin: 24px 0;
-    font-size: 20px;
-    color: ${props => props.theme.black};
-    border-bottom: 2px solid ${props => props.theme.black};
-    padding: 6px 0;
     display: inline-block;
     text-align: center;
+    font-size: 20px;
+    border-bottom: 2px solid ${props => props.theme.text};
+    margin: 24px 0;
+    padding: 6px 0;
   }
 
   .input {
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 
     .label {
-      width: 110px;
       text-align: right;
       color: ${props => props.theme.softblack};
+      font-weight: 700;
+      width: 110px;
     }
   }
 
   .login-btn {
-    width: 315px;
-    padding: 17px 20px;
-    background: ${props => props.theme.black};
     cursor: pointer;
-    border: none;
-    color: ${props => props.theme.white};
+    background: ${props => props.theme.button};
+    color: ${props => props.theme.hoverText};
     font-weight: 600;
     font-size: 18px;
+    border: none;
+    width: 315px;
     margin-top: 20px;
     margin-bottom: 30px;
+    padding: 17px 20px;
   }
 
   .login-btn:hover {
-    background: ${props => props.theme.softblack};
+    background: ${props => props.theme.hoverButton};
   }
 
   .find {
-    color: ${props => props.theme.black};
-    margin-left: 10px;
     cursor: pointer;
+    color: ${props => props.theme.black};
     font-weight: 700;
+    margin-left: 10px;
   }
 
   .ragister {
-    margin-left: 14px;
     color: ${props => props.theme.black};
     font-weight: 600;
+    margin-left: 14px;
   }
 `;
 
 const LoginInput = styled.input`
   border: none;
+  margin-left: 20px;
   padding-left: 10px;
   padding: 17px;
-  margin-left: 20px;
   width: 100%;
-  background: ${props => props.theme.white};
-  border: 2px solid ${props => props.theme.white};
 `;
 
 const ErrorText = styled.p`
+  color: ${props => props.theme.falseMsg};
   height: 20px;
-  color: ${props => props.theme.red};
 `;
 
 const StyledModal = Modal.styled`
-  background: ${props => props.theme.smoke};
-  height: 300px;
-  width: 500px;
-  text-align: center;
   display: flex;
-  justify-content: center;
+  position : relative;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background: ${props => props.theme.mainColor};
   border-radius: 20px;
-  box-shadow: 2px 3px 3px 3px rgba(0, 0, 0, 0.3);
-  position : relative;
+  height: 300px;
+  width: 500px;
+  box-shadow: 2${props => props.theme.shadow};
 
   div{
     margin-top: 10px;
   }
 
   .label{
-    width: 70px;
     display: inline-block;
+    font-weight: 700;
     text-align: right;
     margin-right: 10px;
+    width: 70px;
   }
 
   input{
+    margin-left: 10px;
     padding: 10px;
     width: 200px;
-    margin-left: 10px;
   }
 
   button{
-    padding: 10px 17px;
-    margin: 10px 8px;
-    background: ${props => props.theme.bgcolor};
-    border: none;
-    font-size: 16px;
-    border-radius: 10px;
     cursor: pointer;
+    background: ${props => props.theme.button};
+    color: ${props => props.theme.hoverText};
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 8px;
+    padding: 10px 17px;
     transition: .3s;
 
     &:hover{
-    background: ${props => props.theme.subcolor};
-    color: ${props => props.theme.white};
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.hoverText};
     }
   }
   p{
