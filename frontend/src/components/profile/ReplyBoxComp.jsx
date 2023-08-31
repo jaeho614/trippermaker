@@ -1,14 +1,16 @@
-import { styled } from "styled-components";
 import React, { useState } from "react";
-import PaginationComp from "../common/PaginationComp";
+
+import { styled } from "styled-components";
+
 import { makeCreatedAt } from "../../lib/makeCreatedAt";
+import PaginationComp from "../common/PaginationComp";
 
 const ListTitle = styled.ul`
   display: flex;
   text-align: center;
-  padding: 5px;
   font-weight: 600;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid ${props => props.theme.border};
+  padding: 5px;
 
   li:first-child {
     width: 20%;
@@ -26,42 +28,41 @@ const ListTitle = styled.ul`
 
 const Item = styled.div`
   display: flex;
-  background: none;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  background: none;
 `;
 
 const BoardInfo = styled.ul`
-  width: 100%;
-  padding: 10px;
   display: flex;
-  justify-content: space-around;
   box-sizing: border-box;
+  justify-content: space-around;
   text-align: center;
+  padding: 10px;
+  width: 100%;
   line-height: 50px;
 
   li:first-child {
-    width: 30%;
+    cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 30%;
     white-space: nowrap;
-
-    cursor: pointer;
 
     &:hover {
       font-weight: 800;
     }
   }
   li:nth-child(2) {
-    width: 40%;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 40%;
     white-space: nowrap;
   }
   li:nth-child(3) {
-    width: 30%;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 30%;
     white-space: nowrap;
   }
   li:nth-child(4) {
@@ -85,15 +86,15 @@ const BoardInfo = styled.ul`
       width: 20%;
     }
     li:nth-child(2) {
-      width: 40%;
       overflow: hidden;
       text-overflow: ellipsis;
+      width: 40%;
       white-space: nowrap;
     }
     li:nth-child(3) {
-      width: 30%;
       overflow: hidden;
       text-overflow: ellipsis;
+      width: 30%;
       white-space: nowrap;
     }
     li:nth-child(4) {
@@ -103,21 +104,20 @@ const BoardInfo = styled.ul`
 `;
 
 const Button = styled.button`
-  border: none;
-  background: white;
+  display: inline-block;
   cursor: pointer;
   font-size: 14px;
-  display: inline-block;
-  padding: 7px 15px;
-  margin: 10px auto;
-  background: ${props => props.theme.bgcolor};
   border: none;
   border-radius: 10px;
+  background: ${props => props.theme.mainColor};
+  color: ${props => props.theme.text};
+  margin: 10px auto;
+  padding: 7px 15px;
   transition: 0.3s;
 
   &:hover {
-    background: ${props => props.theme.subcolor};
-    color: #fff;
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.text};
   }
 `;
 

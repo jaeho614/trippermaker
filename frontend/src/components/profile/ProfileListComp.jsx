@@ -2,16 +2,17 @@ import React from "react";
 import { styled } from "styled-components";
 
 const ListBox = styled.div`
-  width: 90%;
+  background: ${props => props.theme.subColor};
+  border-radius: 25px;
   margin: 0 auto;
+  width: 90%;
   height: 600px;
-  background: ${props => props.theme.smoke};
-
   padding: 50px;
+  box-shadow: ${props => props.theme.shadow};
 
   @media (max-width: 1200px) {
-    width: 100%;
     padding: 0;
+    width: 100%;
   }
 `;
 

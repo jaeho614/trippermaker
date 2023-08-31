@@ -1,24 +1,26 @@
-import { styled } from "styled-components";
+import React, { useState } from "react";
+
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import PaginationComp from "../common/PaginationComp";
-import React, { useState } from "react";
-import { makeCreatedAt } from "../../lib/makeCreatedAt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { styled } from "styled-components";
+
+import { makeCreatedAt } from "../../lib/makeCreatedAt";
+import PaginationComp from "../common/PaginationComp";
 
 const BoardListTitle = styled.ul`
   display: flex;
-  text-align: center;
-  padding: 10px;
   justify-content: space-around;
+  text-align: center;
   font-weight: 600;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid ${props => props.theme.border};
+  padding: 10px;
 
   li:first-child {
-    width: 30%;
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0 2px;
+    width: 30%;
   }
 
   li:nth-child(2) {
@@ -30,16 +32,16 @@ const BoardListTitle = styled.ul`
   }
 
   li:nth-child(4) {
-    width: 10%;
     margin: 0 4px;
+    width: 10%;
     @media (max-width: 768px) {
       display: none;
     }
   }
 
   li:nth-child(5) {
-    width: 10%;
     margin: 0 2px;
+    width: 10%;
     @media (max-width: 768px) {
       display: none;
     }
@@ -52,26 +54,26 @@ const BoardListTitle = styled.ul`
 
 const Item = styled.div`
   display: flex;
-  background: none;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  background: none;
 `;
 
 const BoardInfo = styled.ul`
-  width: 100%;
-  padding: 10px;
   display: flex;
-  justify-content: space-around;
   box-sizing: border-box;
+  justify-content: space-around;
   text-align: center;
+  padding: 10px;
   line-height: 50px;
+  width: 100%;
 
   li:first-child {
-    width: 30%;
+    cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 30%;
     white-space: nowrap;
-    cursor: pointer;
 
     &:hover {
       font-weight: 800;
@@ -79,16 +81,16 @@ const BoardInfo = styled.ul`
   }
 
   li:nth-child(2) {
-    width: 40%;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 40%;
     white-space: nowrap;
   }
 
   li:nth-child(3) {
-    width: 30%;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 30%;
     white-space: nowrap;
   }
 
@@ -112,21 +114,20 @@ const BoardInfo = styled.ul`
 `;
 
 const Button = styled.button`
-  border: none;
-  background: white;
-  cursor: pointer;
-  font-size: 14px;
   display: inline-block;
-  padding: 7px 15px;
-  margin: 10px auto;
-  background: ${props => props.theme.bgcolor};
+  cursor: pointer;
+  background: ${props => props.theme.mainColor};
+  color: ${props => props.theme.text};
+  font-size: 14px;
   border: none;
   border-radius: 10px;
+  margin: 10px auto;
+  padding: 7px 15px;
   transition: 0.3s;
 
   &:hover {
-    background: ${props => props.theme.subcolor};
-    color: #fff;
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.buttonText};
   }
 `;
 

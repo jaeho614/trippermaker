@@ -1,13 +1,14 @@
 import React from "react";
+
 import { styled } from "styled-components";
 
 const ProfileBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: ${props => props.theme.mainColor};
+  padding: 40px 0;
   width: 100%;
-  margin: 20px auto;
-  justify-content: space-around;
 
   @media (max-width: 1200px) {
     display: flex;

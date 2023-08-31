@@ -1,9 +1,11 @@
 import { useEffect, useState, useCallback, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { changePhoto } from "../../lib/api/profile";
+
+import { useDispatch, useSelector } from "react-redux";
 import update from "immutability-helper";
 
+import { changePhoto } from "../../lib/api/profile";
+import { check, initializeUser } from "../../modules/auth/UserMod";
 import ProfileMod, {
   changeProfile,
   changeValue,
@@ -25,7 +27,6 @@ import ProfileMod, {
   wishDetailClear,
   nickErrorClear,
 } from "../../modules/profile/ProfileMod";
-import { check, initializeUser } from "../../modules/auth/UserMod";
 import ScheduleMod, {
   addSchedule,
   saveList,
@@ -231,24 +232,24 @@ const ProfileCntr = () => {
     setModal(!modal);
   }, [modal]);
 
-  const onGetWishDetail = useCallback(
-    (title, contentId, contentTypeId) => {
-      switchModal();
-      if (!wish) {
-        dispatch(
-          getWishDetail({
-            title,
-            contentId,
-            contentTypeId,
-          })
-        );
-      }
-      if (wish) {
-        dispatch(wishDetailClear());
-      }
-    },
-    [wish, modal]
-  );
+  const onGetWishDetail = (title, contentId, contentTypeId) => {
+    switchModal();
+    console.log("1");
+    if (!wish) {
+      console.log("2");
+      dispatch(
+        getWishDetail({
+          title,
+          contentId,
+          contentTypeId,
+        })
+      );
+    }
+    if (wish) {
+      console.log("3");
+      dispatch(wishDetailClear());
+    }
+  };
 
   const onDeleteWish = useCallback(
     no => {

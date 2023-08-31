@@ -69,7 +69,7 @@ const LoginWrapper = styled.div`
 
     .label {
       text-align: right;
-      color: ${props => props.theme.softblack};
+      color: ${props => props.theme.text};
       font-weight: 700;
       width: 110px;
     }
@@ -78,7 +78,7 @@ const LoginWrapper = styled.div`
   .login-btn {
     cursor: pointer;
     background: ${props => props.theme.button};
-    color: ${props => props.theme.hoverText};
+    color: ${props => props.theme.buttonText};
     font-weight: 600;
     font-size: 18px;
     border: none;
@@ -114,7 +114,7 @@ const LoginInput = styled.input`
   width: 100%;
 `;
 
-const ErrorText = styled.p`
+const ErrorMessage = styled.p`
   color: ${props => props.theme.falseMsg};
   height: 20px;
 `;
@@ -153,7 +153,7 @@ const StyledModal = Modal.styled`
   button{
     cursor: pointer;
     background: ${props => props.theme.button};
-    color: ${props => props.theme.hoverText};
+    color: ${props => props.theme.buttonText};
     font-size: 16px;
     border: none;
     border-radius: 10px;
@@ -163,7 +163,7 @@ const StyledModal = Modal.styled`
 
     &:hover{
     background: ${props => props.theme.hoverButton};
-    color: ${props => props.theme.hoverText};
+    color: ${props => props.theme.buttonText};
     }
   }
   p{
@@ -228,7 +228,7 @@ const LoginComp = ({
                 onChange={onChange}
               />
             </div>
-            <ErrorText>{error && error}</ErrorText>
+            <ErrorMessage>{error && error}</ErrorMessage>
             <button className="login-btn">LOGIN</button>
           </form>
           <span onClick={changeInform} name="id" className="find">
@@ -261,9 +261,9 @@ const LoginComp = ({
                   <button onClick={onFindId}>ID 찾기</button>
                   <button onClick={switchModal}>닫기</button>
                 </div>
-                <ErrorText>
+                <ErrorMessage>
                   {searchIdError && "해당 번호로 가입된 계정이 없습니다."}
-                </ErrorText>
+                </ErrorMessage>
                 <StyledModal
                   isOpen={findId}
                   ariahideapp={"false"}
@@ -294,7 +294,7 @@ const LoginComp = ({
                   <button onClick={onFindPwd}>PW 찾기</button>
                   <button onClick={switchModal}>닫기</button>
                 </div>
-                <ErrorText>{searchPwdError && searchPwdError}</ErrorText>
+                <ErrorMessage>{searchPwdError && searchPwdError}</ErrorMessage>
               </div>
             )}
           </StyledModal>

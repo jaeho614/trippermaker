@@ -73,7 +73,7 @@ const RegisterContainer = styled.div`
   button {
     cursor: pointer;
     background: ${props => props.theme.button};
-    color: ${props => props.theme.hoverText};
+    color: ${props => props.theme.buttonText};
     border: none;
     padding: 10px;
     transition: 0.3s;

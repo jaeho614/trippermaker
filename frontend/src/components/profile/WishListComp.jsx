@@ -1,21 +1,22 @@
 import React from "react";
+
 import { styled } from "styled-components";
 import Modal from "styled-react-modal";
 
 const StyledModal = Modal.styled`
-  background: white;
-  height: 550px;
-  width: 600px;
+  overflow: auto;
+  background: ${props => props.theme.mainColor};
   border-radius: 10px;
   padding: 15px;
-  overflow: auto;
-  
+  height: 550px;
+  width: 600px;
+
   .title{
-    font-size:24px;
+    text-align: center;
+    font-size: 24px;
     font-weight: 600;
-    border-bottom:2px solid #333;
+    border-bottom: 2px solid ${props => props.theme.border};
     padding: 20px 0 ;
-    text-align:center;
   }
 
   .sub-title{
@@ -25,8 +26,8 @@ const StyledModal = Modal.styled`
 
   div{
     display: flex;
-    padding: 5px;
     justify-content: space-between;
+    padding: 5px;
   }
 
   .Modal-item{
@@ -40,62 +41,64 @@ const StyledModal = Modal.styled`
 
   .modal-close{
     display:block;
-    background : ${props => props.theme.softblack};
-    color : ${props => props.theme.white};
-    padding: 5px 10px;
+    curosr:pointer;
+    background : ${props => props.theme.button};
+    color : ${props => props.theme.buttonText};
     margin: 0 auto;
     margin-top :20px;
-    curosr:pointer;
+    padding: 5px 10px;
   }
 `;
 
 const WishListBox = styled.div`
-  background: white;
+  overflow: auto;
+  background: ${props => props.theme.whiteColor};
   border: 1px solid black;
   border-radius: 10px;
-  width: 30%;
   height: 600px;
-  overflow: auto;
+  width: 30%;
 `;
 
 const Item = styled.div`
   display: flex;
-  background: none;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  background: none;
 `;
 
 const SchedulerBox = styled.div`
-  background: white;
-  cursor: pointer;
   display: flex;
-  justify-content: center;
+  cursor: pointer;
   align-items: center;
-  border: 1px solid black;
+  justify-content: center;
+  background: ${props => props.theme.whiteColor};
+  border: 1px solid ${props => props.theme.border};
   border-radius: 10px;
-  width: 70%;
-  height: 50px;
   margin: 7px;
+  height: 50px;
+  width: 70%;
 
   &:hover {
     cursor: pointer;
-    background: pink;
+    background: ${props => props.theme.mainColor};
     opacity: 0.8;
   }
 `;
 
 const ScheduleButton = styled.div`
   cursor: pointer;
-  background: white;
-  border: 1px solid black;
-  border-radius: 10px;
   text-align: center;
-  width: 30px;
-  height: 30px;
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
   font-weight: 800;
+  border: 1px solid ${props => props.theme.border};
+  border-radius: 10px;
+  height: 30px;
+  width: 30px;
 
   &:hover {
-    background: pink;
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.buttonText};
     opacity: 0.8;
   }
 `;

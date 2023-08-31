@@ -1,23 +1,25 @@
 import React, { useState } from "react";
+
 import { styled } from "styled-components";
-import PaginationComp from "../common/PaginationComp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
+
+import PaginationComp from "../common/PaginationComp";
 
 const LikeListTitle = styled.ul`
   display: flex;
   text-align: center;
-  padding: 5px;
   font-weight: 600;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid ${props => props.theme.border};
+  padding: 5px;
 
   li:first-child {
     width: 30%;
   }
   li:nth-child(2) {
-    width: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 50%;
     white-space: nowrap;
   }
   li:nth-child(3) {
@@ -27,50 +29,53 @@ const LikeListTitle = styled.ul`
 
 const Item = styled.div`
   display: flex;
-  background: none;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  background: none;
 `;
 
 const BoardInfo = styled.ul`
-  width: 100%;
-  padding: 10px;
   display: flex;
-  justify-content: space-around;
   box-sizing: border-box;
+  justify-content: space-around;
   text-align: center;
+  padding: 10px;
+  width: 100%;
   line-height: 50px;
 
   li:first-child {
-    width: 30%;
+    cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 30%;
     white-space: nowrap;
-
-    cursor: pointer;
 
     &:hover {
       font-weight: 800;
     }
   }
+
   li:nth-child(2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 40%;
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
   }
+
   li:nth-child(3) {
-    width: 30%;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 30%;
     white-space: nowrap;
   }
+
   li:nth-child(4) {
     width: 10%;
     @media (max-width: 768px) {
       display: none;
     }
   }
+
   li:nth-child(5) {
     width: 10%;
     @media (max-width: 768px) {
@@ -85,12 +90,14 @@ const BoardInfo = styled.ul`
     li:first-child {
       width: 30%;
     }
+
     li:nth-child(2) {
-      width: 50%;
       overflow: hidden;
       text-overflow: ellipsis;
+      width: 50%;
       white-space: nowrap;
     }
+
     li:nth-child(3) {
       width: 20%;
     }
@@ -98,21 +105,18 @@ const BoardInfo = styled.ul`
 `;
 
 const Button = styled.button`
-  border: none;
-  background: white;
-  cursor: pointer;
-  font-size: 14px;
   display: inline-block;
-  padding: 7px 15px;
-  margin: 10px auto;
-  background: ${props => props.theme.bgcolor};
+  cursor: pointer;
+  background: ${props => props.theme.mainColor};
+  font-size: 14px;
   border: none;
   border-radius: 10px;
+  margin: 10px auto;
+  padding: 7px 15px;
   transition: 0.3s;
 
   &:hover {
-    background: ${props => props.theme.subcolor};
-    color: #fff;
+    background: ${props => props.theme.hoverButton};
   }
 `;
 

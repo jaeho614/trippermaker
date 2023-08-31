@@ -7,24 +7,21 @@ const SelectButtonBox = styled.div`
 `;
 
 const SelectButton = styled.button`
-  border: none;
-  background: white;
   cursor: pointer;
+  border: 1px solid ${props => props.theme.border};
   font-size: 15px;
-  padding: 5px;
-  margin: 5px;
-  border: 1px solid ${props => props.theme.softblack};
+  margin: 5px 10px;
   padding: 10px 20px;
   transition: 0.3s;
 
   &:focus {
-    background: ${props => props.theme.softblack};
-    color: ${props => props.theme.white};
+    background: ${props => props.theme.button};
+    color: ${props => props.theme.buttonText};
   }
 
   &:hover {
-    background: ${props => props.theme.softblack};
-    color: ${props => props.theme.white};
+    background: ${props => props.theme.button};
+    color: ${props => props.theme.buttonText};
   }
 
   @media (max-width: 1200px) {

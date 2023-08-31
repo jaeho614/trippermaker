@@ -4,28 +4,28 @@ import React from "react";
 
 const AfterBox = styled.div`
   display: flex;
-  border: 1px solid black;
-  border-radius: 10px;
-  flex-direction: column;
-  background: white;
-  width: 30%;
-  height: 600px;
   overflow: auto;
+  flex-direction: column;
+  background: ${props => props.theme.whiteColor};
+  border: 1px solid ${props => props.theme.border};
+  border-radius: 10px;
+  height: 600px;
+  width: 30%;
 `;
 
 const SavedList = styled.div`
   display: flex;
   cursor: pointer;
-  border: 1px solid black;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border: 1px solid ${props => props.theme.border};
   border-radius: 10px;
   margin: 7px;
-  font-weight: 700;
   height: 50px;
   width: 100%;
-  justify-content: center;
-  align-items: center;
   &:hover {
-    background: pink;
+    background: ${props => props.theme.mainColor};
     opacity: 0.7;
   }
 `;
@@ -44,30 +44,33 @@ const SavedListDetailBox = styled.div`
 const ShceduleBox = styled.span`
   align-items: center;
   text-align: center;
-  border: 1px solid black;
+  background: ${props => props.theme.subColor};
+  border: 1px solid ${props => props.theme.border};
   border-radius: 10px;
-  padding: 15px;
   margin: 10px 0;
+  padding: 15px;
 `;
 
 const SavedButton = styled.div`
-  background: none;
-  border: 1px solid black;
-  border-radius: 10px;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
-  font-weight: 800;
   text-align: center;
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
+  font-weight: 800;
+  border: 1px solid ${props => props.theme.border};
+  border-radius: 10px;
+  height: 30px;
+  width: 30px;
 
   &:hover {
-    background: pink;
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.buttonText};
     opacity: 0.8;
   }
 `;
 
 const SheduleTitleBox = styled.div`
-  color: blue;
+  color: ${props => props.theme.text};
   font-size: 20px;
   font-weight: 800;
   margin-bottom: 20px;
@@ -77,31 +80,32 @@ const Button = styled.button`
   display: block;
   cursor: pointer;
   font-size: 14px;
-  padding: 7px 15px;
-  margin: 10px auto;
-  background: ${props => props.theme.bgcolor};
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
   border: none;
   border-radius: 10px;
+  margin: 10px auto;
+  padding: 7px 15px;
   transition: 0.3s;
 
   &:hover {
-    background: ${props => props.theme.subcolor};
-    color: #fff;
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.buttonText};
   }
 `;
 
 const StyledModal = Modal.styled`
-  background: white;
-  height: 550px;
-  width: 600px;
+  overflow: auto;
+  background: ${props => props.theme.mainColor};
   border-radius: 10px;
   padding: 15px;
-  overflow: auto;
+  height: 550px;
+  width: 600px;
 
   div{
     display: flex;
-    padding: 5px;
     justify-content: space-between;
+    padding: 5px;
   }
 `;
 

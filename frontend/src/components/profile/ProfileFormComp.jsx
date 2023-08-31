@@ -1,9 +1,9 @@
 import React from "react";
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
 const UserInformBox = styled.div`
-  height: 200px;
   margin-left: 30px;
+  height: 200px;
 `;
 
 const UserInform = styled.div`
@@ -18,36 +18,48 @@ const UserInform = styled.div`
 `;
 
 const Detail = styled.div`
-  padding: 5px 10px;
   display: inline-block;
+  padding: 5px 10px;
 `;
 
 const NameTag = styled.span`
-  margin-right: 20px;
-  width: 70px;
-  padding: 0px 10px;
   display: inline-block;
   font-weight: 600;
+  margin-right: 20px;
+  padding: 0px 10px;
+  width: 70px;
 `;
 
-const ErrorMessage = styled.span`
-  color: ${props => props.theme.red};
+const ConfirmMessage = styled.span`
   margin-left: 10px;
+
+  ${props =>
+    props.authok &&
+    css`
+      color: ${props => props.theme.trueMsg};
+    `}
+
+  ${props =>
+    props.autherror &&
+    css`
+      color: ${props => props.theme.falseMsg};
+    `}
 `;
 
 const Button = styled.button`
-  cursor: pointer;
-  font-size: 14px;
   display: inline-block;
-  padding: 7px 15px;
-  background: ${props => props.theme.bgcolor};
+  cursor: pointer;
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
+  font-size: 14px;
   border: none;
   border-radius: 10px;
+  padding: 7px 15px;
   transition: 0.3s;
 
   &:hover {
-    background: ${props => props.theme.subcolor};
-    color: #fff;
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.buttonText};
   }
 
   &.delete-user-btn {
@@ -56,12 +68,11 @@ const Button = styled.button`
 `;
 
 const InputBox = styled.input`
-  background: white;
-  margin-right: 10px;
-  width: 150px;
-  height: 28px;
-  padding: 0 10px;
   border-radius: 14px;
+  margin-right: 10px;
+  padding: 0 10px;
+  height: 28px;
+  width: 150px;
 `;
 
 const ButtonBox = styled.div`
@@ -98,9 +109,13 @@ const ProfileFormComp = ({
           <InputBox placeholder={"닉네임"} onChange={onChange} />
           <Button onClick={onNickCheck}>중복확인</Button>
           {nickError ? (
-            <ErrorMessage>이미 존재하는 닉네임입니다.</ErrorMessage>
+            <ConfirmMessage autherror="true">
+              이미 존재하는 닉네임입니다.
+            </ConfirmMessage>
           ) : nickAuth ? (
-            <ErrorMessage>사용가능한 아이디 입니다.</ErrorMessage>
+            <ConfirmMessage authok="true">
+              사용가능한 아이디 입니다.
+            </ConfirmMessage>
           ) : (
             ""
           )}

@@ -3,16 +3,16 @@ import { styled } from "styled-components";
 
 const Label = styled.label`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
 `;
 
 const ImageBox = styled.img`
   cursor: pointer;
+  border-radius: 25px;
+  border: 2px solid white;
   height: 200px;
   width: 200px;
-  border-radius: 25px;
-  border: 1px solid black;
 `;
 
 const ImgInput = styled.input`
@@ -22,16 +22,17 @@ const ImgInput = styled.input`
 const Button = styled.button`
   cursor: pointer;
   font-size: 14px;
-  padding: 7px 15px;
-  margin-top: 20px;
-  background: ${props => props.theme.bgcolor};
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
   border: none;
   border-radius: 10px;
+  margin-top: 20px;
+  padding: 7px 15px;
   transition: 0.3s;
 
   &:hover {
-    background: ${props => props.theme.subcolor};
-    color: #fff;
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.buttonText};
   }
 `;
 
