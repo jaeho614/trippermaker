@@ -1,20 +1,22 @@
 import { useEffect, useRef } from "react";
-import styles from "./ModalBasic.css";
-import KakaoMapComp from "./KakaoMapComp";
+
 import { styled } from "styled-components";
 
+import styles from "./ModalBasic.css";
+import KakaoMapComp from "./KakaoMapComp";
+
 const ModalBlock = styled.div`
-  background-color: ${(props) => props.theme.smoke};
   position: absolute;
+  text-align: center;
+  background-color: ${props => props.theme.smoke};
+  border-radius: 20px;
+  margin: 0 auto;
+  height: 100%;
+  width: 700px;
   top: 80px;
   left: 25px;
   z-index: 9999;
-  width: 700px;
-  height: 100%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 20px;
-  margin: 0 auto;
-  text-align: center;
 
   .title {
     font-size: 24px;
@@ -22,20 +24,20 @@ const ModalBlock = styled.div`
   }
 
   .close {
-    border: none;
     font-size: 20px;
+    border: none;
   }
   .Modal-item {
-    width: 100%;
     text-align: left;
+    width: 100%;
     :first-child {
+      display: inline-block;
       padding-left: 5px;
       width: 20%;
-      display: inline-block;
     }
     :last-child {
-      width: 75%;
       display: inline-block;
+      width: 75%;
     }
   }
 `;
@@ -52,7 +54,7 @@ const ModalBasic = ({ setModalOpen, mapData, getDetail, onGetDetail }) => {
 
   useEffect(() => {
     // 이벤트 핸들러 함수
-    const handler = (e) => {
+    const handler = e => {
       // mousedown 이벤트가 발생한 영역이 모달창이 아닐 때, 모달창 제거 처리
       if (modalRef.current && !modalRef.current.contains(e.target)) {
         setModalOpen(false);

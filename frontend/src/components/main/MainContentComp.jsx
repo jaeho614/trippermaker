@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import WrapperComp from "../common/WrapperComp";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Navigation,
@@ -11,54 +9,55 @@ import {
 } from "swiper/modules";
 import Swal from "sweetalert2";
 import { getWishDetail } from "../../modules/profile/ProfileMod";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useDispatch, useSelector } from "react-redux";
 
+import WrapperComp from "../common/WrapperComp";
+
 const MainContentWrapper = styled.div`
-  width: 100%;
-  background: ${(props) => props.theme.softblue};
   display: block;
-  padding: 50px 0 100px 0;
+  background: ${props => props.theme.softblue};
   margin-top: 100px;
+  padding: 50px 0 100px 0;
+  width: 100%;
 `;
 
 const TravelList = styled.div`
-  margin-top: 2rem;
   display: flex;
   justify-content: space-around;
+  margin-top: 2rem;
 
   .bg {
+    position: relative;
     width: 500px;
     height: 500px;
     background: #333;
     border-radius: 20px;
-    position: relative;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 100px 100px inset;
     .title {
       position: absolute;
-      bottom: 120px;
-      left: 30px;
+      color: ${props => props.theme.white};
+      border-bottom: 5px solid ${props => props.theme.red};
+      font-family: "SUITE-Regular";
       font-size: 40px;
-      color: ${(props) => props.theme.white};
+      font-weight: 600;
       text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
       padding: 10px 0;
-      border-bottom: 5px solid ${(props) => props.theme.red};
-      font-family: "SUITE-Regular";
-      font-weight: 600;
+      bottom: 120px;
+      left: 30px;
     }
 
     .place {
       position: absolute;
+      color: ${props => props.theme.white};
+      font-family: "SUITE-Regular";
+      font-size: 30px;
       bottom: 66px;
       left: 30px;
-      font-size: 30px;
-      color: ${(props) => props.theme.white};
       text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-      font-family: "SUITE-Regular";
     }
   }
 
@@ -91,20 +90,18 @@ const TravelList = styled.div`
     background-size: cover;
   }
   @media (max-width: 1200px) {
-    width: 90%;
     margin: 20px auto;
+    width: 90%;
   }
-
-  justify-content: space-around;
 `;
 
 const TravelListTitle = styled.div`
   margin-top: 20px;
   h2 {
-    font-size: 30px;
     font-family: "SUITE-Regular";
+    font-size: 30px;
     span {
-      color: ${(props) => props.theme.subcolor};
+      color: ${props => props.theme.mainColor};
       font-size: 36px;
       font-family: "OAGothic-ExtraBold";
       font-weight: 600;
@@ -116,11 +113,6 @@ const TravelListTitle = styled.div`
       margin-left: 40px;
     }
   }
-`;
-const TravelListItem = styled.div`
-  width: 300px;
-  height: 400px;
-  background: #dff6b3;
 `;
 
 const MaincontentComp = () => {
@@ -137,7 +129,7 @@ const MaincontentComp = () => {
     });
   };
 
-  const onDetail = (e) => {
+  const onDetail = e => {
     const { id, type, title } = e.target.dataset;
     console.log(`${id} / ${type} / ${title}`);
     dispatch(getWishDetail({ title, contentId: id, contentTypeId: type }));
@@ -147,7 +139,7 @@ const MaincontentComp = () => {
       showCancelButton: true,
       confirmButtonText: "확인",
       cancelButtonText: "취소",
-    }).then((result) => {
+    }).then(result => {
       if (result.isConfirmed && !wishError) {
         Swal.fire({
           html: `<p>${wish.title}</p>

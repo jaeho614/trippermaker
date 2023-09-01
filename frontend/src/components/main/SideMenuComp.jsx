@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -8,48 +6,48 @@ import {
   faCaretRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import BoardListContainer from "../../containers/board/read/BoardListContainer";
+import styled from "styled-components";
 
 const SideMenuBox = styled.div`
-  width: 100px;
-  height: 400px;
-  background: #333;
-  position: fixed;
-  top: 200px;
-  right: 0;
-  z-index: 10000;
   display: flex;
+  position: fixed;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
+  background: #333;
+  height: 400px;
+  width: 100px;
+  top: 200px;
+  right: 0;
+  z-index: 10000;
 
   .tri-box {
-    width: 40px;
-    height: 70px;
-    background: #333;
     position: absolute;
+    cursor: pointer;
+    background: #333;
+    border: none;
+    height: 70px;
+    width: 40px;
     top: 50%;
     left: -40px;
     transform: translate(0, -50%);
-    border: none;
-    cursor: pointer;
   }
 
   div {
-    height: 25%;
-    width: 100%;
-    border-bottom: 1px solid ${(props) => props.theme.white};
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    border-bottom: 1px solid ${props => props.theme.white};
+    height: 25%;
+    width: 100%;
   }
 
   div:last-child {
     border: none;
   }
   span {
-    color: ${(props) => props.theme.white};
+    color: ${props => props.theme.white};
     padding: 5px 0;
   }
   p {
@@ -63,7 +61,6 @@ const SideMenuComp = () => {
         <div class="tri-box">
           <FontAwesomeIcon icon={faCaretRight} size="xl" />
         </div>
-
         <div>
           <p>
             <FontAwesomeIcon

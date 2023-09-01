@@ -52,7 +52,7 @@ const StyledModal = Modal.styled`
 
 const WishListBox = styled.div`
   overflow: auto;
-  background: ${props => props.theme.whiteColor};
+  background: ${props => props.theme.white};
   border: 1px solid black;
   border-radius: 10px;
   height: 600px;
@@ -71,7 +71,7 @@ const SchedulerBox = styled.div`
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  background: ${props => props.theme.whiteColor};
+  background: ${props => props.theme.white};
   border: 1px solid ${props => props.theme.border};
   border-radius: 10px;
   margin: 7px;

@@ -1,24 +1,25 @@
 import { styled } from "styled-components";
 
 const KeywordBox = styled.div`
-  border-radius: 25px;
-  padding: 12px 30px;
-  background-color: ${(props) => props.theme.yellow};
+  display: inline-block;
   cursor: pointer;
   outline: none;
-  box-shadow: 1px 4px 1px rgb(0, 0, 0, 0.5);
   text-align: center;
-  display: inline-block;
+  background-color: ${props => props.theme.yellow};
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 25px;
   margin-left: 20px;
   margin-top: 24px;
-  font-size: 18px;
-  font-weight: 500
+  padding: 12px 30px;
+  box-shadow: 1px 4px 1px rgb(0, 0, 0, 0.5);
 
   &:active {
-    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
     position: relative;
+    background-color: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.white};
     top: 2px;
-    background-color: ${(props) => props.theme.dark};
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
   }
 `;
 

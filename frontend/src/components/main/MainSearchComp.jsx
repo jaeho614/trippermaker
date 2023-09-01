@@ -1,17 +1,14 @@
-import styled from "styled-components";
-
-import KeywordComp from "../common/KeywordComp";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import KeywordComp from "../common/KeywordComp";
+import styled from "styled-components";
 
 const SearchForm = styled.div`
-  width: 100%;
+  background: ${props => props.theme.white};
   text-align: center;
   margin: 0 auto;
   margin-top: -100px;
-
-  background: #fff;
+  width: 100%;
 
   span {
     font-size: 30px;
@@ -19,24 +16,18 @@ const SearchForm = styled.div`
   }
 
   .searchform {
-    position: relative;
     display: inline-block;
+    position: relative;
   }
 
   input {
-    width: 500px;
-    padding: 20px 20px;
-    border-radius: 50px;
     font-size: 16px;
+    border-radius: 50px;
+    padding: 20px 20px;
+    width: 500px;
     @media (max-width: 600px) {
       margin-top: 20px;
     }
-  }
-
-  .search-keyword {
-    display: flex;
-    justify-content: space-around;
-    display: block;
   }
 
   .search-icon {
@@ -66,15 +57,12 @@ const MainSearchComp = ({ onSearchArea }) => {
             className="search-icon"
           />
         </div>
-
-        <div className="search-keyword">
+        <div>
           <KeywordComp keyword="바다" onClick={onSearchArea} />
           <KeywordComp keyword="반려동물" onClick={onSearchArea} />
           <KeywordComp keyword="스파" onClick={onSearchArea} />
           <KeywordComp keyword="산림욕" onClick={onSearchArea} />
           <KeywordComp keyword="액티비티" onClick={onSearchArea} />
-          {/* <KeywordComp keyword='풍경명소' onClick={onSearchArea} /> */}
-          {/* <KeywordComp keyword='한옥펜션' onClick={onSearchArea} /> */}
         </div>
       </SearchForm>
     </>

@@ -1,25 +1,25 @@
 import styled from "styled-components";
 
 const MainChatWarraper = styled.div`
-  width: 45%;
   text-align: center;
+  width: 45%;
 
   img {
-    width: 600px;
     padding: 100px 0;
+    width: 600px;
   }
   @media (max-width: 1400px) {
-    margin: 0 auto;
     text-align: center;
+    margin: 0 auto;
     img {
       width: 500px;
     }
   }
 
   @media (max-width: 1200px) {
-    width: 90%;
-    margin: 0 auto;
     text-align: center;
+    margin: 0 auto;
+    width: 90%;
 
     img {
       width: 400px;

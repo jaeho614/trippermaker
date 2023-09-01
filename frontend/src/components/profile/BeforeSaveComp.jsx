@@ -8,7 +8,7 @@ const BeforeBox = styled.div`
   display: flex;
   overflow: auto;
   flex-direction: column;
-  background: ${props => props.theme.whiteColor};
+  background: ${props => props.theme.white};
   border: 1px solid ${props => props.theme.border};
   border-radius: 10px;
   height: 600px;

@@ -173,13 +173,13 @@ const ConfirmMessage = styled.div`
   ${props =>
     props.authok &&
     css`
-      color: ${props => props.theme.trueMsg};
+      color: ${props => props.theme.green};
     `}
 
   ${props =>
     props.autherror &&
     css`
-      color: ${props => props.theme.falseMsg};
+      color: ${props => props.theme.red};
     `}
 
     &:nth-child(1) {

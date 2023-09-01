@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
+
 import styled from "styled-components";
 
 const { kakao } = window;
 const KakaomapWrapper = styled.div`
   #map {
-    margin: 30px 20px;
-    border: 2px solid #333;
+    border: 2px solid ${props => props.theme.border};
     border-radius: 20px;
+    margin: 30px 20px;
   }
 `;
 

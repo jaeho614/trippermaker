@@ -26,7 +26,7 @@ const FooterComp = styled.div`
   justify-content: space-around;
   text-align: center;
   background-color: ${props => props.theme.smoke};
-  border-top: 2px solid ${props => props.theme.lightblack};
+  border-top: 2px solid ${props => props.theme.border};
   padding: 50px 0;
   height: 100%;
   width: 100%;
@@ -36,7 +36,7 @@ const FooterComp = styled.div`
     justify-content: center;
     li {
       cursor: pointer;
-      color: ${props => props.theme.black};
+      color: ${props => props.theme.text};
       margin-left: 20px;
       transition: 0.3s;
     }
@@ -47,7 +47,7 @@ const FooterComp = styled.div`
   .copyright {
     margin-top: 20px;
     i {
-      color: ${props => props.theme.black};
+      color: ${props => props.theme.text};
       font-size: 18px;
     }
   }
@@ -60,20 +60,20 @@ const FooterComp = styled.div`
   }
 
   .info {
-    color: ${props => props.theme.black};
+    color: ${props => props.theme.text};
     margin-top: 20px;
     span {
-      color: ${props => props.theme.black};
+      color: ${props => props.theme.text};
       font-weight: 600;
     }
   }
 
   .tel {
-    color: ${props => props.theme.black};
+    color: ${props => props.theme.text};
     font-size: 24px;
     font-weight: 600;
     p {
-      color: ${props => props.theme.black};
+      color: ${props => props.theme.text};
       font-size: 20px;
       margin-top: 20px;
     }

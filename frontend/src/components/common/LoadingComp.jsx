@@ -8,7 +8,7 @@
 // `;
 
 // const LoaderContainer = styled.div`
-//   width: 600px; 
+//   width: 600px;
 //   height: 600px;
 //   display: flex;
 //   flex-direction: column;
@@ -65,8 +65,9 @@
 // };
 
 // export default LoadingComp;
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React from "react";
+
+import styled, { keyframes } from "styled-components";
 
 const spin = keyframes`
   to {
@@ -75,23 +76,21 @@ const spin = keyframes`
 `;
 
 const LoaderContainer = styled.div`
-  width: 600px; 
-  height: 600px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   margin: auto;
-  /* position: absolute; */
+  height: 600px;
+  width: 600px;
   z-index: 100;
-  /* background: #324D5B; */
 `;
 
 const Loader = styled.div`
+  position: relative;
   animation: ${spin} 1s ease-in-out infinite alternate both;
   height: 200px;
   width: 100%; /* 컨테이너를 가득 채우기 위해 너비를 100%로 설정 */
-  position: relative;
 `;
 
 const Circle = styled.div`
@@ -102,18 +101,18 @@ const Circle = styled.div`
 `;
 
 const CircleMiddle = styled(Circle)`
-  width: 3.6%;
-  padding-top: 3.6%;
   background-color: #7e3f3f;
   border-radius: 50%;
+  padding-top: 3.6%;
+  width: 3.6%;
   transform: translate(-50%, -50%); /* 아이콘을 수직, 수평 정중앙으로 이동 */
 `;
 
 const CircleSmall = styled(Circle)`
-  width: 2.7%;
-  padding-top: 2.7%;
-  background-color: #26A6D1;
+  background-color: #26a6d1;
   border-radius: 50%;
+  padding-top: 2.7%;
+  width: 2.7%;
   transform: translate(-50%, -50%); /* 아이콘을 수직, 수평 정중앙으로 이동 */
 `;
 
@@ -125,7 +124,12 @@ const LoadingComp = () => {
       <Loader>
         <CircleMiddle />
         {[...Array(circleCount)].map((_, index) => (
-          <CircleSmall key={index} style={{ transform: `rotate(${(index * (360 / (circleCount - 1)))}deg)` }} />
+          <CircleSmall
+            key={index}
+            style={{
+              transform: `rotate(${index * (360 / (circleCount - 1))}deg)`,
+            }}
+          />
         ))}
       </Loader>
     </LoaderContainer>
