@@ -3,9 +3,9 @@ import Modal from "styled-react-modal";
 
 const StyledModal = Modal.styled`
   background: white;
+  padding: 10px;
   height: 50%;
   width: 50%;
-  padding: 10px;
 
   div{
     display: flex;
@@ -15,31 +15,29 @@ const StyledModal = Modal.styled`
 
 const DivInModal = styled.div`
   cursor: pointer;
+  text-align: center;
   color: ${props => props.theme.red};
   margin-left: 400px;
-  background: ;
-  text-align: center;
 `;
 
 const FooterComp = styled.div`
-  width: 100%;
-  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
   background-color: ${props => props.theme.smoke};
   border-top: 2px solid ${props => props.theme.lightblack};
-  text-align: center;
   padding: 50px 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 100px;
+  height: 100%;
+  width: 100%;
 
   .footer-menu {
     display: flex;
     justify-content: center;
     li {
-      margin-left: 20px;
-      color: ${props => props.theme.black};
       cursor: pointer;
+      color: ${props => props.theme.black};
+      margin-left: 20px;
       transition: 0.3s;
     }
     li:hover {
@@ -72,8 +70,8 @@ const FooterComp = styled.div`
 
   .tel {
     color: ${props => props.theme.black};
-    font-weight: 600;
     font-size: 24px;
+    font-weight: 600;
     p {
       color: ${props => props.theme.black};
       font-size: 20px;
@@ -82,10 +80,10 @@ const FooterComp = styled.div`
   }
 
   @media (max-width: 768px) {
+    flex-direction: column;
+    margin: 0 auto;
     margin-top: 300px;
     width: 100%;
-    margin: 0 auto;
-    flex-direction: column;
     .tel {
       display: none;
     }
