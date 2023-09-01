@@ -133,83 +133,83 @@ const initialState = {
 //RegisterMod.auth 리팩토링 필요
 const RegisterMod = handleActions(
   {
-    [INITIALIZE_FORM]: (state) => initialState,
+    [INITIALIZE_FORM]: state => initialState,
     [CHANGE_VALUE]: (state, { payload: { form, value, key } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft[form][key] = value;
       }),
-    [REGISTER_SUCCESS]: (state) => initialState,
+    [REGISTER_SUCCESS]: state => initialState,
     [REGISTER_FAILURE]: (state, { payload: { Error } }) => ({
       ...state,
       Error,
     }),
     [ID_CHECK_SUCCESS]: (state, { payload: { idAuth } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft["auth"]["idAuth"] = idAuth;
         draft["auth"]["idError"] = false;
       }),
     [ID_CHECK_FAILURE]: (state, { payload: { idError } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft["auth"]["idAuth"] = false;
         draft["auth"]["idError"] = idError;
       }),
-    [ID_MODIFY]: (state) =>
-      produce(state, (draft) => {
+    [ID_MODIFY]: state =>
+      produce(state, draft => {
         draft["auth"]["idAuth"] = null;
         draft["auth"]["idError"] = null;
       }),
     [PWD_CHECK]: (state, { payload: { form, key, value } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft[form][key] = value;
       }),
     [NICK_CHECK_SUCCESS]: (state, { payload: { nickAuth } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft["auth"]["nickAuth"] = nickAuth;
         draft["auth"]["nickError"] = false;
       }),
     [NICK_CHECK_FAILURE]: (state, { payload: { nickError } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft["auth"]["nickAuth"] = false;
         draft["auth"]["nickError"] = nickError;
       }),
-    [NICK_MODIFY]: (state) =>
-      produce(state, (draft) => {
+    [NICK_MODIFY]: state =>
+      produce(state, draft => {
         draft["auth"]["nickAuth"] = null;
         draft["auth"]["nickError"] = null;
       }),
     [PHONE_CHECK_SUCCESS]: (state, { payload: { phoneAuth, phoneMsg } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft["auth"]["phoneAuth"] = phoneAuth;
         draft["auth"]["phoneMsg"] = phoneMsg;
         draft["auth"]["phoneError"] = false;
       }),
     [PHONE_CHECK_FAILURE]: (state, { payload: { phoneMsg, phoneError } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft["auth"]["phoneAuth"] = false;
         draft["auth"]["phoneMsg"] = phoneMsg;
         draft["auth"]["phoneError"] = phoneError;
       }),
-    [PHONE_MODIFY]: (state) =>
-      produce(state, (draft) => {
+    [PHONE_MODIFY]: state =>
+      produce(state, draft => {
         draft["auth"]["phoneAuth"] = null;
         draft["auth"]["phoneMsg"] = null;
         draft["auth"]["phoneError"] = null;
         draft["auth"]["authNum"] = null;
       }),
     [AUTHNUM_CHECK_SUCCESS]: (state, { payload: { authNum, phoneMsg } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft["auth"]["authNum"] = authNum;
         draft["auth"]["authNumError"] = false;
         draft["auth"]["phoneMsg"] = phoneMsg;
       }),
     [AUTHNUM_CHECK_FAILURE]: (state, { payload: { authNumError, phoneMsg } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft["auth"]["authNum"] = false;
         draft["auth"]["authNumError"] = authNumError;
         draft["auth"]["phoneMsg"] = phoneMsg;
       }),
     [INPUT_ADDRESS]: (state, { payload: { addr1, zipcode } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft["user"]["addr1"] = addr1;
         draft["user"]["zipcode"] = zipcode;
       }),

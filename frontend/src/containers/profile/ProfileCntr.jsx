@@ -286,7 +286,7 @@ const ProfileCntr = () => {
         subject,
       })
     );
-  }, [dispatch]);
+  }, [subjectRef]);
 
   const onSavedListDelete = useCallback(
     _id => {

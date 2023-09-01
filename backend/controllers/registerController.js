@@ -125,12 +125,10 @@ exports.phoneChk = async (req, res) => {
       //     else console.log(message.sid);
       //   });
 
-      return res
-        .status(200)
-        .json({
-          phoneAuth: true,
-          phoneMsg: "핸드폰으로 인증번호가 발급되었습니다.",
-        });
+      return res.status(200).json({
+        phoneAuth: true,
+        phoneMsg: "핸드폰으로 인증번호가 발급되었습니다.",
+      });
     }
 
     const expire = alreadyGetNum.insertTime;
@@ -162,12 +160,10 @@ exports.phoneChk = async (req, res) => {
     }
     if (calcExpire(expire) && !alreadyGetNum.ok) {
       console.log("이미 발급된 인증번호가 존재합니다.");
-      return res
-        .status(400)
-        .json({
-          phoneError: true,
-          phoneMsg: "이미 발급된 인증번호가 존재합니다.",
-        });
+      return res.status(400).json({
+        phoneError: true,
+        phoneMsg: "이미 발급된 인증번호가 존재합니다.",
+      });
     }
     if (alreadyGetNum && alreadyGetNum.ok) {
       console.log("이미 인증이 완료되었습니다.");
@@ -223,22 +219,18 @@ exports.authNumChk = async (req, res) => {
 
     if (calcExpire(expire) === true) {
       console.log("인증번호가 만료되었습니다. 다시 발급 받아주세요.");
-      return res
-        .status(401)
-        .json({
-          authNumError: true,
-          phoneMsg: "인증번호가 만료되었습니다. 다시 발급 받아주세요.",
-        });
+      return res.status(401).json({
+        authNumError: true,
+        phoneMsg: "인증번호가 만료되었습니다. 다시 발급 받아주세요.",
+      });
     }
 
     if (!compareAuthNum(receivedNum, authNum)) {
       console.log("인증번호를 다시 확인해주세요.");
-      return res
-        .status(401)
-        .json({
-          authNumError: true,
-          phoneMsg: "인증번호를 다시 확인해주세요.",
-        });
+      return res.status(401).json({
+        authNumError: true,
+        phoneMsg: "인증번호를 다시 확인해주세요.",
+      });
     }
 
     if (compareAuthNum(receivedNum, authNum)) {
