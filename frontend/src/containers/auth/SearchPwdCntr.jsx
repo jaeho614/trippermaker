@@ -33,7 +33,7 @@ const SearchPwdCntr = () => {
     };
 
     if (!valid(pwd)) {
-      alert(
+      return alert(
         "비밀번호는 영문, 숫자, 특수기호 조합으로 8-15자리를 입력해주세요."
       );
     }
