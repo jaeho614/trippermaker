@@ -96,7 +96,7 @@ exports.sendGif = async (req, res, next) => {};
 
 exports.temporary = async (req, res) => {
   const { authNum } = req.body;
-
+  console.log(authNum);
   try {
     const now = new Date();
     console.log("시간 :", now);

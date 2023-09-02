@@ -15,7 +15,7 @@ exports.addSchedule = async (req, res) => {
       return res.status(200).json({ addScheduleError: "DUPLICATE" });
     }
 
-    const addSchedule = await wishListArray.create(
+    await wishListArray.create(
       {
         items: { id, contentId, title, contentTypeId },
       },

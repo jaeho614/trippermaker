@@ -11,8 +11,8 @@ exports.getUserList = async (req, res) => {
     });
     const totalUser = userList.length;
     return res.status(200).json({ userList, totalUser });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ listError: true });
   }
 };
@@ -27,8 +27,8 @@ exports.getUserDetail = async (req, res) => {
     });
 
     return res.status(200).json({ user: User });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ userError: true });
   }
 };
@@ -46,8 +46,8 @@ exports.deleteUser = async (req, res) => {
       await exUser.destroy();
       return res.status(200).json({ deleteError: false });
     }
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ deleteError: true });
   }
 };
@@ -90,8 +90,8 @@ exports.getUserAction = async (req, res) => {
     }
 
     res.status(200).json({ userAction: { dailyJoinCnt, allUserCnt } });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     res.status(400).json({ userActionError: true });
   }
 };
@@ -107,8 +107,8 @@ exports.getBoardList = async (req, res) => {
     const totalBoard = boardList.length;
 
     return res.status(200).json({ boardList, totalBoard });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     res.status(400).json({ listError: true });
   }
 };
@@ -123,8 +123,8 @@ exports.getBoardDetail = async (req, res) => {
       },
     });
     res.status(200).json({ board: Board });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     res.status(400).json({ boardError: true });
   }
 };
@@ -166,8 +166,8 @@ exports.getBoardAction = async (req, res) => {
     }
 
     res.status(200).json({ boardAction: { dailyWriteCnt, allWriteCnt } });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     res.status(400).json({ boardActionError: true });
   }
 };
@@ -186,8 +186,8 @@ exports.deleteBoard = async (req, res) => {
       await exBoard.destroy();
       return res.status(200).json({ deleteError: false });
     }
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ deleteError: true });
   }
 };
@@ -240,8 +240,8 @@ exports.getAdmin = async (req, res) => {
     if (exAdmin) {
       return res.status(200).json({ admin: exAdmin });
     }
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ adminError: true });
   }
 };
@@ -275,8 +275,8 @@ exports.changeInform = async (req, res) => {
     if (updatedAdmin) {
       return res.status(200).json({ admin: updatedAdmin });
     }
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ changeInformError: true });
   }
 };
@@ -295,8 +295,8 @@ exports.getAdminTerms = async (req, res) => {
     if (exTerms) {
       return res.status(200).json({ getTerms: exTerms });
     }
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ getTermsError: true });
   }
 };
@@ -353,8 +353,8 @@ exports.editAdminTerms = async (req, res) => {
 
       return res.status(200).json({ editTerms: updatedTerms });
     }
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ editTermsError: true });
   }
 };
@@ -367,8 +367,8 @@ exports.getStyle = async (req, res) => {
     const adminStyle = admin.style;
 
     return res.status(200).json({ adminStyle });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ amdinStyleError: true });
   }
 };
@@ -382,8 +382,8 @@ exports.changeStyle = async (req, res) => {
     const Style = admin.style;
 
     return res.status(200).json({ adminStyle: Style });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ adminStyleError: true });
   }
 };
