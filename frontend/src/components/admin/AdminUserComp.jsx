@@ -30,12 +30,12 @@ const BoardContainer = styled.div`
 `;
 
 const BoardName = styled.div`
-  background: ${(props) => props.theme.dark};
+  background: ${props => props.theme.dark};
 
   font-size: 20px;
   padding: 10px 20px;
   span {
-    color: ${(props) => props.theme.smoke};
+    color: ${props => props.theme.smoke};
     margin-left: 10px;
   }
 `;
@@ -50,7 +50,7 @@ const Board = styled.div`
     text-align: center;
     padding: 14px 0;
     width: 100%;
-    background: ${(props) => props.theme.smoke};
+    background: ${props => props.theme.smoke};
     border-bottom: 2px solid #333;
     padding-left: 5px;
 
@@ -90,18 +90,18 @@ const Detail = styled.li`
 
 const ControlButton = styled.button`
   border: none;
-  background: ${(props) => props.theme.lightblack};
-  color: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.lightblack};
+  color: ${props => props.theme.smoke};
   cursor: pointer;
   padding: 7px 12px;
   margin: 13px 0;
   &:hover {
-    background: ${(props) => props.theme.softblack};
+    background: ${props => props.theme.softblack};
   }
 `;
 
 const StyledModal = Modal.styled`
-  background: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.smoke};
   height: 400px;
   width: 600px;
   margin: 0 auto;
@@ -158,8 +158,8 @@ const AdminUserComp = ({
       <BoardContainer>
         <BoardName>
           <FontAwesomeIcon icon={faUser} style={{ color: "#000000" }} />{" "}
-          <span>회원관리</span>
-          <span> / 총 가입자 수({totalUser}명)</span>
+          <span>회원관리&nbsp;&nbsp;/&nbsp;</span>
+          <span>총 가입자 수({totalUser}명)</span>
         </BoardName>
         <Board>
           <ul className="list-name">
@@ -169,7 +169,7 @@ const AdminUserComp = ({
             <li></li>
           </ul>
 
-          {userList.slice(offset, offset + limit).map((user) => (
+          {userList.slice(offset, offset + limit).map(user => (
             <UserInfoContainer key={user.no}>
               <UserInfo id={user.id} onClick={getUserInform}>
                 <Detail>{user.id}</Detail>

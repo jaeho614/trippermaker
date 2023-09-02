@@ -17,7 +17,7 @@ const AdminBoardWrap = styled.div`
 `;
 
 const BoardContainer = styled.div`
-  background: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.smoke};
 
   &:first-child {
     width: 35%;
@@ -30,12 +30,12 @@ const BoardContainer = styled.div`
 `;
 
 const BoardName = styled.div`
-  background: ${(props) => props.theme.dark};
+  background: ${props => props.theme.dark};
 
   font-size: 20px;
   padding: 10px 20px;
   span {
-    color: ${(props) => props.theme.smoke};
+    color: ${props => props.theme.smoke};
     margin-left: 10px;
   }
 `;
@@ -50,7 +50,7 @@ const Board = styled.div`
     text-align: center;
     padding: 14px 0;
     width: 100%;
-    background: ${(props) => props.theme.smoke};
+    background: ${props => props.theme.smoke};
     border-bottom: 2px solid #333;
     li {
       text-align: center;
@@ -119,19 +119,19 @@ const Detail = styled.li`
 const ControlButton = styled.button`
   border: none;
 
-  background: ${(props) => props.theme.lightblack};
-  color: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.lightblack};
+  color: ${props => props.theme.smoke};
   cursor: pointer;
   padding: 7px 12px;
   margin: 10px;
 
   &:hover {
-    background: ${(props) => props.theme.softblack};
+    background: ${props => props.theme.softblack};
   }
 `;
 
 const StyledModal = Modal.styled`
-  background: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.smoke};
   height: 800px;
   width: 800px;
   margin: 0 auto;
@@ -175,7 +175,7 @@ const StyledModal = Modal.styled`
     width : 85%;
     overflow:auto;
     margin-top : 20px;
-    border : 1px solid ${(props) => props.theme.lightblack};
+    border : 1px solid ${props => props.theme.lightblack};
     padding: 20px;
     line-height : 20px;
   }
@@ -208,7 +208,7 @@ const AdminBoardComp = ({
       <BoardContainer>
         <BoardName>
           <FontAwesomeIcon icon={faChartSimple} style={{ color: "#000000" }} />
-          <span>게시물 / </span>
+          <span>게시물&nbsp;&nbsp;/&nbsp;</span>
           <span>총 게시물 수({totalBoard})개</span>
         </BoardName>
         <Board>
@@ -221,7 +221,7 @@ const AdminBoardComp = ({
             <li>작성일</li>
             <li></li>
           </ul>
-          {boardList.slice(offset, offset + limit).map((board) => (
+          {boardList.slice(offset, offset + limit).map(board => (
             <BoardInfoContainer
               key={board.no}
               className={board.grade === 2 ? "notice" : null}

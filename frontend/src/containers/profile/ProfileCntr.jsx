@@ -234,19 +234,15 @@ const ProfileCntr = () => {
 
   const onGetWishDetail = (title, contentId, contentTypeId) => {
     switchModal();
-    console.log("1");
-    if (!wish) {
-      console.log("2");
-      dispatch(
-        getWishDetail({
-          title,
-          contentId,
-          contentTypeId,
-        })
-      );
-    }
+
+    dispatch(
+      getWishDetail({
+        title,
+        contentId,
+        contentTypeId,
+      })
+    );
     if (wish) {
-      console.log("3");
       dispatch(wishDetailClear());
     }
   };
@@ -286,7 +282,7 @@ const ProfileCntr = () => {
         subject,
       })
     );
-  }, [dispatch]);
+  }, [subjectRef]);
 
   const onSavedListDelete = useCallback(
     _id => {

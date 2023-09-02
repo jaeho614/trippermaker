@@ -2,38 +2,39 @@ import styled from "styled-components";
 
 const Nav = styled.nav`
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
   margin: 16px;
+  gap: 4px;
 `;
 
 const Button = styled.button`
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
   border: none;
   border-radius: 8px;
-  padding: 8px;
-  margin: 0;
-  background: black;
-  color: white;
   font-size: 1rem;
   margin-top: 20px;
+  padding: 8px;
 
   &:hover {
-    background: ${(props) => props.theme.bgcolor};
     cursor: pointer;
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.text};
     transform: translateY(-2px);
   }
 
   &[disabled] {
-    background: grey;
     cursor: revert;
+    background: ${props => props.theme.button};
     transform: revert;
   }
 
   &[aria-current] {
-    background: ${(props) => props.theme.subcolor};
-    font-weight: bold;
     cursor: revert;
+    background: ${props => props.theme.mainColor};
+    color: ${props => props.theme.text};
+    font-weight: bold;
     transform: revert;
   }
 `;

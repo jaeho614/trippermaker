@@ -1,35 +1,35 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
 
 const SearchPwdContainer = styled.div`
   display: flex;
 `;
 
 const LeftPic = styled.div`
-  width: 45%;
-  height: 100vh;
   background: url("/assets/mainslide4.jpeg");
   background-position: center;
   background-size: cover;
+  height: 100vh;
+  width: 45%;
   object-fit: cover;
 `;
 
 const SearchPwdWrraper = styled.div`
-  width: 55%;
-  height: 100vh;
-  margin: 0 auto;
-  text-align: center;
-  background: ${props => props.theme.bgcolor};
   position: relative;
+  text-align: center;
+  background: ${props => props.theme.mainColor};
+  margin: 0 auto;
+  height: 100vh;
+  width: 55%;
 
   .home {
     position: absolute;
-    left: 30px;
-    top: 20px;
     color: ${props => props.theme.white};
+    top: 20px;
+    left: 30px;
   }
 
   .logo {
@@ -41,65 +41,67 @@ const SearchPwdWrraper = styled.div`
   }
 
   .change-pwd-text {
-    margin: 24px 0;
-    font-size: 20px;
-    color: ${props => props.theme.black};
-    border-bottom: 2px solid ${props => props.theme.black};
-    padding: 6px 0;
     display: inline-block;
     text-align: center;
+    font-size: 20px;
+    color: ${props => props.theme.text};
+    border-bottom: 2px solid ${props => props.theme.border};
+    margin: 24px 0;
+    padding: 6px 0;
   }
 
   .input {
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 
     label {
-      width: 180px;
       text-align: right;
-      color: ${props => props.theme.softblack};
+      color: ${props => props.theme.text};
+      font-weight: 700;
+      width: 180px;
     }
     input {
-      border: none;
+      border: 2px solid ${props => props.theme.white};
+      margin-left: 20px;
+      padding: 17px;
       padding-left: 10px;
       padding: 17px;
       margin-left: 20px;
       width: 100%;
-      background: ${props => props.theme.white};
-      border: 2px solid ${props => props.theme.white};
     }
   }
 
   button {
-    width: 385px;
-    padding: 17px 20px;
-    background: ${props => props.theme.black};
     cursor: pointer;
-    border: none;
-    color: ${props => props.theme.white};
-    font-weight: 600;
+    background: ${props => props.theme.button};
+    color: ${props => props.theme.buttonText};
     font-size: 18px;
+    font-weight: 600;
+    border: none;
     margin: 20px 0;
+    padding: 17px 20px;
+    width: 385px;
   }
 
   button:hover {
-    background: ${props => props.theme.softblack};
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.buttonText};
   }
 `;
 
 const ChangePwdBox = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
-  width: 400px;
   margin: 0 auto;
+  width: 400px;
 `;
 
 const ErrorText = styled.p`
-  height: 20px;
   color: ${props => props.theme.red};
+  height: 20px;
 `;
 
 const SearchPwdComp = ({ onSubmit, onChange, onPwdChk }) => {

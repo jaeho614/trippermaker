@@ -71,6 +71,7 @@ const RegisterCntr = () => {
     addr1: RegisterMod.user.addr1,
     addr2: RegisterMod.user.addr2,
     zipcode: RegisterMod.user.zipcode,
+    gender: RegisterMod.user.gender,
   }));
   const chooseDomain = useRef();
   const address1 = useRef();

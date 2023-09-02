@@ -115,7 +115,7 @@ const LoginInput = styled.input`
 `;
 
 const ErrorMessage = styled.p`
-  color: ${props => props.theme.falseMsg};
+  color: ${props => props.theme.red};
   height: 20px;
 `;
 

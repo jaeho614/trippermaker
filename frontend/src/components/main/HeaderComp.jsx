@@ -1,25 +1,28 @@
-import { styled } from "styled-components";
 import { Link } from "react-router-dom";
-
 import { useState, useEffect } from "react";
-import HamMenuComp from "./HamMenuComp";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { styled } from "styled-components";
+
+import HamMenuComp from "./HamMenuComp";
 
 const HeaderContainer = styled.div`
   display: flex;
-  justify-content: space-around;
   position: fixed;
-  width: 100%;
+  align-items: center;
+  justify-content: space-around;
   left: 50%;
+  height: 6rem;
+  width: 100%;
+  z-index: 999;
   transform: translate(-50%);
   z-index: 999;
   padding: 5px;
   align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
   transition: 0.8s;
+
   &.original_header {
     background: none;
   }
@@ -30,9 +33,9 @@ const HeaderContainer = styled.div`
 
   .welecome {
     font-size: 20px;
+    font-weight: 600;
     margin-left: 40px;
     margin-bottom: 8px;
-    font-weight: 600;
   }
 
   .ham-menu {
@@ -41,8 +44,8 @@ const HeaderContainer = styled.div`
 
   @media (max-width: 1200px) {
     .welecome {
-      margin-left: 16px;
       font-size: 18px;
+      margin-left: 16px;
     }
   }
 
@@ -52,18 +55,18 @@ const HeaderContainer = styled.div`
     }
     .ham-menu {
       display: block;
-      transform: scale(2.5);
       position: absolute;
       right: 10%;
+      transform: scale(2.5);
     }
   }
 `;
 
 const Logo = styled.div`
+  text-align: center;
   font-size: 36px;
   font-weight: 600;
   font-family: "TTWanjudaedunsancheB";
-  text-align: center;
   img {
     width: 200px;
     margin-top: 20px;
@@ -82,8 +85,8 @@ const Logo = styled.div`
 
   @media (max-width: 800px) {
     img {
-      margin-left: -50%;
       font-size: 18px;
+      margin-left: -50%;
     }
   }
 `;
@@ -98,9 +101,9 @@ const Nav = styled.ul`
 `;
 
 const NavList = styled.li`
-  margin-left: 50px;
-  font-size: 18px;
   cursor: pointer;
+  font-size: 18px;
+  margin-left: 50px;
   transition: 0.5s;
   &:hover {
     transform: scale(1.1);
@@ -120,13 +123,12 @@ const NavList = styled.li`
 `;
 
 const LoginCategory = styled.span`
-  margin-left: 20px;
-  /* background: ${props => props.theme.lightblack}; */
-  padding: 5px 15px;
   border-radius: 20px;
+  margin-left: 20px;
+  padding: 5px 15px;
   .logout {
-    font-size: 16px;
     cursor: pointer;
+    font-size: 16px;
   }
   span {
     &.click {
@@ -139,8 +141,8 @@ const LoginCategory = styled.span`
     font-size: 14px;
     margin-left: 1px;
     .logout {
-      font-size: 14px;
       cursor: pointer;
+      font-size: 14px;
     }
   }
 
@@ -150,7 +152,7 @@ const LoginCategory = styled.span`
 `;
 
 const Spacer = styled.div`
-  height: 10rem;
+  height: 6rem;
 `;
 
 const HeaderComp = ({ nick, onLogout, grade, onClick }) => {

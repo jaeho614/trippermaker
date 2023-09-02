@@ -1,19 +1,19 @@
 import { styled } from "styled-components";
 
 const TitleText = styled.h1`
-  font-size: 30px;
-  margin-top: 10px;
   text-align: center;
+  font-size: 30px;
   font-weight: 700;
+  margin-top: 10px;
 `;
 
 const SubTitleText = styled.p`
-  font-size: 13px;
   text-align: center;
+  font-size: 13px;
   margin-top: 20px;
 `;
 
-const TitleComp = (props) => {
+const TitleComp = props => {
   return (
     <>
       <TitleText {...props} />
@@ -21,7 +21,7 @@ const TitleComp = (props) => {
   );
 };
 
-const SubTitleComp = (props) => {
+const SubTitleComp = props => {
   return (
     <>
       <SubTitleText {...props} />

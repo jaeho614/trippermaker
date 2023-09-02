@@ -1,30 +1,32 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+
+import styled from "styled-components";
+
 import { makeCreatedAt } from "../../lib/makeCreatedAt";
 
 const MainBoardWarraper = styled.div`
-  margin-top: 30px;
-  width: 45%;
-  height: 600px;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  margin-top: 30px;
+  height: 600px;
+  width: 45%;
 
   h2 {
     font-weight: 600;
     border-bottom: 2px solid #111;
     padding: 20px 0;
     span {
-      color: ${(props) => props.theme.red};
+      color: ${props => props.theme.red};
       font-weight: 600;
     }
   }
 
   .add-list {
     position: absolute;
+    cursor: pointer;
+    padding: 5px;
     top: 30px;
     right: 0;
-    padding: 5px;
-    cursor: pointer;
     transition: 0.3s;
 
     &:hover {
@@ -41,7 +43,7 @@ const ListContainer = styled.div`
   margin-top: 20px;
   .board-list {
     display: flex;
-    border-bottom: 1px solid ${(props) => props.theme.lightblack};
+    border-bottom: 1px solid ${props => props.theme.lightblack};
     padding: 10px 10px 20px;
     &:hover {
       opacity: 0.8;
@@ -59,9 +61,9 @@ const ListContainer = styled.div`
   }
 
   .createat {
+    color: ${props => props.theme.lightblack};
     font-size: 14px;
     margin-top: 10px;
-    color: ${(props) => props.theme.lightblack};
   }
 `;
 

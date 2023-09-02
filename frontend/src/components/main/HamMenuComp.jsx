@@ -1,18 +1,18 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
 
 const HamMenuWrap = styled.div`
-  width: 200px;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.9);
+  display: none;
   position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  height: 100%;
+  width: 200px;
   top: 0;
   right: 0;
   z-index: 9999;
-  display: none;
   &.flag {
     display: block;
   }
@@ -25,23 +25,23 @@ const LoginCategory = styled.div`
 const Nav = styled.ul`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
   background: rgba(255, 255, 255, 0.9);
+  margin-top: 20px;
 `;
 
 const NavList = styled.li`
+  cursor: pointer;
+  font-size: 18px;
   margin-top: 20px;
   padding: 10px 30px;
-  font-size: 18px;
-  cursor: pointer;
   transition: 0.5s;
   &:hover {
-    transform: scale(1.1);
     font-weight: 600;
+    transform: scale(1.1);
   }
   span {
     &.click {
-      color: ${(props) => props.theme.subcolor};
+      color: ${props => props.theme.button};
       font-weight: 600;
     }
   }
@@ -55,7 +55,7 @@ const HamMenuComp = ({
   onHamMenu,
   onClick,
 }) => {
-  const onFlag = (e) => {
+  const onFlag = e => {
     onClick(e);
     onHamMenu();
   };

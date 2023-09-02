@@ -3,9 +3,9 @@ import Modal from "styled-react-modal";
 
 const StyledModal = Modal.styled`
   background: white;
+  padding: 10px;
   height: 50%;
   width: 50%;
-  padding: 10px;
 
   div{
     display: flex;
@@ -15,31 +15,29 @@ const StyledModal = Modal.styled`
 
 const DivInModal = styled.div`
   cursor: pointer;
+  text-align: center;
   color: ${props => props.theme.red};
   margin-left: 400px;
-  background: ;
-  text-align: center;
 `;
 
 const FooterComp = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: ${props => props.theme.smoke};
-  border-top: 2px solid ${props => props.theme.lightblack};
-  text-align: center;
-  padding: 50px 0;
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  margin-top: 100px;
+  justify-content: space-around;
+  text-align: center;
+  background-color: ${props => props.theme.smoke};
+  border-top: 2px solid ${props => props.theme.border};
+  padding: 50px 0;
+  height: 100%;
+  width: 100%;
 
   .footer-menu {
     display: flex;
     justify-content: center;
     li {
-      margin-left: 20px;
-      color: ${props => props.theme.black};
       cursor: pointer;
+      color: ${props => props.theme.text};
+      margin-left: 20px;
       transition: 0.3s;
     }
     li:hover {
@@ -49,7 +47,7 @@ const FooterComp = styled.div`
   .copyright {
     margin-top: 20px;
     i {
-      color: ${props => props.theme.black};
+      color: ${props => props.theme.text};
       font-size: 18px;
     }
   }
@@ -62,30 +60,30 @@ const FooterComp = styled.div`
   }
 
   .info {
-    color: ${props => props.theme.black};
+    color: ${props => props.theme.text};
     margin-top: 20px;
     span {
-      color: ${props => props.theme.black};
+      color: ${props => props.theme.text};
       font-weight: 600;
     }
   }
 
   .tel {
-    color: ${props => props.theme.black};
-    font-weight: 600;
+    color: ${props => props.theme.text};
     font-size: 24px;
+    font-weight: 600;
     p {
-      color: ${props => props.theme.black};
+      color: ${props => props.theme.text};
       font-size: 20px;
       margin-top: 20px;
     }
   }
 
   @media (max-width: 768px) {
+    flex-direction: column;
+    margin: 0 auto;
     margin-top: 300px;
     width: 100%;
-    margin: 0 auto;
-    flex-direction: column;
     .tel {
       display: none;
     }
