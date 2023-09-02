@@ -115,7 +115,9 @@ exports.searchPwd = async (req, res) => {
     const cipher = crypto.createCipheriv(algorithm, key, iv); //복호화 알고리즘
     let encryptedSource = cipher.update(input, "utf8", "base64"); //(암호화 할 이메일, utf8, base64)
     encryptedSource += cipher.final("base64"); //복호화 알고리즘
-    return encryptedSource;
+    // encryptedSource에 "/"가 포함되는 경우  URL이 제대로된 기능을 하지 못하는 문제가 생기는데 "/"를 "_"로 대체하여 문제 해결.
+    const replacedSource = encryptedSource.replace(/\//g, "_");
+    return replacedSource;
   }
 
   try {
@@ -145,15 +147,17 @@ exports.searchPwd = async (req, res) => {
     });
 
     const encryptedEmail = encryptFunc(receiverEmail); //암호화 이메일
-    const encryptedTime = encodeURIComponent(encryptFunc(sendTime)); //암호화 이메일 발송시간,
-    //자바스크립트 encodeURIComponent() 함수를 이용해 문자열을 안전한URL 형식으로 인코딩 함.
-    //encryptFunc(sendTime)을 그냥 사용할 경우  URL에 "/"가 포함되는 경우가 생겨 페이지 이동이 제대로 안되는 문제가 발생함.
-
+    const encryptedTime = encryptFunc(sendTime); //암호화 이메일 발송시간,
+    const encodedTime = encodeURIComponent(encryptedTime);
     let mailOptions = {
       from: EMAIL, //발신자
       to: receiverEmail, //수신자
       subject: "[Tripper Maker]비밀번호 변경 메일",
-      html: `http://localhost:3000/auth/searchPwd/${encryptedEmail}/${encryptedTime} 해당 링크를 클릭하여 비밀번호를 변경하세요.`,
+      html: `<a href='http://localhost:3000/auth/searchPwd/${encryptedEmail}/${encodedTime}'> 해당 링크를 클릭하여 비밀번호를 변경하세요.</a>`,
+      headers: {
+        "Content-Type": "text/html",
+        "Content-Disposition": "inline",
+      },
     };
 
     transport.sendMail(mailOptions, (error, info) => {
