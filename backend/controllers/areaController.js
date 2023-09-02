@@ -7,7 +7,6 @@ exports.areaList = async (req, res) => {
   const { areaCode } = req.params;
   const { pageNo, contentTypeId, numOfRows } = req.query;
   try {
-    console.log("KNTO_TOUR_KEY ====>", KNTO_TOUR_KEY);
     const originAreas = await axios.get(
       `https://apis.data.go.kr/B551011/KorService1/areaBasedList1?serviceKey=${KNTO_TOUR_KEY}&numOfRows=${numOfRows}&pageNo=${pageNo}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=A&areaCode=${areaCode}&contentTypeId=${contentTypeId}`
     );
@@ -45,7 +44,6 @@ exports.areaSearch = async (req, res) => {
     if (typeof areaCode !== `undefined`) {
       searchUrl = searchUrl + `&areaCode=${areaCode}`;
     }
-    console.log(`searchUrl : ${searchUrl}`);
     const originalData = await axios.get(searchUrl);
     const areas = originalData.data;
     return res.json({ areas, searchType: "API" });

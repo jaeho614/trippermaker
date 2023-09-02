@@ -31,7 +31,6 @@ const SubIdInput = styled.input`
   height: 27px;
   margin-top: 10px;
   padding: 7px 10px;
-  /* border-radius: 10px; */
   border: 1px solid ${(props) => props.theme.lightblack};
   background: ${(props) => props.theme.white};
   color: ${(props) => props.theme.softblack};
@@ -58,7 +57,6 @@ const BoardContainer = styled.div`
 
   &:first-child {
     width: 35%;
-    /* height: 100%; */
     margin-left: 1%;
   }
   &:last-child {

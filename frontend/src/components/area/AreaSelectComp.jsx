@@ -27,9 +27,7 @@ const ListContainer = styled.div`
   flex-wrap: wrap;
   background: ${(props) => props.theme.white};
   overflow: auto;
-  /* display: none; */
   .theme {
-    /* position: fixed; */
     background: ${(props) => props.theme.white};
     margin-top: -2px;
   }

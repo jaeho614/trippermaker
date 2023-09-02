@@ -11,7 +11,7 @@ const LiBlock = styled.li`
   }
 `;
 const PageNavComp4 = ({ totalCount, pageNo }) => {
-  console.log(`pageNavComp4 ==> totalCount : ${totalCount} / pageNo : ${pageNo}`);
+
   const res = parseInt(Math.ceil(totalCount / 10));
   const page = pageNo || 1;
   let pageNavEndNum = (Math.ceil(page / 10) * 10);
@@ -23,15 +23,12 @@ const PageNavComp4 = ({ totalCount, pageNo }) => {
   const dispatch = useDispatch();
 
   const onClickPage = (e) => {
-    console.log('page : ', e.target)
+
     const page = e.target.value || e.target.dataset.page;
-    console.log('page : ', page);
+
     dispatch(showPageNo(page));
   }
-  console.log('totalCount : ', totalCount);
-  console.log('pageNo : ', pageNo);
-  console.log('res : ', res);
-  console.log('pageNavEndNum : ', pageNavEndNum);
+
   const resArray = Array.from({ length: (pageNavEndNum - pageNavStartNum) + 1 }, (_, index) => index + pageNavStartNum);
   return (
     <div>

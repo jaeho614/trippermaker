@@ -21,10 +21,7 @@ const ReplyReadCntr = () => {
     bno: ReadMod.post?.no
   }));
 
-  // console.log("replyReadcntr ====> originpost :", profile.img);
-
   useEffect(() => {
-    // console.log("ddddddddddddddddddddddddddddddddddddddddddddddddd");
     dispatch(
       replyReadPost({
         bno: readNo,
@@ -36,9 +33,7 @@ const ReplyReadCntr = () => {
 
   const onEdit = (e) => {
     const no = e.target.dataset.no;
-    console.log("no : ", no);
     const content = e.target.dataset.content;
-    console.log("content : ", content);
     Swal.fire({
       title: "댓글 수정",
       input: "text",
@@ -50,13 +45,9 @@ const ReplyReadCntr = () => {
         dispatch(replyupdatePost({ no, content: input }));
       },
     });
-    // dispatch(replysetOriginPost(reply));
   };
 
   const onRemove = async (e) => {
-    console.log("onRemove reply -> ", e.target);
-    console.log("onRemove reply -> ", e.target.dataset.no);
-    console.log('onRemove reply -> ', bno);
     try {
       const no = e.target.dataset.no;
       dispatch(replyDeletePost({ bno, no }));

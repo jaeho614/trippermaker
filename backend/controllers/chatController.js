@@ -1,7 +1,7 @@
 const Room = require("../models/mongoDB/room");
 const Chat = require("../models/mongoDB/chat");
 const Participate = require("../models/mongoDB/participate");
-const Temporary =require('../models/mongoDB/temporary');
+const Temporary = require('../models/mongoDB/temporary');
 const { user } = require("../models/mysql");
 const Joi = require("joi");
 const { appendFile } = require("fs");
@@ -61,7 +61,7 @@ exports.enterRoom = async (req, res) => {
   }
 };
 
-exports.removeRoom = async (req, res, next) => {};
+exports.removeRoom = async (req, res, next) => { };
 
 exports.insertChat = async (req, res) => {
   try {
@@ -92,19 +92,17 @@ exports.listChats = async (req, res) => {
   }
 };
 
-exports.sendGif = async (req, res, next) => {};
+exports.sendGif = async (req, res, next) => { };
 
-exports.temporary = async(req,res)=>{
-  const {authNum}= req.body;
-  console.log(authNum);
+exports.temporary = async (req, res) => {
+  const { authNum } = req.body;
   try {
     const now = new Date();
-    console.log('시간 :', now);
     const testTemporary = await Temporary.create({
       authNum,
-      expire:now // 데이터 들어간 시간 
+      expire: now // 데이터 들어간 시간 
     });
-    return res.json(testTemporary);    
+    return res.json(testTemporary);
   } catch (error) {
     return res.status(400).json(error);
   }

@@ -79,7 +79,6 @@ exports.nickChk = async (req, res) => {
 
 exports.withdraw = async (req, res) => {
 	const { id } = req.params;
-	console.log(id);
 	try {
 		const exUser = await user.findOne({
 			where: {
@@ -141,7 +140,6 @@ exports.deleteBoard = async (req, res) => {
 
 exports.getReplyList = async (req, res) => {
 	const { uno } = req.params;
-	console.log('getReplyList ==>uno : ', uno)
 	try {
 		const replyList = await reply.findAll({
 			where: {
@@ -152,9 +150,7 @@ exports.getReplyList = async (req, res) => {
 				as: "uno_user"
 			}]
 		});
-
 		const totalReply = replyList.length;
-		console.log('totalReply : ', totalReply);
 		if (replyList) {
 			return res.status(200).json({ replyList, totalReply });
 		}

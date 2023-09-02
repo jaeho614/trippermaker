@@ -19,7 +19,7 @@ exports.isLike = async (req, res) => {
         } else {
           isLike = false;
         }
-        return res.json(isLile);
+        return res.json(isLike);
       })
       .catch(err => {
         return res.json(err);

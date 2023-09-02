@@ -33,9 +33,7 @@ const PageNavComp3 = ({ totalCount, pageNo, numOfRows }) => {
   const dispatch = useDispatch();
 
   const onClickPage = (e) => {
-    console.log("page : ", e.target);
     const page = e.target.value || e.target.dataset.page;
-    console.log("page : ", page);
     dispatch(selectPageTrain(page));
     dispatch(selectPageBus(page));
   };

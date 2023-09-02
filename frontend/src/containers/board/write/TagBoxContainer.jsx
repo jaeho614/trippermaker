@@ -7,7 +7,6 @@ const TagBoxContainer = () => {
   const { tags } = useSelector(({ WriteMod }) => ({
     tags: WriteMod.tags,
   }));
-  console.log(tags, "11111");
   const onChangeTags = (nextTags) => {
     dispatch(
       changeField({

@@ -113,7 +113,6 @@ const TrafficListCntr = () => {
     const startDate = resultItem.depPlandTime ? resultItem.depPlandTime : resultItem.depplandtime;
     const endDate = resultItem.arrPlandTime ? resultItem.arrPlandTime : resultItem.arrplandtime;
     const seats = JSON.stringify(selectedSeat);
-    // console.log('되냥!!!!!!')
     dispatch(createTicket({ category, uno, type, price, startPlace, startDate, endPlace, endDate, seats }))
     onCancel();
   }
@@ -122,10 +121,6 @@ const TrafficListCntr = () => {
     setSelectedCount(1);
     setSelectedSeat([]);
   }
-
-  // const ticketData = () => {
-
-  // }
 
   useEffect(() => {
     if (startStation && endStation && (dateTrain !== '' && dateTrain)) {

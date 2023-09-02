@@ -84,7 +84,6 @@ const ReadComp = ({
                   icon={faHeart}
                   data-id={post?.id}
                   data-no={post?.no}
-                  // data-cnt={likeCount === 0 ? parseInt(post?.like) : likeCount}
                 />
               ) : (
                 <FontAwesomeIcon
@@ -93,12 +92,8 @@ const ReadComp = ({
                   icon={faHeartBroken}
                   data-id={post?.id}
                   data-no={post?.no}
-                  // data-cnt={likeCount === 0 ? parseInt(post?.like) : likeCount}
                 />
               )}
-              {/* <FontAwesomeIcon className="icon" onClick={likeButton} icon={faHeartBroken} data-id={post.id} data-no={post.no} data-cnt={likeCount === 0 ? parseInt(post.like) : likeCount} /> */}
-              {/* {likeCount === 0 ? parseInt(post?.like) : likeCount} */}
-              {/* <FontAwesomeIcon icon="fa-solid fa-heart" /> */}
             </p>
             <p>
               <FontAwesomeIcon
@@ -114,7 +109,6 @@ const ReadComp = ({
           <div dangerouslySetInnerHTML={{ __html: post?.content }} />
         </Content>
         {user && post?.id === user?.id && actionButtons}
-        {/* Uncaught Error: Objects are not valid as a React child (found: object with keys {actionButtons}). If you meant to render a collection of children, use an array instead. */}
       </Responsive>
     </>
   );

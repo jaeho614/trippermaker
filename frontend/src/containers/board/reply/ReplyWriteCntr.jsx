@@ -16,7 +16,6 @@ const ReplyWriteCntr = () => {
     reply: ReplyWriteMod.reply,
   }));
 
-  // console.log(content);
   const onChangeField = (e) => {
     const { value, name } = e.target;
     dispatch(
@@ -31,7 +30,6 @@ const ReplyWriteCntr = () => {
     e.preventDefault();
     if (user) {
       const uno = user.no;
-      console.log('user 댓글 체크', user.no)
       dispatch(
         replywritePost({
           bno: readNo,

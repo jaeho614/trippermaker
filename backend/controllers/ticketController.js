@@ -24,10 +24,8 @@ exports.findVacancy = async (req, res) => {
 }
 
 exports.createTicket = async (req, res) => {
-  // console.log('ticket에 들어왔나.')
   try {
     const { category, uno, type, price, startPlace, startDate, endPlace, endDate, seats } = req.body;
-    // console.log(`${category} / ${uno} / ${type} / ${price} / ${startPlace} / ${startDate} / ${endPlace} / ${endDate} / ${seats}`)
     const formatStartDate = dateFormatting(startDate.toString());
     const formatEndDate = dateFormatting(endDate.toString());
     const jsonSeats = JSON.parse(seats);
@@ -53,8 +51,6 @@ exports.createTicket = async (req, res) => {
 }
 
 const dateFormatting = (originDate) => {
-  console.log('originDate : ', typeof originDate);
-
   const year = parseInt(originDate.slice(0, 4));
   const month = parseInt(originDate.slice(4, 6)) - 1;
   const day = parseInt(originDate.slice(6, 8));

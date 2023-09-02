@@ -4,7 +4,6 @@ import PageNavComp from "../common/PageNavComp";
 import LazyLoad from "react-lazyload";
 
 const AreaItemBlock = styled.div`
-  /* background: #ff3f; */
   margin: 0 auto;
   padding: 0 0 50px 0;
   width: 100%;
@@ -58,7 +57,7 @@ const AreaItemBlock = styled.div`
 const StyledP = styled.p`
   cursor: pointer;
 
-  &: hover {
+  &:hover {
     font-weight: 700;
   }
 `;
@@ -74,8 +73,8 @@ const AreaItem = ({ area, onClick, addWish }) => {
                 area.firstimage !== ""
                   ? area.firstimage
                   : area.firstimge2
-                  ? area.firstimge2
-                  : "/assets/triplogo.png"
+                    ? area.firstimge2
+                    : "/assets/triplogo.png"
               }
               alt="이미지없음"
               loading="lazy"

@@ -6,7 +6,5 @@ const app = express();
 const search = express.Router();
 
 search.get("/:keyword", listTheme, areaSearch);
-// search.get("/:keyword", listTheme);
-// search.get('/api', areaSearch)
 
 module.exports = search;

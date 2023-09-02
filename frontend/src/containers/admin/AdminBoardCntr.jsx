@@ -11,9 +11,6 @@ import {
 } from "../../modules/admin/AdminBoardMod";
 import Swal from "sweetalert2";
 
-// import ReactQuill from 'react-quill';
-// import 'react-quill/dist/quill.snow.css';
-
 const AdminBoardCnrt = () => {
   const dispatch = useDispatch();
   const { boardList, totalBoard, board, deleteError, user } = useSelector(
