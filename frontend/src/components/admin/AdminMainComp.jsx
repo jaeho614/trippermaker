@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,9 +7,7 @@ import {
   faList,
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import { Outlet } from "react-router-dom";
-
-import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const AdminContainer = styled.div`
   display: flex;
@@ -117,18 +116,6 @@ const AdminMainComp = () => {
                 <FontAwesomeIcon icon={faList} style={{ color: "#fff" }} />
                 <span>스타일관리</span>
               </Link>
-            </li>
-            <li>
-              {/* <Link to={"/admin/theme"}> */}
-              <FontAwesomeIcon icon={faList} style={{ color: "#fff" }} />
-              <span>예약관리</span>
-              {/* </Link> */}
-            </li>
-            <li>
-              {/* <Link to={"/admin/theme"}> */}
-              <FontAwesomeIcon icon={faList} style={{ color: "#fff" }} />
-              <span>문의관리</span>
-              {/* </Link> */}
             </li>
           </AdminNav>
           <BackButton>

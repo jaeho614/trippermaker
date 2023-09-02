@@ -25,12 +25,10 @@ const ListContainer = styled.div`
   left: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   flex-wrap: wrap;
-  background: ${(props) => props.theme.white};
+  background: ${props => props.theme.white};
   overflow: auto;
-  /* display: none; */
   .theme {
-    /* position: fixed; */
-    background: ${(props) => props.theme.white};
+    background: ${props => props.theme.white};
     margin-top: -2px;
   }
 
@@ -48,7 +46,7 @@ const ThemeList = styled.div`
   margin-left: 65px;
 `;
 const ThemeListItem = styled.button`
-  background: ${(props) => props.theme.bgcolor};
+  background: ${props => props.theme.bgcolor};
   padding: 10px 20px;
   margin-left: 14px;
   margin-top: 14px;
@@ -58,13 +56,13 @@ const ThemeListItem = styled.button`
   transition: 0.3s;
   border: none;
   &:hover {
-    background: ${(props) => props.theme.subcolor};
-    color: ${(props) => props.theme.white};
+    background: ${props => props.theme.subcolor};
+    color: ${props => props.theme.white};
   }
 
   &.selectItem {
     background-color: steelblue;
-    color: ${(props) => props.theme.smoke};
+    color: ${props => props.theme.smoke};
     font-weight: 600;
   }
 `;
@@ -117,7 +115,7 @@ const AreaSelectComp = ({
         <ListContainer>
           <ThemeList>
             <div className="theme">
-              {contentTypes.map((type) => (
+              {contentTypes.map(type => (
                 <SelectType
                   type={type}
                   key={type.code}

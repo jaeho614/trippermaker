@@ -21,7 +21,7 @@ const StyledTextarea = styled.textarea`
 
 const DivInModal = styled.div`
   cursor: pointer;
-  color: ${(props) => props.theme.red};
+  color: ${props => props.theme.red};
   margin-left: 400px;
   background: none;
   text-align: center;
@@ -31,14 +31,13 @@ const SubIdInput = styled.input`
   height: 27px;
   margin-top: 10px;
   padding: 7px 10px;
-  /* border-radius: 10px; */
-  border: 1px solid ${(props) => props.theme.lightblack};
-  background: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.softblack};
+  border: 1px solid ${props => props.theme.lightblack};
+  background: ${props => props.theme.white};
+  color: ${props => props.theme.softblack};
   margin-right: 5px;
   width: 200px;
 
-  ${(props) =>
+  ${props =>
     props.disabled &&
     css`
       background: gray;
@@ -54,11 +53,10 @@ const AdminBoardWrap = styled.div`
 `;
 
 const BoardContainer = styled.div`
-  background: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.smoke};
 
   &:first-child {
     width: 35%;
-    /* height: 100%; */
     margin-left: 1%;
   }
   &:last-child {
@@ -68,12 +66,12 @@ const BoardContainer = styled.div`
 `;
 
 const BoardName = styled.div`
-  background: ${(props) => props.theme.dark};
+  background: ${props => props.theme.dark};
 
   font-size: 20px;
   padding: 10px 20px;
   span {
-    color: ${(props) => props.theme.smoke};
+    color: ${props => props.theme.smoke};
     margin-left: 10px;
   }
 `;
@@ -87,14 +85,14 @@ const BoardTag = styled.div`
 
 const Button = styled.button`
   border: none;
-  background: ${(props) => props.theme.lightblack};
-  color: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.lightblack};
+  color: ${props => props.theme.smoke};
   cursor: pointer;
   padding: 7px 12px;
   margin: 10px;
 
   &:hover {
-    background: ${(props) => props.theme.softblack};
+    background: ${props => props.theme.softblack};
   }
 `;
 

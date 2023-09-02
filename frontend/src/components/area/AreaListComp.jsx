@@ -4,7 +4,6 @@ import PageNavComp from "../common/PageNavComp";
 import LazyLoad from "react-lazyload";
 
 const AreaItemBlock = styled.div`
-  /* background: #ff3f; */
   margin: 0 auto;
   padding: 0 0 50px 0;
   width: 100%;
@@ -38,18 +37,18 @@ const AreaItemBlock = styled.div`
 
     .add-btn {
       padding: 7px 9px;
-      background: ${(props) => props.theme.lightblack};
+      background: ${props => props.theme.lightblack};
       width: 50px;
       text-align: center;
       margin-top: 40px;
-      color: ${(props) => props.theme.white};
+      color: ${props => props.theme.white};
       border-radius: 15px;
       margin-left: 320px;
       cursor: pointer;
       transition: 0.3s;
 
       &:hover {
-        background: ${(props) => props.theme.subcolor};
+        background: ${props => props.theme.subcolor};
       }
     }
   }
@@ -58,7 +57,7 @@ const AreaItemBlock = styled.div`
 const StyledP = styled.p`
   cursor: pointer;
 
-  &: hover {
+  &:hover {
     font-weight: 700;
   }
 `;
@@ -121,7 +120,7 @@ const AreaListComp = ({ areas, error, onClick, addWish, loading }) => {
       {!loading &&
         areas &&
         target &&
-        target.map((area) => (
+        target.map(area => (
           <AreaItem
             area={area}
             onClick={onClick}

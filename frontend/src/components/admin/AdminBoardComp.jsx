@@ -20,8 +20,6 @@ const BoardContainer = styled.div`
   background: ${props => props.theme.smoke};
 
   &:first-child {
-    width: 35%;
-    /* height: 100%; */
     margin-left: 1%;
   }
   &:last-child {

@@ -1,6 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeField, replywritePost, initialize } from "../../../modules/board/ReplyWriteMod";
+import {
+  changeField,
+  replywritePost,
+  initialize,
+} from "../../../modules/board/ReplyWriteMod";
 import { useNavigate, useParams } from "react-router-dom";
 import ReplyWriteComp from "../../../components/board/reply/ReplyWriteComp";
 import Swal from "sweetalert2";
@@ -10,14 +14,15 @@ const ReplyWriteCntr = () => {
   const dispatch = useDispatch();
   const { readNo } = useParams();
   const emptyReply = useRef();
-  const { content, reply, user, originreplyId } = useSelector(({ UserMod, ReplyWriteMod }) => ({
-    user: UserMod?.user,
-    content: ReplyWriteMod.content,
-    reply: ReplyWriteMod.reply,
-  }));
+  const { content, reply, user, originreplyId } = useSelector(
+    ({ UserMod, ReplyWriteMod }) => ({
+      user: UserMod?.user,
+      content: ReplyWriteMod.content,
+      reply: ReplyWriteMod.reply,
+    })
+  );
 
-  // console.log(content);
-  const onChangeField = (e) => {
+  const onChangeField = e => {
     const { value, name } = e.target;
     dispatch(
       changeField({
@@ -27,11 +32,10 @@ const ReplyWriteCntr = () => {
     );
   };
 
-  const onPublish = (e) => {
+  const onPublish = e => {
     e.preventDefault();
     if (user) {
       const uno = user.no;
-      console.log('user 댓글 체크', user.no)
       dispatch(
         replywritePost({
           bno: readNo,
@@ -43,18 +47,18 @@ const ReplyWriteCntr = () => {
       Swal.fire({
         text: "로그인해주세요",
         showConfirmButton: true,
-        confirmButtonText: '확인',
+        confirmButtonText: "확인",
         showCancelButton: true,
-        cancelButtonText: "취소"
+        cancelButtonText: "취소",
       })
-        .then((res) => {
+        .then(res => {
           if (res.isConfirmed) {
             navigate("/auth/login");
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err);
-        })
+        });
     }
   };
 
@@ -70,7 +74,13 @@ const ReplyWriteCntr = () => {
 
   return (
     <>
-      <ReplyWriteComp onReset={onReset} onPublish={onPublish} onChangeField={onChangeField} emptyReply={emptyReply} isEdit={!!originreplyId} />
+      <ReplyWriteComp
+        onReset={onReset}
+        onPublish={onPublish}
+        onChangeField={onChangeField}
+        emptyReply={emptyReply}
+        isEdit={!!originreplyId}
+      />
     </>
   );
 };

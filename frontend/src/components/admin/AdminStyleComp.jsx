@@ -1,4 +1,5 @@
 import { css, styled } from "styled-components";
+
 import ButtonComp from "../../components/common/ButtonComp";
 import PaginationComp from "../common/PaginationComp";
 
@@ -10,11 +11,10 @@ const AdminBoardWrap = styled.div`
 `;
 
 const BoardContainer = styled.div`
-  background: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.smoke};
 
   &:first-child {
     width: 35%;
-    /* height: 100%; */
     margin-left: 1%;
   }
   &:last-child {
@@ -24,12 +24,12 @@ const BoardContainer = styled.div`
 `;
 
 const BoardName = styled.div`
-  background: ${(props) => props.theme.dark};
+  background: ${props => props.theme.dark};
 
   font-size: 20px;
   padding: 10px 20px;
   span {
-    color: ${(props) => props.theme.smoke};
+    color: ${props => props.theme.smoke};
     margin-left: 10px;
   }
 `;
@@ -47,14 +47,14 @@ const ButtonBox = styled.div`
 
 const Button = styled.button`
   border: none;
-  background: ${(props) => props.theme.lightblack};
-  color: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.lightblack};
+  color: ${props => props.theme.smoke};
   cursor: pointer;
   padding: 7px 12px;
   margin: 10px;
 
   &:hover {
-    background: ${(props) => props.theme.softblack};
+    background: ${props => props.theme.softblack};
   }
 `;
 
@@ -79,7 +79,7 @@ const Label = styled.label`
 const TestBox = styled.div`
   width: 250px;
   height: 250px;
-  background: ${(props) => props.theme.bgcolor};
+  background: ${props => props.theme.bgcolor};
 `;
 
 const AdminStyleComp = ({

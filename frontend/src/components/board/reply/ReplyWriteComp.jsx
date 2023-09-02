@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-// import ReplyWriteActionButtonComp from "./ReplyWriteActionButtonComp";
 import Button from "../../common/ButtonComp";
 
 const ReplyWrapper = styled.div`
@@ -35,15 +34,14 @@ const ReplyWriteComp = ({ onReset, onPublish, onChangeField, emptyReply }) => {
       <ReplyWrapper>
         <p>댓글</p>
         <div>
-          <input ref={emptyReply} name="content" placeholder="reply write comeon" onChange={onChangeField} />
+          <input
+            ref={emptyReply}
+            name="content"
+            placeholder="reply write comeon"
+            onChange={onChangeField}
+          />
           <ReplyButton onClick={onPublish}>등록</ReplyButton>
         </div>
-
-        {/* {post.map((item) => (
-          <div key={item.index}>
-            {item.id} " : " {item.content}
-          </div>
-        ))} */}
       </ReplyWrapper>
     </>
   );

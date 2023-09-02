@@ -9,7 +9,7 @@ const MainBoardListContainer = () => {
   const dispatch = useDispatch();
 
   const { posts, user, error } = useSelector(({ MainMod, UserMod }) => ({
-    posts: MainMod.posts,
+    posts: MainMod?.posts,
     error: MainMod.error,
     user: UserMod.user,
   }));

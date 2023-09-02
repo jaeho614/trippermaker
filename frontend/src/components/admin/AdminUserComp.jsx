@@ -17,7 +17,6 @@ const AdminUserWrap = styled.div`
 
 const BoardContainer = styled.div`
   background: ${props => props.theme.smoke};
-  /* width: 100%; */
   margin-right: 10px;
   &:first-child {
     width: 98%;
@@ -70,8 +69,6 @@ const UserInfo = styled.ul`
   display: flex;
   justify-content: space-around;
   width: 100%;
-  /* background: ${props => props.theme.smoke}; */
-  // border-bottom: 1px solid ${props => props.theme.lightblack};
   cursor: pointer;
   line-height: 60px;
   padding-left: 10px;

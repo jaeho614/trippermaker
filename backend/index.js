@@ -7,7 +7,6 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const { sequelize } = require("./models/mysql");
 dotenv.config();
-// const { jwtMiddleware } = require("./middleware/authMiddleware");
 const bodyParser = require("body-parser");
 const connect = require("./models/mongoDB");
 const multer = require("multer");
@@ -27,17 +26,15 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(cookieParser());
-// app.use(jwtMiddleware);
 
-const { PORT, MONGO_URI } = process.env;
+const { PORT, MONGO_URL } = process.env;
 
 console.log("port", PORT);
 
 // mongoDB 연결
 mongoose
-  .connect(MONGO_URI) // mongoDB 6버전 이상부터
+  .connect(MONGO_URL) // mongoDB 6버전 이상부터
   .then(() => {
     console.log("Connected to MongoDB");
   })

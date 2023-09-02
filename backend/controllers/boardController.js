@@ -1,9 +1,8 @@
 const { Sequelize } = require("sequelize");
 const { board, like, reply, user } = require("../models/mysql");
 const sanitizeHtml = require("sanitize-html");
-// const { sql } = require('@sequelize/core');
-// const Sequelize = require('sequelize');
-const removeHtml = (body) => {
+
+const removeHtml = body => {
   const filtered = sanitizeHtml(body, {
     allowedTags: [],
   });
@@ -91,14 +90,13 @@ const sanitizeOption = {
 };
 
 exports.boardListPage = async (req, res, next) => {
-
   try {
     const boards = await board.findAll({
-      order: [['no', 'DESC']],
+      order: [["no", "DESC"]],
       where: {
         done: 1,
-        grade: 1
-      }
+        grade: 1,
+      },
     });
     return res.json(boards);
   } catch (error) {
@@ -115,7 +113,8 @@ exports.boardDetailPage = async (req, res) => {
       },
     });
     if (req.cookies["f" + no] == undefined) {
-      const addr = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+      const addr =
+        req.headers["x-forwarded-for"] || req.connection.remoteAddress;
       res.cookie("f" + no, addr, {
         maxAge: 30000,
       });
@@ -133,10 +132,12 @@ exports.boardDetailPage = async (req, res) => {
 
     const detailPage = await board.findOne({
       where: { no },
-      include: [{
-        model: like,
-        as: 'likes'
-      }]
+      include: [
+        {
+          model: like,
+          as: "likes",
+        },
+      ],
     });
 
     return res.json(detailPage);
@@ -146,7 +147,6 @@ exports.boardDetailPage = async (req, res) => {
 };
 
 exports.boardAdd = async (req, res) => {
-
   try {
     const { no, img, id, title, content, like, cnt } = req.body;
 
@@ -249,11 +249,13 @@ exports.replyRead = async (req, res) => {
   try {
     const replys = await reply.findAll({
       where: { bno },
-      include: [{
-        model: user,
-        as: 'uno_user',
-        required: false
-      }]
+      include: [
+        {
+          model: user,
+          as: "uno_user",
+          required: false,
+        },
+      ],
     });
 
     return res.json(replys);
@@ -277,7 +279,7 @@ exports.replyModify = async (req, res, next) => {
       }
     );
 
-    return res.json({ reply: updateReply })
+    return res.json({ reply: updateReply });
   } catch (error) {
     return res.json(error);
   }
@@ -292,8 +294,8 @@ exports.replyRemove = async (req, res, next) => {
     });
 
     const replys = await reply.findAll({
-      where: { bno }
-    })
+      where: { bno },
+    });
 
     return res.json(replys);
   } catch (error) {
@@ -309,14 +311,15 @@ exports.isLike = async (req, res) => {
   try {
     const findLike = await like.findOne({
       where: {
-        id, bno
-      }
+        id,
+        bno,
+      },
     });
 
     if (!findLike || findLike === null) {
       await like.create({
         bno,
-        id
+        id,
       });
 
       return res.status(200).json({ myLike: true });
@@ -329,7 +332,7 @@ exports.isLike = async (req, res) => {
     console.error(error);
     return res.status(400).json(error);
   }
-}
+};
 
 exports.getLike = async (req, res) => {
   const { bno, id } = req.params;
@@ -338,8 +341,9 @@ exports.getLike = async (req, res) => {
   try {
     const Like = await like.findOne({
       where: {
-        id, bno
-      }
+        id,
+        bno,
+      },
     });
 
     if (Like) {
@@ -352,19 +356,19 @@ exports.getLike = async (req, res) => {
     console.error(e);
     return res.status(400).json({ myLikeError: true });
   }
-}
+};
 
 exports.headerListNotices = async (req, res) => {
   try {
     const notices = await board.findAll({
       where: {
         done: 1,
-        grade: 2
-      }
+        grade: 2,
+      },
     });
     return res.json({ notices });
   } catch (error) {
     console.error(error);
     return res.status(400).json(error);
   }
-}
+};
