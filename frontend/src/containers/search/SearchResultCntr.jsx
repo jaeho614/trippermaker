@@ -18,7 +18,6 @@ const SearchResultCntr = () => {
       mapx: e.target.dataset.mapx,
       mapy: e.target.dataset.mapy
     });
-    console.log('mapData : ', mapData)
   };
 
   const addWish = (e) => {
@@ -88,7 +87,6 @@ const SearchResultCntr = () => {
   }, [dispatch, areas, searchType])
 
   if (!areas) {
-    console.log('내용 없음');
     return <div></div>;
   }
 

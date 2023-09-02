@@ -221,7 +221,6 @@ exports.doneNotice = async (req, res) => {
 	try {
 		const { no } = req.body;
 		const notice = await board.update({ done: 0 }, { where: { no } });
-		console.log('성공!!')
 		return res.json({ board: notice });
 	} catch (error) {
 		console.error(error);
@@ -256,14 +255,14 @@ exports.changeInform = async (req, res) => {
 	const newAdminId = `testAdmin@${businessName}.com`;
 
 	try {
-		await user.update({id: newAdminId, nick , phone, addr1, addr2 }, { where: { id } });
+		await user.update({ id: newAdminId, nick, phone, addr1, addr2 }, { where: { id } });
 		const updatedAdmin = await user.findOne({ where: { id: newAdminId } });
 
 		//토큰 재설정 안해주면 정보 수정후 localStorage 및 쿠키에는 상호 변경전 아이디의 정보가 들어가있음
-		const token = generateToken(newAdminId, updatedAdmin.nick,updatedAdmin.gender, updatedAdmin.grade, updatedAdmin.style, updatedAdmin.no);
+		const token = generateToken(newAdminId, updatedAdmin.nick, updatedAdmin.gender, updatedAdmin.grade, updatedAdmin.style, updatedAdmin.no);
 		res.cookie("access_token", token, {
-		maxAge: 1000 * 60 * 60 * 24 * 7,
-		httpOnly: true,
+			maxAge: 1000 * 60 * 60 * 24 * 7,
+			httpOnly: true,
 		});
 
 		if (updatedAdmin) {
@@ -352,13 +351,13 @@ exports.getStyle = async (req, res) => {
 	const { id } = req.params;
 
 	try {
-		const admin = await user.findOne({raw:true, where: { id  }});
+		const admin = await user.findOne({ raw: true, where: { id } });
 		const adminStyle = admin.style;
 
-		return res.status(200).json({ adminStyle });	
+		return res.status(200).json({ adminStyle });
 	} catch (e) {
 		console.error(e);
-		return res.status(400).json({amdinStyleError: true})
+		return res.status(400).json({ amdinStyleError: true })
 	}
 }
 
@@ -373,6 +372,6 @@ exports.changeStyle = async (req, res) => {
 		return res.status(200).json({ adminStyle: Style });
 	} catch (e) {
 		console.error(e);
-		return res.status(400).json({adminStyleError: true})
+		return res.status(400).json({ adminStyleError: true })
 	}
 }

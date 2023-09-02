@@ -62,10 +62,8 @@ const SearchPwdWrraper = styled.div`
     }
     input {
       border: none;
-      /* border-bottom: 1px solid black; */
       padding-left: 10px;
       padding: 17px;
-      /* border-radius: 40px; */
       margin-left: 20px;
       width: 100%;
       background: ${props => props.theme.white};

@@ -8,8 +8,6 @@ const KoreaMapContainer = styled.div`
   svg {
     position: absolute;
     right: 100px;
-    /* display: block; */
-    /* width: 500px; */
   }
 `;
 

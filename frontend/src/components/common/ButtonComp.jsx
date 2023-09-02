@@ -32,16 +32,6 @@ const StyledButton = styled.button`
 `;
 
 const Button = (props) => {
-  // const navigate = useNavigate();
-  // const onClick = (e) => {
-  //   if (to) {
-  //     navigate(to);
-  //   }
-  //   if (rest.onClick) {
-  //     rest.onClick(e);
-  //   }
-  // };
-
   return props.to ? <ButtonLink {...props} /> : <StyledButton {...props} />;
 };
 

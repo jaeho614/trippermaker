@@ -115,16 +115,6 @@ exports.phoneChk = async (req, res) => {
 
       console.log(code, "가 발급되었습니다");
 
-      // await client.messages
-      //   .create({
-      //     body: `TRIPPER MAKER 인증번호는 ${code}입니다.`,
-      //     from: fromNum,
-      //     to: `+82${substrPhone}`,
-      //   }, function (err, message) {
-      //     if (err) console.log(err);
-      //     else console.log(message.sid);
-      //   });
-
       return res
         .status(200)
         .json({
@@ -144,17 +134,8 @@ exports.phoneChk = async (req, res) => {
           expire: Date.now(),
         }
       );
-      console.log(`${code}가 재발급되었씁니다.`);
 
-      // await client.messages
-      //   .create({
-      //     body: `TRIPPER MAKER 인증번호는 ${code}입니다.`,
-      //     from: fromNum,
-      //     to: `+82${substrPhone}`,
-      //   }, function (err, message) {
-      //     if (err) console.log(err);
-      //     else console.log(message.sid);
-      //   });
+      console.log(`${code}가 재발급되었습니다.`);
 
       return res
         .status(200)
@@ -186,7 +167,6 @@ exports.authNumChk = async (req, res) => {
   function calcExpire(time) {
     const valid = time - Date.now();
     if (valid > 0) {
-      console.log("valid : ", valid);
       return false;
     }
     return true;

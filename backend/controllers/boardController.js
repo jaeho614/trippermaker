@@ -1,8 +1,6 @@
 const { Sequelize } = require("sequelize");
 const { board, like, reply, user } = require("../models/mysql");
 const sanitizeHtml = require("sanitize-html");
-// const { sql } = require('@sequelize/core');
-// const Sequelize = require('sequelize');
 const removeHtml = (body) => {
   const filtered = sanitizeHtml(body, {
     allowedTags: [],

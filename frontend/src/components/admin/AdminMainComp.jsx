@@ -119,16 +119,16 @@ const AdminMainComp = () => {
               </Link>
             </li>
             <li>
-              {/* <Link to={"/admin/theme"}> */}
+
               <FontAwesomeIcon icon={faList} style={{ color: "#fff" }} />
               <span>예약관리</span>
-              {/* </Link> */}
+
             </li>
             <li>
-              {/* <Link to={"/admin/theme"}> */}
+
               <FontAwesomeIcon icon={faList} style={{ color: "#fff" }} />
               <span>문의관리</span>
-              {/* </Link> */}
+
             </li>
           </AdminNav>
           <BackButton>

@@ -31,13 +31,13 @@ app.use(
 app.use(cookieParser());
 // app.use(jwtMiddleware);
 
-const { PORT, MONGO_URI } = process.env;
+const { PORT, MONGO_URL } = process.env;
 
 console.log("port", PORT);
 
 // mongoDB 연결
 mongoose
-  .connect(MONGO_URI) // mongoDB 6버전 이상부터
+  .connect(MONGO_URL) // mongoDB 6버전 이상부터
   .then(() => {
     console.log("Connected to MongoDB");
   })

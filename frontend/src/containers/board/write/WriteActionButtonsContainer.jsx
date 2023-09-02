@@ -11,7 +11,6 @@ const WriteActionButtonsContainer = () => {
   const { title, content, post, postError, originPostId, id } = useSelector(({ WriteMod, UserMod }) => ({
     title: WriteMod.title,
     content: WriteMod.content,
-    // tags: WriteMod.tags,
     post: WriteMod.post,
     postError: WriteMod.postError,
     originPostId: WriteMod.originPostId,

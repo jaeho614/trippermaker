@@ -15,9 +15,7 @@ const Fullscreen = styled.div`
 
 const ModalBlock = styled.div`
   width: 40%;
-  /* height: 120px; */
   background-color: #fff;
-  /* padding: 2%; */
   border-radius: 4px;
   border: 1px solid #333;
   h2 {
