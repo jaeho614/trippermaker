@@ -9,6 +9,7 @@ import {
   login,
   onSearchId,
   onSearchPwd,
+  onSearchPwdClear,
 } from "../../modules/auth/LoginMod";
 import { check } from "../../modules/auth/UserMod";
 import LoginComp from "../../components/auth/LoginComp";
@@ -131,8 +132,11 @@ const LoginCntr = () => {
 
   useEffect(() => {
     if (searchPwd) {
-      alert("해당 이메일로 비밀번호 변경 메일을 발송했습니다. 확인해주세요.");
       setModal(!modal);
+      dispatch(onSearchPwdClear());
+      return alert(
+        "해당 이메일로 비밀번호 변경 메일을 발송했습니다. 확인해주세요."
+      );
     }
   }, [searchPwd]);
 

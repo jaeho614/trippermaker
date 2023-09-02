@@ -145,7 +145,9 @@ exports.searchPwd = async (req, res) => {
     });
 
     const encryptedEmail = encryptFunc(receiverEmail); //암호화 이메일
-    const encryptedTime = encryptFunc(sendTime); //암호화 이메일 발송시간
+    const encryptedTime = encodeURIComponent(encryptFunc(sendTime)); //암호화 이메일 발송시간,
+    //자바스크립트 encodeURIComponent() 함수를 이용해 문자열을 안전한URL 형식으로 인코딩 함.
+    //encryptFunc(sendTime)을 그냥 사용할 경우  URL에 "/"가 포함되는 경우가 생겨 페이지 이동이 제대로 안되는 문제가 발생함.
 
     let mailOptions = {
       from: EMAIL, //발신자
