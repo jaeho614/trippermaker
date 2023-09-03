@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 
 import ButtonComp from "../../components/common/ButtonComp";
-import PaginationComp from "../common/PaginationComp";
 
 const AdminBoardWrap = styled.div`
   display: flex;
@@ -11,7 +10,10 @@ const AdminBoardWrap = styled.div`
 `;
 
 const BoardContainer = styled.div`
-  background: ${props => props.theme.smoke};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: ${props => props.theme.white};
 
   &:first-child {
     margin-left: 1%;
@@ -24,17 +26,22 @@ const BoardContainer = styled.div`
 `;
 
 const BoardName = styled.div`
-  background: ${props => props.theme.smoke};
+  background: ${props => props.theme.adminColor};
   font-size: 20px;
   padding: 10px 20px;
-  span {
-    color: ${props => props.theme.text};
+  width: 100%;
+  div {
+    color: ${props => props.theme.white};
     margin-left: 10px;
   }
 `;
 
 const ButtonBox = styled.div`
-  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  padding: 20px;
+  width: 100%;
 `;
 
 const Button = styled.button`
@@ -42,8 +49,9 @@ const Button = styled.button`
   background: ${props => props.theme.button};
   color: ${props => props.theme.buttonText};
   border: none;
-  margin: 10px;
-  padding: 7px 12px;
+  margin: 20px;
+  height: 40px;
+  width: 100px;
 
   &:hover {
     background: ${props => props.theme.hoverButton};
@@ -69,8 +77,51 @@ const Label = styled.label`
 
 const TestBox = styled.div`
   background: ${props => props.theme.mainColor};
+  border-radius: 20px;
+  margin: 20px;
   height: 250px;
-  width: 250px;
+  width: 350px;
+  box-shadow: ${props => props.theme.shadow};
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  gap: 4px;
+`;
+
+const PaginationButton = styled.button`
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 20px;
+  padding: 8px;
+
+  &:hover {
+    cursor: pointer;
+    background: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.text};
+    transform: translateY(-2px);
+  }
+
+  &[disabled] {
+    cursor: revert;
+    background: ${props => props.theme.button};
+    transform: revert;
+  }
+
+  &[aria-current] {
+    cursor: revert;
+    background: ${props => props.theme.mainColor};
+    color: ${props => props.theme.text};
+    border: 2px solid ${props => props.theme.border};
+    font-weight: bold;
+    transform: revert;
+  }
 `;
 
 const AdminStyleComp = ({
@@ -153,7 +204,11 @@ const AdminStyleComp = ({
         <Button onClick={onSubmitStyle}>적용</Button>
         <TestBox>
           <WriteButton>버튼</WriteButton>
-          <PaginationComp total={"20"} limit={"10"} page={"5"} setPage={""} />
+          <Nav>
+            <PaginationButton>&lt;</PaginationButton>
+            <PaginationButton aria-current="true">1</PaginationButton>
+            <PaginationButton>&gt;</PaginationButton>
+          </Nav>
         </TestBox>
       </BoardContainer>
     </AdminBoardWrap>

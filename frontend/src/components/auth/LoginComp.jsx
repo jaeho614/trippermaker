@@ -130,7 +130,7 @@ const StyledModal = Modal.styled`
   border-radius: 20px;
   height: 300px;
   width: 500px;
-  box-shadow: 2${props => props.theme.shadow};
+  box-shadow: ${props => props.theme.shadow};
 
   div{
     margin-top: 10px;

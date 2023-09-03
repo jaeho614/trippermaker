@@ -11,31 +11,31 @@ import styled from "styled-components";
 
 const AdminContainer = styled.div`
   display: flex;
+  background: #33495e;
+  color: white;
   width: 100%;
   height: 100%;
-  background: #33495e;
-  color: #fff;
 `;
 
 const AdminSideBar = styled.div`
-  background: #1a2b3c;
-  width: 250px;
-  height: 100vh;
+  background: ${props => props.theme.adminColor};
   border-right: 1px solid rgba(2, 2, 2, 0.3);
+  height: 100vh;
+  width: 250px;
   .logo {
-    font-size: 30px;
-    color: #fff;
-    line-height: 30px;
     text-align: center;
-    padding: 3rem 0;
+    color: #fff;
+    font-size: 30px;
     font-weight: 600;
+    padding: 3rem 0;
+    line-height: 30px;
 
     p {
+      background: white;
       font-size: 20px;
-      background: #fff;
-      width: 100px;
       margin: 0 auto;
       margin-top: 10px;
+      width: 100px;
     }
   }
 
@@ -47,20 +47,19 @@ const AdminSideBar = styled.div`
 `;
 
 const AdminNav = styled.ul`
-  display: inline-block;
-  text-align: right;
   display: flex;
   flex-direction: column;
+  text-align: right;
 
   li {
+    cursor: pointer;
     color: #fff;
-    padding: 15px 20px;
     font-size: 18px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    cursor: pointer;
+    padding: 15px 20px;
     span {
-      margin-left: 10px;
       color: #fff;
+      margin-left: 10px;
     }
   }
 

@@ -31,6 +31,7 @@ export const greenTheme = {
   green: "#009966", //초록
   red: "#ff3300", //레드
   shadow: "2px 7px 15px 8px rgba(0, 0, 0, 0.3)",
+  adminColor: "#1a2b3c",
 };
 
 export const darkTheme = {
