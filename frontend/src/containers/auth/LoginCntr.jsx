@@ -133,7 +133,7 @@ const LoginCntr = () => {
   useEffect(() => {
     if (searchPwd) {
       setModal(!modal);
-      dispatch(onSearchPwdClear());
+      dispatch(onSearchPwdClear()); //초기화 안해주면 기존에 켜져있던 창에서 다른 페이지로 이동후 로그인 페이지 접속시 searchPwd가 true로 남아있음. 로그인 페이지 접속시 useEffect 실행됨.
       return alert(
         "해당 이메일로 비밀번호 변경 메일을 발송했습니다. 확인해주세요."
       );

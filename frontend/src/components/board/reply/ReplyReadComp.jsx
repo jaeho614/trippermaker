@@ -3,14 +3,14 @@ import ReplyActionButtonsComp from "./ReplyActionButtonsComp";
 import { makeCreatedAt } from "../../../lib/makeCreatedAt";
 
 const ReplyItemWarrap = styled.div`
-  width: 50%;
-  margin: 0 auto;
-  background: ${(props) => props.theme.smoke};
-  margin-top: 10px;
-  border-radius: 10px;
-  padding: 20px;
   display: flex;
   position: relative;
+  background: ${props => props.theme.mainColor};
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 20px;
+  width: 50%;
 
   .id {
     font-weight: 600;
@@ -23,19 +23,19 @@ const ReplyItemWarrap = styled.div`
 
   .createat {
     position: absolute;
+    color: ${props => props.theme.text};
+    font-size: 13px;
     right: 3%;
     bottom: 7%;
-    font-size: 13px;
-    color: ${(props) => props.theme.lightblack};
   }
 `;
-
+//댓글 이미지 준비중..
 const ImageBox = styled.img`
   cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid ${props => props.theme.smoke};
   height: 70px;
   width: 70px;
-  border-radius: 50%;
-  border: 1px solid black;
 `;
 
 const ReplyItem = ({
@@ -76,7 +76,7 @@ const ReplyReadComp = ({
   return (
     <div>
       {replys &&
-        replys.map((reply) => (
+        replys.map(reply => (
           <ReplyItem
             reply={reply}
             key={reply?.no}

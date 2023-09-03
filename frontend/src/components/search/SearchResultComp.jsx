@@ -3,30 +3,30 @@ import styled from "styled-components";
 import PageNavComp4 from "../common/PageNavComp4";
 
 const AreaItemBlock = styled.div`
+  background: ${props => props.theme.mainColor};
+  border-bottom: 1px solid ${props => props.theme.border};
   margin: 0 auto;
   padding: 20px 0;
   width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  background: #fff;
 
   div {
     display: flex;
   }
   img {
-    width: 230px;
-    height: 200px;
-    border: 1px solid #333;
+    border: 1px solid ${props => props.theme.border};
     border-radius: 10px;
+    height: 200px;
+    width: 230px;
   }
   .des {
-    margin-left: 30px;
     display: flex;
     flex-direction: column;
+    margin-left: 30px;
 
     .title {
       font-size: 20px;
       font-weight: 600;
-      border-bottom: 2px solid #333;
+      border-bottom: 2px solid ${props => props.theme.border};
       padding: 10px 0;
     }
 
@@ -35,19 +35,19 @@ const AreaItemBlock = styled.div`
     }
 
     .add-btn {
-      padding: 7px 9px;
-      background: ${(props) => props.theme.lightblack};
-      width: 50px;
-      text-align: center;
-      margin-top: 40px;
-      color: ${(props) => props.theme.white};
-      border-radius: 15px;
-      margin-left: 320px;
       cursor: pointer;
+      text-align: center;
+      background: ${props => props.theme.button};
+      color: ${props => props.theme.buttonText};
+      border-radius: 15px;
+      margin-top: 40px;
+      margin-left: 320px;
+      padding: 7px 9px;
+      width: 50px;
       transition: 0.3s;
 
       &:hover {
-        background: ${(props) => props.theme.subcolor};
+        background: ${props => props.theme.hoverButton};
       }
     }
   }
@@ -55,24 +55,24 @@ const AreaItemBlock = styled.div`
 
 const RoomListContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  height: 1080px;
+  position: absolute;
+  overflow: auto;
   flex-direction: column;
-  width: 800px;
+  flex-wrap: wrap;
   margin: 0 auto;
   margin-top: 50px;
-  position: absolute;
+  height: 1080px;
+  width: 800px;
   top: 70px;
   left: 0;
-  overflow: auto;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
 
 const RoomList = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 65px;
   margin-top: 150px;
+  margin-left: 65px;
 `;
 const AreaItem = ({ area, onClick, addWish }) => {
   return (
@@ -144,14 +144,14 @@ const SearchResultComp = ({
               !loading &&
               areas &&
               target &&
-              target.map((area) => (
+              target.map(area => (
                 <AreaItem area={area} key={area.contentid} addWish={addWish} />
               ))}
             {searchType === "DB" &&
               !loading &&
               areas &&
               target &&
-              target.map((area) => (
+              target.map(area => (
                 <AreaItem area={area} key={area.contentid} addWish={addWish} />
               ))}
             {searchType === "API" ? (

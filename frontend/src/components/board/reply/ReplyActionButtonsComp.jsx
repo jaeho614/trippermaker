@@ -3,13 +3,13 @@ import { styled } from "styled-components";
 const ReplyAction = styled.div`
   display: flex;
   position: absolute;
+  font-size: 13px;
   right: 10px;
   top: 10px;
-  font-size: 13px;
 
   span {
-    margin-right: 5px;
     cursor: pointer;
+    margin-right: 5px;
     transition: 0.3s;
   }
 

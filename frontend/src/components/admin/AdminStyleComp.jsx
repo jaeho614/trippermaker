@@ -1,44 +1,36 @@
-import { css, styled } from "styled-components";
+import { styled } from "styled-components";
 
 import ButtonComp from "../../components/common/ButtonComp";
 import PaginationComp from "../common/PaginationComp";
 
 const AdminBoardWrap = styled.div`
-  width: 100%;
-  margin: 0 auto;
   display: flex;
+  margin: 0 auto;
   margin-top: 30px;
+  width: 100%;
 `;
 
 const BoardContainer = styled.div`
   background: ${props => props.theme.smoke};
 
   &:first-child {
-    width: 35%;
     margin-left: 1%;
+    width: 35%;
   }
   &:last-child {
-    width: 62%;
     margin-left: 1%;
+    width: 62%;
   }
 `;
 
 const BoardName = styled.div`
-  background: ${props => props.theme.dark};
-
+  background: ${props => props.theme.smoke};
   font-size: 20px;
   padding: 10px 20px;
   span {
-    color: ${props => props.theme.smoke};
+    color: ${props => props.theme.text};
     margin-left: 10px;
   }
-`;
-
-const BoardTag = styled.div`
-  display: flex;
-  justify-content: space-around;
-  background: yellow;
-  padding: 10px;
 `;
 
 const ButtonBox = styled.div`
@@ -46,40 +38,39 @@ const ButtonBox = styled.div`
 `;
 
 const Button = styled.button`
-  border: none;
-  background: ${props => props.theme.lightblack};
-  color: ${props => props.theme.smoke};
   cursor: pointer;
-  padding: 7px 12px;
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
+  border: none;
   margin: 10px;
+  padding: 7px 12px;
 
   &:hover {
-    background: ${props => props.theme.softblack};
+    background: ${props => props.theme.hoverButton};
   }
 `;
 
 const WriteButton = styled(ButtonComp)`
-  border: 1px solid black;
-  margin: 20px 0;
-  text-align: center;
   position: relative;
-  left: 50%;
+  text-align: center;
+  margin: 20px 0;
   top: 30px;
+  left: 50%;
   transform: translate(-50%, 0);
 `;
 
 const Label = styled.label`
   display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
   cursor: pointer;
+  align-items: center;
   margin: 0 10px;
+  gap: 0.5rem;
 `;
 
 const TestBox = styled.div`
-  width: 250px;
+  background: ${props => props.theme.mainColor};
   height: 250px;
-  background: ${props => props.theme.bgcolor};
+  width: 250px;
 `;
 
 const AdminStyleComp = ({

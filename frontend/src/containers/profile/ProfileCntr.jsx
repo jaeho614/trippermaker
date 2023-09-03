@@ -232,20 +232,22 @@ const ProfileCntr = () => {
     setModal(!modal);
   }, [modal]);
 
-  const onGetWishDetail = (title, contentId, contentTypeId) => {
-    switchModal();
-
-    dispatch(
-      getWishDetail({
-        title,
-        contentId,
-        contentTypeId,
-      })
-    );
-    if (wish) {
-      dispatch(wishDetailClear());
-    }
-  };
+  const onGetWishDetail = useCallback(
+    (title, contentId, contentTypeId) => {
+      switchModal();
+      dispatch(
+        getWishDetail({
+          title,
+          contentId,
+          contentTypeId,
+        })
+      );
+      if (wish) {
+        dispatch(wishDetailClear());
+      }
+    },
+    [wish]
+  );
 
   const onDeleteWish = useCallback(
     no => {
@@ -362,7 +364,7 @@ const ProfileCntr = () => {
         }
       });
     },
-    [dispatch, content]
+    [content]
   );
 
   const onChangeProfile = useCallback(() => {

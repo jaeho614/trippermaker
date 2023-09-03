@@ -16,15 +16,6 @@ export const basicTheme = {
 };
 
 export const greenTheme = {
-  bgcolor: "#69F0AE",
-  subcolor: "#00C853",
-  lightcolor: "#B9F6CA",
-  smoke: "#F5F5F5",
-  dark: "#000000",
-  black: "#000",
-  softblack: "#333",
-
-  ///////////////
   mainColor: "#69F0AE", //민트
   subColor: "rgba(255, 255, 255, 0.7)", //연하게
   nameColor: "#fff", //화이트
@@ -35,9 +26,8 @@ export const greenTheme = {
   hoverButton: "#666", //그레이
   smoke: "#F5F5F5",
   lightblack: "#666",
-  softblue: "#d6e4f292",
-  white: "#fff",
-  yellow: "#ebd258",
+  white: "#fff", //화이트
+  yellow: "#ebd258", //노랑
   green: "#009966", //초록
   red: "#ff3300", //레드
   shadow: "2px 7px 15px 8px rgba(0, 0, 0, 0.3)",

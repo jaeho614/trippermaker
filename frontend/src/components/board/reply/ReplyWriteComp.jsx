@@ -9,10 +9,10 @@ const ReplyWrapper = styled.div`
     font-size: 24px;
   }
   input {
-    width: 100%;
-    height: 40px;
     margin-top: 20px;
     padding: 10px;
+    height: 40px;
+    width: 100%;
   }
   div {
     display: flex;
@@ -21,12 +21,11 @@ const ReplyWrapper = styled.div`
 `;
 
 const ReplyButton = styled(Button)`
-  width: 100px;
-  height: 40px;
-  padding: 0;
-  padding: 0 20px;
   margin-left: 10px;
   margin-top: 40px;
+  padding: 0 20px;
+  height: 40px;
+  width: 100px;
 `;
 const ReplyWriteComp = ({ onReset, onPublish, onChangeField, emptyReply }) => {
   return (

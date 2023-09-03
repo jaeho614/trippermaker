@@ -4,35 +4,35 @@ import KoreaMap from "../area/KoreaMap";
 
 const RoomListItem = styled.button`
   display: flex;
-  justify-content: space-around;
-  background: ${(props) => props.theme.bgcolor};
-  padding: 10px 20px;
-  margin-top: 14px;
-  font-size: 16px;
-  border-radius: 20px;
   cursor: pointer;
-  transition: 0.3s;
-  margin-left: 10px;
+  justify-content: space-around;
+  background: ${props => props.theme.mainColor};
+  font-size: 16px;
   border: none;
+  border-radius: 20px;
+  margin-top: 14px;
+  margin-left: 10px;
+  padding: 10px 20px;
+  transition: 0.3s;
   &:hover {
-    background: ${(props) => props.theme.subcolor};
-    color: ${(props) => props.theme.white};
+    background: ${props => props.theme.subColor};
+    color: ${props => props.theme.text};
   }
   &.selectItem {
-    background-color: steelblue;
-    color: ${(props) => props.theme.smoke};
+    background-color: ${props => props.theme.subColor};
+    color: ${props => props.theme.text};
     font-weight: 600;
   }
 `;
 
 const RoomList = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  width: 90%;
-  margin: 0 auto;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  margin: 0 auto;
   min-height: 100vh;
+  width: 90%;
 `;
 
 // const SelectArea = ({ onClick, area, areaCode, loading }) => {

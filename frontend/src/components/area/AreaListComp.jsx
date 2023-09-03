@@ -1,33 +1,36 @@
 import React from "react";
-import styled from "styled-components";
-import PageNavComp from "../common/PageNavComp";
 import LazyLoad from "react-lazyload";
 
+import styled from "styled-components";
+
+import PageNavComp from "../common/PageNavComp";
+
 const AreaItemBlock = styled.div`
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   margin: 0 auto;
   padding: 0 0 50px 0;
   width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  text-align: center;
 
   div {
     display: flex;
   }
   img {
-    width: 230px;
-    height: 200px;
-    border: 1px solid #333;
+    background: ${props => props.theme.smoke};
+    border: 1px solid ${props => props.theme.border};
     border-radius: 10px;
+    height: 200px;
+    width: 230px;
   }
   .des {
-    margin-left: 30px;
     display: flex;
     flex-direction: column;
+    margin-left: 30px;
 
     .title {
       font-size: 20px;
       font-weight: 600;
-      border-bottom: 2px solid #333;
+      border-bottom: 2px solid ${props => props.theme.border};
       padding: 10px 0;
     }
 
@@ -36,19 +39,19 @@ const AreaItemBlock = styled.div`
     }
 
     .add-btn {
-      padding: 7px 9px;
-      background: ${props => props.theme.lightblack};
-      width: 50px;
-      text-align: center;
-      margin-top: 40px;
-      color: ${props => props.theme.white};
-      border-radius: 15px;
-      margin-left: 320px;
       cursor: pointer;
+      text-align: center;
+      background: ${props => props.theme.button};
+      color: ${props => props.theme.buttonText};
+      border-radius: 15px;
+      margin-top: 40px;
+      margin-left: 320px;
+      padding: 7px 9px;
+      width: 50px;
       transition: 0.3s;
 
       &:hover {
-        background: ${props => props.theme.subcolor};
+        background: ${props => props.theme.hoverButton};
       }
     }
   }

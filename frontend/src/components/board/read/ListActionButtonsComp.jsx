@@ -9,17 +9,17 @@ const ListButtons = styled.div`
 `;
 
 const Buttons = styled.button`
-  padding: 10px 18px;
-  background: #333;
-  border-radius: 10px;
   cursor: pointer;
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
   border: none;
-  &:first-child {
-    background: ${(props) => props.theme.bgcolor};
-  }
+  border-radius: 10px;
+  padding: 10px 18px;
   &:last-child {
     margin-left: 10px;
-    color: ${(props) => props.theme.white};
+  }
+  &:hover {
+    background: ${props => props.theme.hoverButton};
   }
 `;
 

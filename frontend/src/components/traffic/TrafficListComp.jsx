@@ -1,11 +1,13 @@
 import React from "react";
+
 import { styled } from "styled-components";
+
 import PageNavComp3 from "../common/PageNavComp3";
 import WrapperComp from "../common/WrapperComp";
 
 const TrafficContainer = styled.div`
-  margin: 30px auto;
   text-align: center;
+  margin: 30px auto;
 `;
 
 const TrafficHeader = styled.table`
@@ -13,26 +15,26 @@ const TrafficHeader = styled.table`
   margin: 0 auto;
   width: 90%;
   span {
-    width: 20%;
-    background-color: steelblue;
     display: inline-block;
     text-align: center;
-    color: whitesmoke;
+    background-color: ${props => props.theme.mainColor};
+    color: ${props => props.theme.text};
+    width: 20%;
   }
 
   td,
   th {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 15px;
-    margin: 0 auto;
-    width: 20%;
     text-align: center;
+    border: 1px solid ${props => props.theme.border};
+    border-collapse: collapse;
+    margin: 0 auto;
+    padding: 15px;
+    width: 20%;
   }
 
   th {
-    background: ${(props) => props.theme.lightblack};
-    color: #fff;
+    background: ${props => props.theme.mainColor};
+    color: ${props => props.theme.text};
   }
 `;
 

@@ -7,20 +7,20 @@ const EditorBlock = styled.div`
   margin-top: 30px;
 `;
 const TitleInput = styled.input`
+  display: block;
+  outline: none;
   font-size: 24px;
+  border: none;
+  border-bottom: 2px solid ${props => props.theme.border};
+  margin: 0 auto;
   padding: 10px 20px;
   width: 80%;
-  border: none;
-  border-bottom: 2px solid #333;
-  display: block;
-  margin: 0 auto;
-  outline: none;
 `;
 const QuillWrapper = styled.div`
-  padding: 10px;
-  min-height: 500px;
-  height: 500px;
   margin-top: 20px;
+  padding: 10px;
+  height: 500px;
+  min-height: 500px;
 
   .ql-editor.ql-blank::before {
     left: 0px;
@@ -61,7 +61,7 @@ const EditorComp = ({ title, content, onChangeField }) => {
     quillInstance.current.root.innerHTML = content;
   }, [content]);
 
-  const onChangeTitle = (e) => {
+  const onChangeTitle = e => {
     onChangeField({ key: "title", value: e.target.value });
   };
 

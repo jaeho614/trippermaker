@@ -17,8 +17,8 @@ const LoginLeftPic = styled.div`
   background: url("/assets/mainslide4.jpeg");
   background-position: center;
   background-size: cover;
-  width: 45%;
   height: 100vh;
+  width: 45%;
   object-fit: cover;
 `;
 

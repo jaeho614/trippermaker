@@ -9,21 +9,20 @@ import { faEye, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 
 const ReadContainer = styled.div`
   text-align: left;
-  border-bottom: 2px solid #333;
-
-  padding: 13px 25px;
+  border-bottom: 2px solid ${props => props.theme.border};
   margin-top: 50px;
+  padding: 13px 25px;
 
   .id {
-    font-weight: 400;
     font-size: 16px;
+    font-weight: 400;
     margin-top: 20px;
   }
 
   .likeandcnt {
     display: flex;
-    text-align: right;
     justify-content: flex-end;
+    text-align: right;
   }
 
   .likeandcnt p {
@@ -34,16 +33,16 @@ const ReadContainer = styled.div`
     }
   }
   button {
-    width: 100px;
     height: 10px;
+    width: 100px;
   }
 `;
 
 const Content = styled.div`
-  padding: 20px;
-  margin-top: 20px;
+  border-bottom: 2px solid ${props => props.theme.border};
   font-size: 18px;
-  border-bottom: 2px solid #333;
+  margin-top: 20px;
+  padding: 20px;
   div {
     padding-bottom: 20px;
   }

@@ -7,8 +7,6 @@ const ButtonsBlock = styled.div`
 `;
 
 const Buttons = styled(ButtonComp)`
-  /* background: #333; */
-  /* color: #fff; */
   & + & {
     margin-left: 10px;
   }
