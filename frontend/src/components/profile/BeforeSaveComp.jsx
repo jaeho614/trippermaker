@@ -9,7 +9,7 @@ const BeforeBox = styled.div`
   overflow: auto;
   flex-direction: column;
   background: ${props => props.theme.white};
-  border: 1px solid ${props => props.theme.border};
+  border: 1px solid black;
   border-radius: 10px;
   height: 600px;
   width: 30%;
@@ -20,7 +20,7 @@ const BeforeInputBox = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 9px;
-  padding: 0 60px;
+  padding-left: 90px;
 `;
 
 const InputBox = styled.input`

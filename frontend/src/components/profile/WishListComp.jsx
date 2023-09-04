@@ -27,6 +27,7 @@ const StyledModal = Modal.styled`
   div{
     display: flex;
     justify-content: space-between;
+    color: ${props => props.theme.text};
     padding: 5px;
   }
 
@@ -72,7 +73,7 @@ const SchedulerBox = styled.div`
   align-items: center;
   justify-content: center;
   background: ${props => props.theme.white};
-  border: 1px solid ${props => props.theme.border};
+  border: 1px solid black;
   border-radius: 10px;
   margin: 7px;
   height: 50px;
@@ -81,6 +82,7 @@ const SchedulerBox = styled.div`
   &:hover {
     cursor: pointer;
     background: ${props => props.theme.mainColor};
+    color: ${props => props.theme.text};
     opacity: 0.8;
   }
 `;

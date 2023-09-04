@@ -19,9 +19,9 @@ const RoomListContainer = styled.div`
 const AreaItemBlock = styled.div`
   display: flex;
   border-bottom: 1px solid ${props => props.theme.border};
-  margin-left: 27px;
-  padding: 30px;
-  width: 85%;
+  padding: 30px 20px;
+  width: 100%;
+
   img {
     background: ${props => props.theme.smoke};
     border-radius: 20px;
@@ -30,7 +30,7 @@ const AreaItemBlock = styled.div`
   }
 
   .room-text {
-    margin-left: 20px;
+    margin-left: 40px;
   }
   .title {
     font-size: 20px;

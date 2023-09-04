@@ -10,7 +10,7 @@ const LikeListTitle = styled.ul`
   display: flex;
   text-align: center;
   font-weight: 600;
-  border-bottom: 1px solid ${props => props.theme.border};
+  border-bottom: 1px solid black;
   padding: 5px;
 
   li:first-child {

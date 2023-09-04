@@ -21,31 +21,31 @@ const ListContainer = styled.div`
   display: flex;
   position: static;
   overflow: auto;
+  align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
   background: ${props => props.theme.mainColor};
   height: 1050px;
   width: 800px;
   top: 120px;
-  left: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  .theme {
-    background: ${props => props.theme.subColor};
-    margin-top: -2px;
-  }
 
-  div {
-    margin-top: 20px;
-  }
   .select-list {
     margin-top: 0px;
   }
 `;
 
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: center;
+  background: ${props => props.theme.subColor};
+  padding: 20px;
+  width: 760px;
+`;
+
 const ThemeList = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 65px;
 `;
 const ThemeListItem = styled.button`
   cursor: pointer;
@@ -54,10 +54,10 @@ const ThemeListItem = styled.button`
   font-size: 16px;
   border: none;
   border-radius: 20px;
-  margin-top: 14px;
-  margin-left: 14px;
+  margin: 0 10px;
   padding: 10px 20px;
   transition: 0.3s;
+
   &:hover {
     background: ${props => props.theme.hoverButton};
   }
@@ -116,7 +116,7 @@ const AreaSelectComp = ({
         </MapContainer>
         <ListContainer>
           <ThemeList>
-            <div className="theme">
+            <ButtonBox>
               {contentTypes.map(type => (
                 <SelectType
                   type={type}
@@ -125,7 +125,7 @@ const AreaSelectComp = ({
                   contentTypeId={contentTypeId}
                 />
               ))}
-            </div>
+            </ButtonBox>
             <div className="select-list">
               <AreaListCntr className="select" />
             </div>

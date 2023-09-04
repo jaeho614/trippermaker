@@ -6,9 +6,8 @@ const AreaItemBlock = styled.div`
   background: ${props => props.theme.mainColor};
   border-bottom: 1px solid ${props => props.theme.border};
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 30px 0;
   width: 100%;
-
   div {
     display: flex;
   }
@@ -66,6 +65,7 @@ const RoomListContainer = styled.div`
   top: 70px;
   left: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background: red;
 `;
 
 const RoomList = styled.div`

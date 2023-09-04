@@ -8,9 +8,8 @@ import PageNavComp from "../common/PageNavComp";
 const AreaItemBlock = styled.div`
   text-align: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  margin: 0 auto;
-  padding: 0 0 50px 0;
-  width: 100%;
+  padding: 30px 20px;
+  width: 750px;
 
   div {
     display: flex;
@@ -25,7 +24,7 @@ const AreaItemBlock = styled.div`
   .des {
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
+    margin-left: 60px;
 
     .title {
       font-size: 20px;

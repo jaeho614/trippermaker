@@ -57,6 +57,7 @@ const LoginWrapper = styled.div`
     display: inline-block;
     text-align: center;
     font-size: 20px;
+    color: ${props => props.theme.text};
     border-bottom: 2px solid ${props => props.theme.text};
     margin: 24px 0;
     padding: 6px 0;
@@ -94,15 +95,19 @@ const LoginWrapper = styled.div`
 
   .find {
     cursor: pointer;
-    color: ${props => props.theme.black};
+    color: ${props => props.theme.text};
     font-weight: 700;
     margin-left: 10px;
   }
 
   .ragister {
-    color: ${props => props.theme.black};
+    color: ${props => props.theme.text};
     font-weight: 600;
     margin-left: 14px;
+  }
+
+  span {
+    color: ${props => props.theme.text};
   }
 `;
 
@@ -136,10 +141,15 @@ const StyledModal = Modal.styled`
     margin-top: 10px;
   }
 
+  h3{
+    color: ${props => props.theme.text};
+  }
+
   .label{
     display: inline-block;
     font-weight: 700;
     text-align: right;
+    color: ${props => props.theme.text};
     margin-right: 10px;
     width: 70px;
   }

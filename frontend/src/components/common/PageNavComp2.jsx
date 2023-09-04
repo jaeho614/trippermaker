@@ -12,11 +12,11 @@ const LiBlock = styled.li`
   text-align: center;
 
   &:hover {
-    color: ${(props) => props.theme.subcolor};
+    color: ${props => props.theme.subColor};
     font-weight: 600;
   }
   &.checkPage {
-    color: ${(props) => props.theme.subcolor};
+    color: ${props => props.theme.subColor};
     font-weight: 600;
   }
 `;
@@ -31,7 +31,7 @@ const PageNavComp2 = ({ totalCount, pageNo, numOfRows }) => {
 
   const dispatch = useDispatch();
 
-  const onClickPage = (e) => {
+  const onClickPage = e => {
     const page = e.target.value || e.target.dataset.page;
     dispatch(showPageNo(page));
   };
@@ -51,7 +51,7 @@ const PageNavComp2 = ({ totalCount, pageNo, numOfRows }) => {
             prev
           </LiBlock>
         ) : null}
-        {resArray.map((r) => (
+        {resArray.map(r => (
           <LiBlock
             onClick={onClickPage}
             key={r}

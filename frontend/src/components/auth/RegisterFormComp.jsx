@@ -58,7 +58,7 @@ const RegisterContainer = styled.div`
     display: inline-block;
     text-align: center;
     color: ${props => props.theme.text};
-    border-bottom: 2px solid ${props => props.theme.border};
+    border-bottom: 2px solid ${props => props.theme.text};
     margin: 30px 0;
     padding: 6px 0;
   }
@@ -100,7 +100,6 @@ const RegisterContainer = styled.div`
   }
 
   .gender {
-    color: ${props => props.theme.text};
     margin-top: 20px;
     input[type="radio"] {
       margin-left: 10px;
@@ -160,7 +159,6 @@ const SelectDomain = styled.select`
 const NameTag = styled.span`
   display: inline-block;
   text-align: right;
-  color: ${props => props.theme.text};
   font-weight: 800;
   width: 110px;
 `;

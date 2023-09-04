@@ -131,7 +131,7 @@ const initialState = {
 
 const AdminTermsMod = handleActions(
   {
-    [INITIALIZE_FORM]: (state) => ({
+    [INITIALIZE_FORM]: state => ({
       ...state,
       newAdmin: {
         new_id: null,
@@ -144,7 +144,7 @@ const AdminTermsMod = handleActions(
       changeInformError: null,
     }),
     [CHANGE_VALUE]: (state, { payload: { form, value, key } }) =>
-      produce(state, (draft) => {
+      produce(state, draft => {
         draft[form][key] = value;
       }),
     [GET_NEWADMIN]: (
@@ -192,9 +192,9 @@ const AdminTermsMod = handleActions(
       changeInformError,
     }),
     [INPUT_ADDRESS]: (state, { payload: { addr1, zipcode } }) =>
-      produce(state, (draft) => {
-        draft["newAdmin"]["addr1"] = addr1;
-        draft["newAdmin"]["zipcode"] = zipcode;
+      produce(state, draft => {
+        draft["newAdmin"]["new_addr1"] = addr1;
+        draft["newAdmin"]["new_zipcode"] = zipcode;
       }),
     [GET_ADMIN_TERMS_SUCCESS]: (state, { payload: { getTerms } }) => ({
       ...state,
@@ -216,7 +216,7 @@ const AdminTermsMod = handleActions(
       editTerms: null,
       editTermsError,
     }),
-    [CLEAR_TERMS]: (state) => ({
+    [CLEAR_TERMS]: state => ({
       ...state,
       editTerms: null,
     }),

@@ -7,7 +7,7 @@ const AfterBox = styled.div`
   overflow: auto;
   flex-direction: column;
   background: ${props => props.theme.white};
-  border: 1px solid ${props => props.theme.border};
+  border: 1px solid black;
   border-radius: 10px;
   height: 600px;
   width: 30%;
@@ -19,7 +19,7 @@ const SavedList = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  border: 1px solid ${props => props.theme.border};
+  border: 1px solid black;
   border-radius: 10px;
   margin: 7px;
   height: 50px;
