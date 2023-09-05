@@ -7,19 +7,22 @@ const LiBlock = styled.li`
   display: inline-block;
   margin: 10px;
   cursor: pointer;
+  color: ${props => props.theme.text};
   transition: 0.3s;
   margin-top: 10px;
   text-align: center;
 
   &:hover {
-    color: ${props => props.theme.subColor};
+    color: ${props => props.theme.text};
     font-weight: 600;
   }
+
   &.checkPage {
-    color: ${props => props.theme.subColor};
+    color: ${props => props.theme.text};
     font-weight: 600;
   }
 `;
+
 const PageNavComp2 = ({ totalCount, pageNo, numOfRows }) => {
   const res = parseInt(Math.ceil(totalCount / 10)); // 전체 페이지를 10개씩 나눴을 때 갯 수
   const page = pageNo || 1; // 현재 페이지

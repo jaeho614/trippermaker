@@ -7,16 +7,18 @@ const LiBlock = styled.li`
   display: inline-block;
   margin: 10px;
   cursor: pointer;
+  color: ${props => props.theme.text};
   transition: 0.3s;
   margin-top: 10px;
   text-align: center;
 
   &:hover {
-    color: ${props => props.theme.subColor};
+    color: ${props => props.theme.text};
     font-weight: 600;
   }
+
   &.checkPage {
-    color: ${props => props.theme.subColor};
+    color: ${props => props.theme.text};
     font-weight: 600;
   }
 `;

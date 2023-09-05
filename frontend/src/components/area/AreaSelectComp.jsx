@@ -107,32 +107,30 @@ const AreaSelectComp = ({
   loading,
 }) => {
   return (
-    <>
-      <AreaSelectWrapper>
-        <MapContainer>
-          <div>
-            <KoreaMap areas={areas} onClick={onClickArea} areaCode={areaCode} />
+    <AreaSelectWrapper>
+      <MapContainer>
+        <div>
+          <KoreaMap areas={areas} onClick={onClickArea} areaCode={areaCode} />
+        </div>
+      </MapContainer>
+      <ListContainer>
+        <ThemeList>
+          <ButtonBox>
+            {contentTypes.map(type => (
+              <SelectType
+                type={type}
+                key={type.code}
+                onClick={onClickType}
+                contentTypeId={contentTypeId}
+              />
+            ))}
+          </ButtonBox>
+          <div className="select-list">
+            <AreaListCntr className="select" />
           </div>
-        </MapContainer>
-        <ListContainer>
-          <ThemeList>
-            <ButtonBox>
-              {contentTypes.map(type => (
-                <SelectType
-                  type={type}
-                  key={type.code}
-                  onClick={onClickType}
-                  contentTypeId={contentTypeId}
-                />
-              ))}
-            </ButtonBox>
-            <div className="select-list">
-              <AreaListCntr className="select" />
-            </div>
-          </ThemeList>
-        </ListContainer>
-      </AreaSelectWrapper>
-    </>
+        </ThemeList>
+      </ListContainer>
+    </AreaSelectWrapper>
   );
 };
 

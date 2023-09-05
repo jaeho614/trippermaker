@@ -4,7 +4,6 @@ import KeywordComp from "../common/KeywordComp";
 import styled from "styled-components";
 
 const SearchForm = styled.div`
-  background: ${props => props.theme.white};
   text-align: center;
   margin: 0 auto;
   margin-top: -100px;
@@ -12,6 +11,7 @@ const SearchForm = styled.div`
 
   span {
     font-size: 30px;
+    color: ${props => props.theme.text};
     margin-right: 20px;
   }
 

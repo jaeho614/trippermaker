@@ -6,8 +6,7 @@ import styled from "styled-components";
 import PageNavComp from "../common/PageNavComp";
 
 const AreaItemBlock = styled.div`
-  text-align: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid ${props => props.theme.border};
   padding: 30px 20px;
   width: 750px;
 
@@ -29,11 +28,13 @@ const AreaItemBlock = styled.div`
     .title {
       font-size: 20px;
       font-weight: 600;
+      color: ${props => props.theme.text};
       border-bottom: 2px solid ${props => props.theme.border};
       padding: 10px 0;
     }
 
     .addr {
+      color: ${props => props.theme.text};
       margin-top: 10px;
     }
 

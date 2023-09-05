@@ -30,16 +30,20 @@ const AreaItemBlock = styled.div`
   }
 
   .room-text {
-    margin-left: 40px;
+    margin-left: 60px;
   }
   .title {
     font-size: 20px;
     font-weight: 600;
+    color: ${props => props.theme.text};
+    border-bottom: 1px solid ${props => props.theme.border};
     margin-top: 10px;
+    padding: 10px 0;
   }
 
   .addr {
     font-size: 18px;
+    color: ${props => props.theme.text};
     margin-top: 10px;
   }
 

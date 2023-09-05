@@ -9,6 +9,7 @@ const ReplyAction = styled.div`
 
   span {
     cursor: pointer;
+    color: ${props => props.theme.text};
     margin-right: 5px;
     transition: 0.3s;
   }

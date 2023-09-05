@@ -246,7 +246,7 @@ const ProfileCntr = () => {
         dispatch(wishDetailClear());
       }
     },
-    [wish]
+    [modal, wish]
   );
 
   const onDeleteWish = useCallback(

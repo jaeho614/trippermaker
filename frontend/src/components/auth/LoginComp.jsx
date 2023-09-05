@@ -1,7 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "styled-react-modal";
 import { motion } from "framer-motion";
 import { styled } from "styled-components";
@@ -212,7 +212,7 @@ const LoginComp = ({
         <LoginWrapper>
           <Link to="/">
             <div className="home">
-              <FontAwesomeIcon icon={faHouse} size="2xl" />
+              <FontAwesomeIcon icon={faHouse} size="2x" />
             </div>
           </Link>
           <h2 className="logo">

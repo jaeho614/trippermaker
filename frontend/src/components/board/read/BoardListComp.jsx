@@ -45,6 +45,7 @@ const ListContainer = styled.div`
     overflow: hidden;
     font-size: 28px;
     font-weight: 600;
+    color: ${props => props.theme.text};
     margin-top: 0px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -82,6 +83,7 @@ const ListContainer = styled.div`
   .write-id {
     overflow: hidden;
     font-weight: 500;
+    color: ${props => props.theme.text};
     margin-top: 1rem;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -107,6 +109,7 @@ const ListContainer = styled.div`
     }
     div {
       margin-left: 14px;
+      color: ${props => props.theme.text};
     }
   }
 
@@ -179,7 +182,7 @@ const BoardListItem = ({ post, likeCount }) => {
                   className="icon"
                   icon={faHeart}
                   data-cnt={likeCount === 0 ? parseInt(post.like) : likeCount}
-                />{" "}
+                />
                 {like}
               </div>
               <div>
@@ -187,8 +190,8 @@ const BoardListItem = ({ post, likeCount }) => {
                   className="icon"
                   icon={faEye}
                   style={{ color: "#000000" }}
-                />{" "}
-                {cnt}{" "}
+                />
+                {cnt}
               </div>
             </div>
             <p className="write-id">{id}</p>

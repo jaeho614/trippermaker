@@ -9,23 +9,25 @@ const SearchWrapper = styled.div`
 
 const SelectContainer = styled.div`
   position: fixed;
-  top: 119px;
+  top: 118px;
   z-index: 900;
+
+  div {
+    position: fixed;
+    background: ${props => props.theme.mainColor};
+    border-bottom: 1px solid ${props => props.theme.border};
+    padding: 30px 87.5px;
+    width: 600px;
+  }
 
   select {
     background: ${props => props.theme.subColor};
     margin-left: 30px;
     padding: 10px 20px;
   }
+
   input {
     padding: 10px 40px;
-  }
-  div {
-    position: fixed;
-    background: ${props => props.theme.mainColor};
-    padding: 34px 10px 20px 176px;
-    width: 600px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 `;
 

@@ -14,11 +14,16 @@ const ReplyItemWarrap = styled.div`
 
   .id {
     font-weight: 600;
+    color: ${props => props.theme.text};
   }
 
   .reply {
     margin-left: 20px;
     line-height: 30px;
+  }
+
+  .content {
+    color: ${props => props.theme.text};
   }
 
   .createat {
@@ -50,7 +55,7 @@ const ReplyItem = ({
     <ReplyItemWarrap>
       <div className="reply">
         <p className="id">{reply?.uno_user?.nick}</p>
-        <p>{reply?.content}</p>
+        <p className="content">{reply?.content}</p>
         <p className="createat">{makeCreatedAt(reply?.createAt)}</p>
       </div>
       {user?.nick === reply?.uno_user?.nick ? (

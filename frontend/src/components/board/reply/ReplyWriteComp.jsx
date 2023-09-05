@@ -9,10 +9,16 @@ const ReplyWrapper = styled.div`
     font-size: 24px;
   }
   input {
+    background: ${props => props.theme.mainColor};
+    color: ${props => props.theme.text};
     margin-top: 20px;
     padding: 10px;
     height: 40px;
     width: 100%;
+
+    &::placeholder {
+      color: ${props => props.theme.text};
+    }
   }
   div {
     display: flex;
