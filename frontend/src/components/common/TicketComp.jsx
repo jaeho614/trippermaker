@@ -73,7 +73,7 @@ const TicketComp = ({
         {data.map((row, rowIndex) => (
           <div key={`row-${rowIndex}`}>
             {row.map((item, colIndex) => {
-              const ticket = tickets.find(ticket => ticket.seat === item.name);
+              const ticket = tickets && tickets.find(ticket => ticket.seat === item.name);
               const isClicked = ticket !== undefined;
 
               return (
@@ -89,6 +89,7 @@ const TicketComp = ({
               );
             })}
           </div>
+          // <div>ddddd</div>
         ))}
         {/* ))} */}
         <p>
