@@ -10,9 +10,6 @@ const AdminBoardWrap = styled.div`
 `;
 
 const BoardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background: ${props => props.theme.white};
 
   &:first-child {
@@ -29,11 +26,17 @@ const BoardName = styled.div`
   background: ${props => props.theme.adminColor};
   font-size: 20px;
   padding: 10px 20px;
-  width: 100%;
+
   div {
     color: ${props => props.theme.white};
     margin-left: 10px;
   }
+`;
+
+const AdminStyle = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const ButtonBox = styled.div`
@@ -136,80 +139,82 @@ const AdminStyleComp = ({
         <BoardName>
           <div>스타일관리</div>
         </BoardName>
-        <ButtonBox>
-          <Label>
-            <span>BASIC</span>
-            {selectedStyle === null && adminStyle === "basic" ? (
-              <input
-                name="styleColor"
-                value="basic"
-                role="switch"
-                type="radio"
-                onChange={onChangeStyleMode}
-                defaultChecked //일반 checked 쓰면 콘솔창에 undefined 에러발생.
-              />
-            ) : (
-              <input
-                name="styleColor"
-                value="basic"
-                role="switch"
-                type="radio"
-                onChange={onChangeStyleMode}
-              />
-            )}
-          </Label>
-          <Label>
-            <span>DARK</span>
-            {selectedStyle === null && adminStyle === "dark" ? (
-              <input
-                name="styleColor"
-                value="dark"
-                role="switch"
-                type="radio"
-                onChange={onChangeStyleMode}
-                defaultChecked //일반 checked 쓰면 콘솔창에 undefined 에러발생.
-              />
-            ) : (
-              <input
-                name="styleColor"
-                value="dark"
-                role="switch"
-                type="radio"
-                onChange={onChangeStyleMode}
-              />
-            )}
-          </Label>
-          <Label>
-            <span>GREEN</span>
-            {selectedStyle === null && adminStyle === "green" ? (
-              <input
-                name="styleColor"
-                value="green"
-                role="switch"
-                type="radio"
-                onChange={onChangeStyleMode}
-                defaultChecked //일반 checked 쓰면 콘솔창에 undefined 에러발생.
-              />
-            ) : (
-              <input
-                name="styleColor"
-                value="green"
-                role="switch"
-                type="radio"
-                onChange={onChangeStyleMode}
-              />
-            )}
-          </Label>
-        </ButtonBox>
-        <Button onClick={onSubmitStyle}>적용</Button>
-        <TestBox>
-          <WriteButton>버튼</WriteButton>
-          <Nav>
-            <PaginationButton>&lt;</PaginationButton>
-            <PaginationButton aria-current="true">1</PaginationButton>
-            <PaginationButton>&gt;</PaginationButton>
-          </Nav>
-        </TestBox>
+        <AdminStyle>
+          <ButtonBox>
+            <Label>
+              <span>BASIC</span>
+              {selectedStyle === null && adminStyle === "basic" ? (
+                <input
+                  name="styleColor"
+                  value="basic"
+                  role="switch"
+                  type="radio"
+                  onChange={onChangeStyleMode}
+                  defaultChecked //일반 checked 쓰면 콘솔창에 undefined 에러발생.
+                />
+              ) : (
+                <input
+                  name="styleColor"
+                  value="basic"
+                  role="switch"
+                  type="radio"
+                  onChange={onChangeStyleMode}
+                />
+              )}
+            </Label>
+            <Label>
+              <span>DARK</span>
+              {selectedStyle === null && adminStyle === "dark" ? (
+                <input
+                  name="styleColor"
+                  value="dark"
+                  role="switch"
+                  type="radio"
+                  onChange={onChangeStyleMode}
+                  defaultChecked //일반 checked 쓰면 콘솔창에 undefined 에러발생.
+                />
+              ) : (
+                <input
+                  name="styleColor"
+                  value="dark"
+                  role="switch"
+                  type="radio"
+                  onChange={onChangeStyleMode}
+                />
+              )}
+            </Label>
+            <Label>
+              <span>GREEN</span>
+              {selectedStyle === null && adminStyle === "green" ? (
+                <input
+                  name="styleColor"
+                  value="green"
+                  role="switch"
+                  type="radio"
+                  onChange={onChangeStyleMode}
+                  defaultChecked //일반 checked 쓰면 콘솔창에 undefined 에러발생.
+                />
+              ) : (
+                <input
+                  name="styleColor"
+                  value="green"
+                  role="switch"
+                  type="radio"
+                  onChange={onChangeStyleMode}
+                />
+              )}
+            </Label>
+          </ButtonBox>
+          <Button onClick={onSubmitStyle}>적용</Button>
+          <TestBox>
+            <WriteButton>버튼</WriteButton>
+            <Nav>
+              <PaginationButton>&lt;</PaginationButton>
+              <PaginationButton aria-current="true">1</PaginationButton>
+              <PaginationButton>&gt;</PaginationButton>
+            </Nav>
+          </TestBox>
+        </AdminStyle>
       </BoardContainer>
     </AdminBoardWrap>
   );

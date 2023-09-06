@@ -1,30 +1,30 @@
-const { wishList } = require("../models/mysql/index");
+const { wishlist } = require("../models/mysql/index");
 
 exports.addWishList = async (req, res) => {
   const { contentid, id, title, contenttypeid } = req.body;
 
   try {
-    const exScheduleList = await wishList.findOne({
+    const exScheduleList = await wishlist.findOne({
       where: {
         id,
-      contentId: contentid,
-      }
+        contentId: contentid,
+      },
     });
 
     if (exScheduleList) {
-      return res.status(200).json({wishList: "DUPLICATE"});
+      return res.status(200).json({ wishList: "DUPLICATE" });
     }
 
-    const newWishList = await wishList.create({
+    const newWishList = await wishlist.create({
       id,
       title,
       contentId: contentid,
-      contentTypeId: parseInt(contenttypeid)
+      contentTypeId: parseInt(contenttypeid),
     });
 
     return res.status(200).json({ wishList: newWishList });
   } catch (e) {
-    console.log('wishList Failure!');
+    console.log("wishList Failure!");
     return res.status(400).json(e);
   }
 };

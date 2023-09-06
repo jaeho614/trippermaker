@@ -53,7 +53,7 @@ exports.getMainInform = async (req, res) => {
         inform?.id?.indexOf("@") + 1,
         inform?.id?.lastIndexOf(".")
       ),
-      addr: inform.addr1 + inform.addr2,
+      addr: inform.addr1 + " " + inform.addr2,
       phone: inform.phone,
       nick: inform.nick,
     };

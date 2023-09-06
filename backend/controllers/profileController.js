@@ -1,4 +1,4 @@
-const { user, board, reply, like, wishList } = require("../models/mysql");
+const { user, board, reply, like, wishlist } = require("../models/mysql");
 const jwt = require("jsonwebtoken");
 const { generateToken } = require("./authController");
 const axios = require("axios");
@@ -91,14 +91,13 @@ exports.withdraw = async (req, res) => {
     const exUser = await user.findOne({
       where: {
         id,
-      }
+      },
     });
     if (exUser) {
       exUser.destroy();
       res.clearCookie("access_token");
       return res.status(200).json({ withdrawAuth: true });
     }
-
   } catch (e) {
     console.error(e);
     return res.status(400).json({ withdrawError: true });
@@ -150,12 +149,14 @@ exports.getReplyList = async (req, res) => {
   try {
     const replyList = await reply.findAll({
       where: {
-        uno
+        uno,
       },
-      include: [{
-        model: user,
-        as: "uno_user"
-      }]
+      include: [
+        {
+          model: user,
+          as: "uno_user",
+        },
+      ],
     });
     const totalReply = replyList.length;
     if (replyList) {
@@ -236,14 +237,14 @@ exports.getWishList = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const WishList = await wishList.findAll({
+    const WishList = await wishlist.findAll({
       where: {
         id,
       },
     });
     const totalWish = WishList.length;
 
-    if (wishList) {
+    if (WishList) {
       return res.status(200).json({ wishList: WishList, totalWish });
     }
   } catch (e) {
@@ -276,7 +277,7 @@ exports.deleteWish = async (req, res) => {
   const { no } = req.params;
 
   try {
-    const Wish = await wishList.findOne({
+    const Wish = await wishlist.findOne({
       where: {
         no,
       },

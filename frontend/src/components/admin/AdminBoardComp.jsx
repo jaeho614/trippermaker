@@ -21,6 +21,7 @@ const BoardContainer = styled.div`
 
   &:first-child {
     margin-left: 1%;
+    width: 35%;
   }
   &:last-child {
     margin-left: 1%;

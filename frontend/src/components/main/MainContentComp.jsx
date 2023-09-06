@@ -19,7 +19,6 @@ import WrapperComp from "../common/WrapperComp";
 
 const MainContentWrapper = styled.div`
   display: block;
-  margin-top: 100px;
   padding: 50px 0 100px 0;
   width: 100%;
 `;

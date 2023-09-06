@@ -5,7 +5,7 @@ const KeywordBox = styled.div`
   cursor: pointer;
   outline: none;
   text-align: center;
-  background-color: ${props => props.theme.yellow};
+  background-color: ${props => props.theme.subColor};
   font-size: 18px;
   font-weight: 500;
   border-radius: 25px;

@@ -10,7 +10,6 @@ import PaginationComp from "../common/PaginationComp";
 
 const AdminUserWrap = styled.div`
   display: flex;
-  justify-content: space-around;
   margin: 0 auto;
   margin-top: 30px;
   width: 100%;
@@ -18,15 +17,14 @@ const AdminUserWrap = styled.div`
 
 const BoardContainer = styled.div`
   background: ${props => props.theme.smoke};
-  margin-right: 10px;
+
   &:first-child {
     margin-left: 1%;
-    height: 100%;
-    width: 98%;
+    width: 35%;
   }
   &:last-child {
-    margin-left: 2%;
-    width: 98%;
+    margin-left: 1%;
+    width: 62%;
   }
 `;
 
@@ -44,6 +42,7 @@ const Board = styled.div`
   background: white;
   border-radius: 20px;
   width: 100%;
+
   .list-name {
     display: flex;
     justify-content: space-around;
@@ -51,7 +50,6 @@ const Board = styled.div`
     background: ${props => props.theme.smoke};
     border-bottom: 2px solid #333;
     padding: 14px 0;
-    padding-left: 5px;
     width: 100%;
 
     li {
