@@ -146,6 +146,15 @@ const FadeInLeft = ({ children }) => (
   </Tween>
 );
 
+const Back = styled.div`
+  position: absolute;
+  background: white;
+  padding: 5px;
+  top: 106px;
+  right: 0;
+  z-index: 1000;
+`;
+
 const Main = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -164,6 +173,7 @@ const Main = () => {
 
   return (
     <MainContainer>
+      <Back>ID: testAdmin@trippermaker.com &nbsp; PW: Testadmin123!</Back>
       <SlideWarraper>
         <Swiper
           cssMode={true}

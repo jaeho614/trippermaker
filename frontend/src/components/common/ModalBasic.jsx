@@ -30,6 +30,7 @@ const ModalBlock = styled.div`
     color: ${props => props.theme.text};
     border: none;
   }
+
   .Modal-item {
     text-align: left;
     width: 100%;
@@ -44,6 +45,10 @@ const ModalBlock = styled.div`
       color: ${props => props.theme.text};
       width: 75%;
     }
+  }
+
+  .addr {
+    color: ${props => props.theme.text};
   }
 `;
 
@@ -126,7 +131,7 @@ const ModalBasic = ({ setModalOpen, mapData, getDetail, onGetDetail }) => {
             <div className="Modal-item">
               <div className="Modal-left">전화번호</div>
               <div className="Modal-right">
-                :{" "}
+                :
                 {onGetDetail?.infocenterlodging
                   ? onGetDetail.infocenterlodging
                   : "-"}
@@ -135,14 +140,14 @@ const ModalBasic = ({ setModalOpen, mapData, getDetail, onGetDetail }) => {
             <div className="Modal-item">
               <div className="Modal-left">주차 가능여부</div>
               <div className="Modal-right">
-                :{" "}
+                :
                 {onGetDetail?.parkinglodging ? onGetDetail.parkinglodging : "-"}
               </div>
             </div>
             <div className="Modal-item">
               <div className="Modal-left">숙박 예약</div>
               <div className="Modal-right">
-                :{" "}
+                :
                 {onGetDetail?.reservationlodging
                   ? onGetDetail.reservationlodging
                   : "-"}
@@ -156,7 +161,7 @@ const ModalBasic = ({ setModalOpen, mapData, getDetail, onGetDetail }) => {
             </div>
             {onGetDetail?.reservationurl ? (
               <div className="Modal-item">
-                <div className="Modal-left">예약링크</div>:{" "}
+                <div className="Modal-left">예약링크</div>:
                 <div
                   className="Moda-right"
                   dangerouslySetInnerHTML={{

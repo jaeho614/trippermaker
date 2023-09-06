@@ -9,6 +9,7 @@ const TrafficContainer = styled.div`
     display: flex;
     justify-content: center;
   }
+
   button {
     cursor: pointer;
     text-align: center;
@@ -25,7 +26,8 @@ const TrafficContainer = styled.div`
       border-radius: 30px;
     }
     &.traffic-category {
-      background-color: ${props => props.theme.yellow};
+      background-color: ${props => props.theme.mainColor};
+      color: ${props => props.theme.text};
     }
   }
   .icon {
@@ -57,6 +59,7 @@ const TrafficContainer = styled.div`
       span {
         font-size: 18px;
         font-weight: 600;
+        color: ${props => props.theme.text};
         margin-left: 30px;
         line-height: 18px;
       }
@@ -172,7 +175,7 @@ const EndItem = ({ item, onClick }) => {
       onClick={onClick}
       data-type="end"
       className="end-area"
-      key={'end' + item.cityCode}
+      key={"end" + item.cityCode}
     >
       {item.cityName}
     </li>
@@ -252,7 +255,7 @@ const TrafficSelectComp = ({
                   <StartItem
                     item={item}
                     // key={item.cityCode}
-                    key={'StartItem' + index}
+                    key={"StartItem" + index}
                     onClick={onClickArea}
                   />
                 ))}
@@ -261,7 +264,7 @@ const TrafficSelectComp = ({
                   <StartItem
                     item={item}
                     // key={item.cityCode}
-                    key={'StartItem_Terminal' + index}
+                    key={"StartItem_Terminal" + index}
                     onClick={onClickArea}
                   />
                 ))}
@@ -273,7 +276,7 @@ const TrafficSelectComp = ({
                 <StartDetailItem
                   item={station}
                   onClick={onClickPlace}
-                  key={'StartDetailItem' + station.stationId}
+                  key={"StartDetailItem" + station.stationId}
                 />
               ))}
             {terminalStartDetails &&
@@ -281,7 +284,7 @@ const TrafficSelectComp = ({
                 <StartDetailItem
                   item={terminal}
                   onClick={onClickPlace}
-                  key={'StartDetailItem2' + terminal.terminalId}
+                  key={"StartDetailItem2" + terminal.terminalId}
                 />
               ))}
           </SelectListBlock>
@@ -295,17 +298,13 @@ const TrafficSelectComp = ({
                 stations.map(item => (
                   <EndItem
                     item={item}
-                    key={'station' + item.cityCode}
+                    key={"station" + item.cityCode}
                     onClick={onClickArea}
                   />
                 ))}
               {terminals &&
                 terminals.map((item, index) => (
-                  <EndItem
-                    item={item}
-                    key={index}
-                    onClick={onClickArea}
-                  />
+                  <EndItem item={item} key={index} onClick={onClickArea} />
                 ))}
             </SelectListBlock>
           ) : null}

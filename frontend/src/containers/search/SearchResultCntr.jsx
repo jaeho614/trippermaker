@@ -44,7 +44,7 @@ const SearchResultCntr = () => {
         } else if (result.isDismissed) {
           Swal.fire({
             icon: "question",
-            text: "추가 안했습니다.",
+            text: "취소했습니다.",
           });
         }
       })

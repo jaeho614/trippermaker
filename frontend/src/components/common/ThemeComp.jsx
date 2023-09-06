@@ -41,7 +41,7 @@ export const greenTheme = {
 };
 
 export const darkTheme = {
-  mainColor: "#000000", //블랙
+  mainColor: "#404040", //블랙
   subColor: "#fff", //화이트
   nameColor: "#fff", //화이트
   border: "#fff", //화이트

@@ -35,11 +35,13 @@ const ModalBlock = styled.div`
       background-color: cadetblue;
     }
     &.ticket-ok {
-      background-color: aquamarine;
+      background-color: ${props => props.theme.mainColor};
+      color: ${props => props.theme.text};
       width: 48.5%;
     }
     &.ticket-close {
-      background-color: aquamarine;
+      background-color: ${props => props.theme.mainColor};
+      color: ${props => props.theme.text};
       width: 48.5%;
     }
   }
@@ -73,7 +75,8 @@ const TicketComp = ({
         {data.map((row, rowIndex) => (
           <div key={`row-${rowIndex}`}>
             {row.map((item, colIndex) => {
-              const ticket = tickets && tickets.find(ticket => ticket.seat === item.name);
+              const ticket =
+                tickets && tickets.find(ticket => ticket.seat === item.name);
               const isClicked = ticket !== undefined;
 
               return (
@@ -89,9 +92,7 @@ const TicketComp = ({
               );
             })}
           </div>
-          // <div>ddddd</div>
         ))}
-        {/* ))} */}
         <p>
           <button className="ticket-ok" onClick={onSubmit}>
             예약

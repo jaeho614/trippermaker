@@ -34,20 +34,24 @@ function App() {
     mainStyle: MainMod?.mainStyle,
   }));
   const [theme, setTheme] = useState({
-    bgcolor: "#99ccff",
-    subcolor: "#3875f0",
-    lightcolor: "#17bdff",
-    smoke: "#F5F5F5",
-    dark: "#1a2b3c",
-    black: "#000",
-    softblack: "#333",
+    mainColor: "#99ccff", //파랑
+    subColor: "#E1F0FF", //연하게
+    nameColor: "#fff", //화이트
+    border: "#000000", //블랙
+    text: "#000000", //블랙
+    buttonText: "#fff", //화이트
+    button: "#333", //소프트 블랙
+    hoverButton: "#666", //그레이
+    smoke: "#F5F5F5", //스모크
+    black: "#000", //블랙
     lightblack: "#666",
+    softblack: "#333",
     white: "#fff",
-    //main Color
-    softblue: "#d6e4f292",
-    green: "#0055ff",
-    red: "#ff3300",
     yellow: "#ebd258",
+    green: "#009966",
+    red: "#ff3300",
+    shadow: "2px 7px 15px 8px rgba(0, 0, 0, 0.3)",
+    adminColor: "#1a2b3c",
   });
 
   useEffect(() => {
