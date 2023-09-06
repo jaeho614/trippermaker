@@ -1,58 +1,58 @@
 import React, { useState } from "react";
-import { styled } from "styled-components";
-import Modal from "styled-react-modal";
-import AdminUserGraph from "./AdminUserGraph";
-import PaginationComp from "../common/PaginationComp";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartSimple, faUser } from "@fortawesome/free-solid-svg-icons";
+import Modal from "styled-react-modal";
+import { styled } from "styled-components";
+
+import AdminUserGraph from "./AdminUserGraph";
+import PaginationComp from "../common/PaginationComp";
 
 const AdminUserWrap = styled.div`
-  width: 100%;
-  margin: 0 auto;
   display: flex;
   justify-content: space-around;
+  margin: 0 auto;
   margin-top: 30px;
+  width: 100%;
 `;
 
 const BoardContainer = styled.div`
-  background: ${(props) => props.theme.smoke};  
+  background: ${props => props.theme.smoke};
   margin-right: 10px;
   &:first-child {
-    width: 98%;
-    height: 100%;
     margin-left: 1%;
+    height: 100%;
+    width: 98%;
   }
   &:last-child {
-    width: 98%;
     margin-left: 2%;
+    width: 98%;
   }
 `;
 
 const BoardName = styled.div`
-  background: ${props => props.theme.dark};
-
+  background: ${props => props.theme.adminColor};
   font-size: 20px;
   padding: 10px 20px;
   span {
-    color: ${props => props.theme.smoke};
+    color: ${props => props.theme.white};
     margin-left: 10px;
   }
 `;
 
 const Board = styled.div`
-  width: 100%;
   background: white;
   border-radius: 20px;
+  width: 100%;
   .list-name {
     display: flex;
     justify-content: space-around;
     text-align: center;
-    padding: 14px 0;
-    width: 100%;
     background: ${props => props.theme.smoke};
     border-bottom: 2px solid #333;
+    padding: 14px 0;
     padding-left: 5px;
+    width: 100%;
 
     li {
       text-align: center;
@@ -62,16 +62,16 @@ const Board = styled.div`
 `;
 const UserInfoContainer = styled.div`
   display: flex;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${props => props.theme.border};
 `;
 
 const UserInfo = styled.ul`
   display: flex;
-  justify-content: space-around;
-  width: 100%;
   cursor: pointer;
-  line-height: 60px;
+  justify-content: space-around;
   padding-left: 10px;
+  width: 100%;
+  line-height: 60px;
 
   &:hover {
     background: rgba(0, 0, 0, 0.1);
@@ -79,9 +79,9 @@ const UserInfo = styled.ul`
 `;
 
 const Detail = styled.li`
-  width: 30%;
   text-align: center;
   padding: 0 10px;
+  width: 30%;
 
   &.remove-user {
     width: 10%;
@@ -89,26 +89,26 @@ const Detail = styled.li`
 `;
 
 const ControlButton = styled.button`
-  border: none;
-  background: ${props => props.theme.lightblack};
-  color: ${props => props.theme.smoke};
   cursor: pointer;
-  padding: 7px 12px;
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
+  border: none;
   margin: 13px 0;
+  padding: 7px 12px;
   &:hover {
-    background: ${props => props.theme.softblack};
+    background: ${props => props.theme.hoverButton};
   }
 `;
 
 const StyledModal = Modal.styled`
+  display:flex;
+  align-items:center;
+  flex-direction :column;
+  justify-content:center;
   background: ${props => props.theme.smoke};
+  margin: 0 auto;
   height: 400px;
   width: 600px;
-  margin: 0 auto;
-  display:flex;
-  flex-direction :column;
-  align-items:center;
-  justify-content:center;
 
   table{
     width :90%;
@@ -117,11 +117,11 @@ const StyledModal = Modal.styled`
     table,
   td,
   th {
-    border: 1px solid black;
+    border: 1px solid ${props => props.theme.border};
     border-collapse: collapse;
-    padding: 15px;
     margin:0 auto;
     margin-top : 20px;
+    padding: 15px;
   }
 
   th{

@@ -28,14 +28,14 @@ const AdminBoardCnrt = () => {
     setModal(!modal);
   };
 
-  const getBoardInform = (e) => {
+  const getBoardInform = e => {
     const { id } = e.currentTarget; //자식 요소를 클릭할 경우 이벤트가 제대로 발생하지 않음. e.target과 차이가 있음.
     dispatch(getBoardDetail({ no: id }));
     switchModal();
   };
 
   //회원 탈퇴시키기
-  const deleteBoardInform = (no) => {
+  const deleteBoardInform = no => {
     //confirm 결과 true면 탈퇴진행
     if (window.confirm(`no.${no} 게시물을 정말 삭제하시겠습니까?`)) {
       dispatch(deleteBoard({ no }));
@@ -52,7 +52,7 @@ const AdminBoardCnrt = () => {
       cancelButtonText: "취소",
       confirmButtonText: "확인",
     })
-      .then((titleRes) => {
+      .then(titleRes => {
         const title = titleRes.value;
         if (titleRes.isConfirmed && title.length > 0) {
           Swal.fire({
@@ -62,7 +62,7 @@ const AdminBoardCnrt = () => {
             showConfirmButton: true,
             cancelButtonText: "취소",
             confirmButtonText: "확인",
-          }).then((contentRes) => {
+          }).then(contentRes => {
             if (contentRes.isConfirmed) {
               const content = contentRes.value;
               const id = user.id;
@@ -71,12 +71,12 @@ const AdminBoardCnrt = () => {
           });
         }
       })
-      .catch((error) => {
+      .catch(error => {
         Swal.fire({ title: `${error}` });
       });
   };
 
-  const onDone = async (e) => {
+  const onDone = async e => {
     Swal.fire({
       icon: "question",
       text: "이 공지사항을 비활성화 할까요?",
@@ -85,14 +85,14 @@ const AdminBoardCnrt = () => {
       cancelButtonText: "CANCEL",
       confirmButtonText: "OK",
     })
-      .then((result) => {
+      .then(result => {
         if (result.isConfirmed) {
           const no = parseInt(e.target.dataset.no);
           dispatch(doneNotice({ no }));
           Swal.fire({ icon: "success", text: "비활성화 했습니다." });
         }
       })
-      .catch((error) => {
+      .catch(error => {
         Swal.fire({ icon: "error", text: `${error}` });
       });
   };

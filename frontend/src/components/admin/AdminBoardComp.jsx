@@ -10,30 +10,29 @@ import { faChartSimple } from "@fortawesome/free-solid-svg-icons";
 import { makeCreatedAt } from "../../lib/makeCreatedAt";
 
 const AdminBoardWrap = styled.div`
-  width: 100%;
-  margin: 0 auto;
   display: flex;
+  margin: 0 auto;
   margin-top: 30px;
+  width: 100%;
 `;
 
 const BoardContainer = styled.div`
   background: ${props => props.theme.smoke};
 
   &:first-child {
-    width: 35%;
     margin-left: 1%;
   }
   &:last-child {
-    width: 62%;
     margin-left: 1%;
+    width: 62%;
   }
 `;
 
 const BoardName = styled.div`
-  background: ${props => props.theme.dark};
-
+  background: ${props => props.theme.adminColor};
   font-size: 20px;
   padding: 10px 20px;
+
   span {
     color: ${props => props.theme.smoke};
     margin-left: 10px;
@@ -41,17 +40,19 @@ const BoardName = styled.div`
 `;
 
 const Board = styled.div`
-  width: 100%;
-  background: white;
+  background: ${props => props.theme.white};
   border-radius: 20px;
+  width: 100%;
+
   .list-name {
     display: flex;
     justify-content: space-around;
     text-align: center;
+    background: ${props => props.theme.smoke};
+    border-bottom: 2px solid ${props => props.theme.border};
     padding: 14px 0;
     width: 100%;
-    background: ${props => props.theme.smoke};
-    border-bottom: 2px solid #333;
+
     li {
       text-align: center;
       width: 5%;
@@ -64,16 +65,17 @@ const Board = styled.div`
     }
 
     li:first-child {
-      line-height: 17px;
       width: 10%;
+      line-height: 17px;
     }
   }
 `;
 
 const BoardInfoContainer = styled.div`
   display: flex;
-  border-bottom: 1px solid black;
   align-items: center;
+  border-bottom: 1px solid ${props => props.theme.border};
+
   &.notice {
     background-color: steelblue;
   }
@@ -81,9 +83,9 @@ const BoardInfoContainer = styled.div`
 
 const BoardInfo = styled.div`
   display: flex;
+  cursor: pointer;
   justify-content: space-around;
   width: 100%;
-  cursor: pointer;
   line-height: 60px;
 
   &:hover {
@@ -92,13 +94,12 @@ const BoardInfo = styled.div`
 `;
 
 const Detail = styled.li`
-  margin-right: 10px;
-  // width: 30%;
-  text-align: center;
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: center;
+  margin-right: 10px;
   width: 8%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:nth-child(3n),
   &:nth-child(2) {
@@ -106,9 +107,9 @@ const Detail = styled.li`
   }
 
   &.title {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &.remove-board {
@@ -117,28 +118,27 @@ const Detail = styled.li`
 `;
 
 const ControlButton = styled.button`
-  border: none;
-
-  background: ${props => props.theme.lightblack};
-  color: ${props => props.theme.smoke};
   cursor: pointer;
-  padding: 7px 12px;
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
+  border: none;
   margin: 10px;
+  padding: 7px 12px;
 
   &:hover {
-    background: ${props => props.theme.softblack};
+    background: ${props => props.theme.hoverButton};
   }
 `;
 
 const StyledModal = Modal.styled`
+  display: flex;
+  align-items:center;
+  flex-direction :column;
+  justify-content:center;
   background: ${props => props.theme.smoke};
   height: 800px;
   width: 800px;
   margin: 0 auto;
-  display:flex;
-  flex-direction :column;
-  align-items:center;
-  justify-content:center;
 
   table{
     width :90%;
@@ -148,11 +148,11 @@ const StyledModal = Modal.styled`
     table,
   td,
   th {
-    border: 1px solid black;
+    border: 1px solid ${props => props.theme.border};
     border-collapse: collapse;
-    padding: 15px;
     margin:0 auto;
     margin-top : 20px;
+    padding: 15px;
   }
 
   th{
@@ -161,22 +161,22 @@ const StyledModal = Modal.styled`
   }
 
   h3{
-    text-align:center;
+    text-align: center;
   }
 
   .content-title{
-    margin-top : 20px;
     font-size: 20px;
     font-weight : 600;
+    margin-top : 20px;
   }
 
   .content{
+    border : 1px solid ${props => props.theme.lightblack};
+    margin-top : 20px;
+    padding: 20px;
     height : 300px;
     width : 85%;
     overflow:auto;
-    margin-top : 20px;
-    border : 1px solid ${props => props.theme.lightblack};
-    padding: 20px;
     line-height : 20px;
   }
 `;

@@ -19,7 +19,7 @@ import WrapperComp from "../common/WrapperComp";
 
 const MainContentWrapper = styled.div`
   display: block;
-  background: ${props => props.theme.softblue};
+  background: ${props => props.theme.mainColor};
   margin-top: 100px;
   padding: 50px 0 100px 0;
   width: 100%;
@@ -101,7 +101,7 @@ const TravelListTitle = styled.div`
     font-family: "SUITE-Regular";
     font-size: 30px;
     span {
-      color: ${props => props.theme.mainColor};
+      color: ${props => props.theme.subColor};
       font-size: 36px;
       font-family: "OAGothic-ExtraBold";
       font-weight: 600;

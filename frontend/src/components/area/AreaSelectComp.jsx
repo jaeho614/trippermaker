@@ -1,34 +1,36 @@
 import React from "react";
+
 import styled from "styled-components";
+
 import AreaListCntr from "../../containers/area/AreaListCntr";
 import KoreaMap from "./KoreaMap";
 
 const AreaSelectWrapper = styled.div`
-  width: 100%;
-  height: 100vh;
   margin-bottom: 100px;
+  height: 100vh;
+  width: 100%;
 `;
 
 const MapContainer = styled.div`
-  width: 100%;
-  margin-top: -35px;
   display: flex;
+  margin-top: -35px;
+  width: 100%;
 `;
 
 const ListContainer = styled.div`
-  width: 800px;
-  height: 1050px;
-  position: static;
   display: flex;
+  position: static;
+  overflow: auto;
   flex-direction: column;
+  flex-wrap: wrap;
+  background: ${props => props.theme.mainColor};
+  height: 1050px;
+  width: 800px;
   top: 120px;
   left: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  flex-wrap: wrap;
-  background: ${(props) => props.theme.white};
-  overflow: auto;
   .theme {
-    background: ${(props) => props.theme.white};
+    background: ${props => props.theme.subColor};
     margin-top: -2px;
   }
 
@@ -46,23 +48,23 @@ const ThemeList = styled.div`
   margin-left: 65px;
 `;
 const ThemeListItem = styled.button`
-  background: ${(props) => props.theme.bgcolor};
-  padding: 10px 20px;
-  margin-left: 14px;
-  margin-top: 14px;
-  font-size: 16px;
-  border-radius: 20px;
   cursor: pointer;
-  transition: 0.3s;
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
+  font-size: 16px;
   border: none;
+  border-radius: 20px;
+  margin-top: 14px;
+  margin-left: 14px;
+  padding: 10px 20px;
+  transition: 0.3s;
   &:hover {
-    background: ${(props) => props.theme.subcolor};
-    color: ${(props) => props.theme.white};
+    background: ${props => props.theme.hoverButton};
   }
 
   &.selectItem {
-    background-color: steelblue;
-    color: ${(props) => props.theme.smoke};
+    background-color: ${props => props.theme.hoverButton};
+    color: ${props => props.theme.buttonText};
     font-weight: 600;
   }
 `;
@@ -115,7 +117,7 @@ const AreaSelectComp = ({
         <ListContainer>
           <ThemeList>
             <div className="theme">
-              {contentTypes.map((type) => (
+              {contentTypes.map(type => (
                 <SelectType
                   type={type}
                   key={type.code}

@@ -93,7 +93,6 @@ exports.phoneChk = async (req, res) => {
     });
 
     if (exUser) {
-      console.log("이미 가입된 회원입니다.");
       return res
         .status(401)
         .json({ phoneError: true, phoneMsg: "이미 가입된 전화번호입니다." }); //중복된 번호
@@ -143,14 +142,12 @@ exports.phoneChk = async (req, res) => {
         .json({ phoneAuth: true, phoneMsg: "인증번호가 재발급 되었습니다." });
     }
     if (calcExpire(expire) && !alreadyGetNum.ok) {
-      console.log("이미 발급된 인증번호가 존재합니다.");
       return res.status(400).json({
         phoneError: true,
         phoneMsg: "이미 발급된 인증번호가 존재합니다.",
       });
     }
     if (alreadyGetNum && alreadyGetNum.ok) {
-      console.log("이미 인증이 완료되었습니다.");
       return res
         .status(200)
         .json({ phoneAuth: true, phoneMsg: "이미 인증이 완료되었습니다." });
@@ -184,14 +181,12 @@ exports.authNumChk = async (req, res) => {
     });
 
     if (!insertedPhone) {
-      console.log("인증번호를 발급받아 주세요.");
       return res
         .status(401)
         .json({ authNumError: true, phoneMsg: "인증번호를 발급받아 주세요." });
     }
 
     if (insertedPhone.ok) {
-      console.log("인증이 이미 완료되었습니다.");
       return res
         .status(200)
         .json({ authNum: true, phoneMsg: "인증이 이미 완료되었습니다." });
@@ -201,7 +196,6 @@ exports.authNumChk = async (req, res) => {
     const expire = insertedPhone.insertTime;
 
     if (calcExpire(expire) === true) {
-      console.log("인증번호가 만료되었습니다. 다시 발급 받아주세요.");
       return res.status(401).json({
         authNumError: true,
         phoneMsg: "인증번호가 만료되었습니다. 다시 발급 받아주세요.",
@@ -209,7 +203,6 @@ exports.authNumChk = async (req, res) => {
     }
 
     if (!compareAuthNum(receivedNum, authNum)) {
-      console.log("인증번호를 다시 확인해주세요.");
       return res.status(401).json({
         authNumError: true,
         phoneMsg: "인증번호를 다시 확인해주세요.",
@@ -223,7 +216,6 @@ exports.authNumChk = async (req, res) => {
           ok: true,
         }
       );
-      console.log("인증이 완료되었습니다.");
       return res
         .status(200)
         .json({ authNum: true, phoneMsg: "인증이 완료되었습니다." }); //인증완료

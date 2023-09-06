@@ -17,8 +17,8 @@ const LoginLeftPic = styled.div`
   background: url("/assets/mainslide4.jpeg");
   background-position: center;
   background-size: cover;
-  width: 45%;
   height: 100vh;
+  width: 45%;
   object-fit: cover;
 `;
 
@@ -130,7 +130,7 @@ const StyledModal = Modal.styled`
   border-radius: 20px;
   height: 300px;
   width: 500px;
-  box-shadow: 2${props => props.theme.shadow};
+  box-shadow: ${props => props.theme.shadow};
 
   div{
     margin-top: 10px;

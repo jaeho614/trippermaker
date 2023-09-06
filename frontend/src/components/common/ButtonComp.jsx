@@ -17,10 +17,8 @@ const ButtonStyle = css`
   transition: 0.4s;
 
   &:hover {
-    color: ${props => props.theme.buttonText};
     background: ${props => props.theme.hoverButton};
-    box-shadow: 200px 0 0 0 ${props => props.theme.buttonText} inset,
-      -200px 0 0 0 rgba(0, 0, 0, 0.25) inset;
+    color: ${props => props.theme.buttonText};
   }
 `;
 

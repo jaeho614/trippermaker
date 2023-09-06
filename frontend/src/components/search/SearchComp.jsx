@@ -9,22 +9,22 @@ const SearchWrapper = styled.div`
 
 const SelectContainer = styled.div`
   position: fixed;
-  z-index: 900;
   top: 119px;
+  z-index: 900;
 
   select {
-    padding: 10px 20px;
-    background: ${(props) => props.theme.bgcolor};
+    background: ${props => props.theme.subColor};
     margin-left: 30px;
+    padding: 10px 20px;
   }
   input {
     padding: 10px 40px;
   }
   div {
     position: fixed;
-    background: ${(props) => props.theme.white};
-    width: 600px;
+    background: ${props => props.theme.mainColor};
     padding: 34px 10px 20px 176px;
+    width: 600px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 `;
@@ -45,7 +45,7 @@ const SearchComp = ({
           <select onChange={onSelectedContentType}>
             <option>컨텐츠타입</option>
             {contentTypes &&
-              contentTypes.map((item) => (
+              contentTypes.map(item => (
                 <option name="contentType" value={item.code} key={item.code}>
                   {item.name}
                 </option>

@@ -13,6 +13,7 @@ const [SEARCH_ID, SEARCH_ID_SUCCESS, SEARCH_ID_FAILURE] =
   createRequestActionTypes("auth/SEARCH_ID");
 const [SEARCH_PWD, SEARCH_PWD_SUCCESS, SEARCH_PWD_FAILURE] =
   createRequestActionTypes("auth/SEARCH_PWD");
+const SEARCH_PWD_CLEAR = "auth/SEARCH_PWD_CLEAR";
 const [UPDATE_PWD, UPDATE_PWD_SUCCESS, UPDATE_PWD_FAILURE] =
   createRequestActionTypes("auth/UPDATE_PWD");
 const PWD_CHECK = "auth/PWD_CHECK";
@@ -36,6 +37,7 @@ export const onSearchPwd = createAction(SEARCH_PWD, ({ email, phone }) => ({
   email,
   phone,
 }));
+export const onSearchPwdClear = createAction(SEARCH_PWD_CLEAR);
 export const updatePwd = createAction(UPDATE_PWD, ({ email, pwd }) => ({
   email,
   pwd,
@@ -115,6 +117,11 @@ const LoginMod = handleActions(
       ...state,
       searchPwd: null,
       searchPwdError,
+    }),
+    [SEARCH_PWD_CLEAR]: state => ({
+      ...state,
+      searchPwd: null,
+      searchPwdError: null,
     }),
     [UPDATE_PWD_SUCCESS]: (state, { payload: { pwdAuth } }) => ({
       ...state,

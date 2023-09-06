@@ -7,7 +7,6 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const { sequelize } = require("./models/mysql");
 dotenv.config();
-// const { jwtMiddleware } = require("./middleware/authMiddleware");
 const bodyParser = require("body-parser");
 const connect = require("./models/mongoDB");
 const multer = require("multer");
@@ -27,9 +26,7 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(cookieParser());
-// app.use(jwtMiddleware);
 
 const { PORT, MONGO_URL } = process.env;
 

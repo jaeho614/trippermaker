@@ -8,15 +8,15 @@ const TagForm = styled.form`
   margin-top: 10px;
 
   input {
-    padding: 10px 20px;
     border-radius: 20px;
+    padding: 10px 20px;
     margin-right: 10px;
   }
 
   button {
-    padding: 5px 10px;
+    background-color: red;
     color: #fff;
-    background-color: #333;
+    padding: 5px 10px;
   }
 `;
 const Tag = styled.div`
@@ -24,8 +24,8 @@ const Tag = styled.div`
 `;
 const TagListBlock = styled.div`
   display: flex;
-  width: 200px;
   margin-top: 10px;
+  width: 200px;
 `;
 
 const TagItem = React.memo(({ tag, onRemove }) => (
@@ -35,7 +35,7 @@ const TagItem = React.memo(({ tag, onRemove }) => (
 
 const TagList = React.memo(({ tags, onRemove }) => (
   <TagListBlock>
-    {tags.map((tag) => (
+    {tags.map(tag => (
       <TagItem key={tag} tag={tag} onRemove={onRemove} />
     ))}
   </TagListBlock>
@@ -46,7 +46,7 @@ const TagBoxComp = ({ tags, onChangeTags }) => {
   const [localTags, setLocalTags] = useState([]);
 
   const insertTag = useCallback(
-    (tag) => {
+    tag => {
       if (!tag) return; // 공백이면 추가 X
       if (localTags.includes(tag)) return; // 이미 존재하는 태그는 추가 X
       const nextTags = [...localTags, tag];
@@ -57,20 +57,20 @@ const TagBoxComp = ({ tags, onChangeTags }) => {
   );
 
   const onRemove = useCallback(
-    (tag) => {
-      const nextTags = localTags.filter((t) => t !== tag);
+    tag => {
+      const nextTags = localTags.filter(t => t !== tag);
       setLocalTags(nextTags);
       onChangeTags(nextTags);
     },
     [localTags, onChangeTags]
   );
 
-  const onChange = useCallback((e) => {
+  const onChange = useCallback(e => {
     setInput(e.target.value);
   }, []);
 
   const onSubmit = useCallback(
-    (e) => {
+    e => {
       e.preventDefault();
       insertTag(input.trim()); //공백제거
       setInput(""); // 초기화

@@ -22,7 +22,7 @@ const StyledSeoul = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -37,7 +37,7 @@ const StyledBusan = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -52,7 +52,7 @@ const StyledDaegu = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -67,7 +67,7 @@ const StyledIncheon = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -82,7 +82,7 @@ const StyledGuangju = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -97,7 +97,7 @@ const StyledDaejeon = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -112,7 +112,7 @@ const StyledUlsan = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -127,7 +127,7 @@ const StyledSaejong = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -142,7 +142,7 @@ const StyledGeynggido = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -157,7 +157,7 @@ const StyledGangwondo = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -172,7 +172,7 @@ const StyledChungchungbukdo = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -187,7 +187,7 @@ const StyledChungchungnamdo = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -202,7 +202,7 @@ const Styledjeonlabukdo = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -217,7 +217,7 @@ const StyledJeonlanamdo = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -232,7 +232,7 @@ const StyledGyengsangbukdo = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -247,7 +247,7 @@ const StyledGyengsangnamdo = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 
@@ -262,7 +262,7 @@ const StyledJejudo = styled.path`
   }
   &.clicked {
     opacity: 1;
-    stroke: ${(props) => props.theme.softblack};
+    stroke: ${props => props.theme.softblack};
   }
 `;
 

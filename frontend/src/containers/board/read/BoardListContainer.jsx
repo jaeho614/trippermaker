@@ -9,12 +9,14 @@ const BoardListContainer = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
-  const { posts, user, error, notices } = useSelector(({ BoardListMod, UserMod }) => ({
-    posts: BoardListMod.posts,
-    error: BoardListMod.error,
-    user: UserMod.user,
-    notices: BoardListMod.notices
-  }));
+  const { posts, user, error, notices } = useSelector(
+    ({ BoardListMod, UserMod }) => ({
+      posts: BoardListMod.posts,
+      error: BoardListMod.error,
+      user: UserMod.user,
+      notices: BoardListMod.notices,
+    })
+  );
 
   useEffect(() => {
     const page = parseInt(searchParams.get("page"), 10) || 1;
@@ -24,7 +26,12 @@ const BoardListContainer = () => {
 
   return (
     <>
-      <BoardListComp posts={posts} error={error} showWriteButton={user} notices={notices} />
+      <BoardListComp
+        posts={posts}
+        error={error}
+        showWriteButton={user}
+        notices={notices}
+      />
     </>
   );
 };

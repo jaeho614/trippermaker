@@ -12,7 +12,7 @@ const {
   replyRemove,
   isLike,
   getLike,
-  headerListNotices
+  headerListNotices,
 } = require("../controllers/boardController");
 
 const app = express();
@@ -28,8 +28,8 @@ board.post("/write/reply/:bno", replyAdd);
 board.get("/read/reply/:bno", replyRead);
 board.post("/read/reply/modify", replyModify);
 board.post("/read/reply/remove", replyRemove);
-board.get('/like/:bno', isLike);
-board.get('/getLike/:bno/:id', getLike);
-board.get('/headerListNotices', headerListNotices);
+board.get("/like/:bno", isLike);
+board.get("/getLike/:bno/:id", getLike);
+board.get("/headerListNotices", headerListNotices);
 
 module.exports = board;

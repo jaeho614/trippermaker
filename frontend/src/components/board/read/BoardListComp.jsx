@@ -13,16 +13,17 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const ListContainer = styled.div`
   margin-top: 50px;
+
   .board-list {
-    width: 80%;
-    margin: 0 auto;
     display: flex;
-    background: ${(props) => props.theme.smoke};
-    padding: 20px;
-    transition: 0.3s;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     position: relative;
+    cursor: pointer;
+    background: ${props => props.theme.mainColor};
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+    transition: 0.3s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
     &.notice {
       background-color: steelblue;
@@ -34,24 +35,24 @@ const ListContainer = styled.div`
   }
 
   .board-list-text {
-    margin-left: 20px;
-    margin-top: 20px;
     overflow: hidden;
+    margin-top: 20px;
+    margin-left: 20px;
     white-space: wrap;
   }
 
   .title {
-    margin-top: 0px;
+    overflow: hidden;
     font-size: 28px;
     font-weight: 600;
+    margin-top: 0px;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
   }
 
   .board-list-text {
-    margin-left: 20px;
     margin-top: 1rem;
+    margin-left: 20px;
     width: 55%;
   }
 
@@ -65,30 +66,30 @@ const ListContainer = styled.div`
   }
 
   .date {
-    margin-top: 5px;
     font-size: 16px;
+    margin-top: 5px;
   }
   .content {
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
     margin-top: 1rem;
+    text-overflow: ellipsis;
   }
 
   .write-id {
-    margin-top: 1rem;
-    font-weight: 500;
-    white-space: nowrap;
     overflow: hidden;
+    font-weight: 500;
+    margin-top: 1rem;
+    white-space: nowrap;
     text-overflow: ellipsis;
   }
 
   .createat {
     font-size: 16px;
-    color: #7b7b7b;
+    color: ${props => props.theme.text};
     margin-top: 1rem;
     white-space: nowrap;
     overflow: hidden;
@@ -134,11 +135,11 @@ const ListContainer = styled.div`
   }
 `;
 const WriteButton = styled(ButtonComp)`
-  margin: 20px 0;
-  text-align: center;
   position: relative;
-  left: 50%;
+  text-align: center;
+  margin: 20px 0;
   top: 30px;
+  left: 50%;
   transform: translate(-50%, 0);
 `;
 
@@ -219,13 +220,13 @@ const BoardListComp = ({ posts, showWriteButton, error, notices }) => {
           <WriteButton to={"/board/write"}>글쓰기</WriteButton>
         )}
         {notices &&
-          notices.notices.map((notice) => (
+          notices.notices.map(notice => (
             <BoardListItem key={notice.no} post={notice} />
           ))}
         {posts &&
           posts
             .slice(offset, offset + limit)
-            .map((post) => <BoardListItem key={post.no} post={post} />)}
+            .map(post => <BoardListItem key={post.no} post={post} />)}
         <div className="pagin">
           {posts && (
             <PaginationComp

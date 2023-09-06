@@ -4,40 +4,45 @@ import DaumPostcode from "react-daum-postcode";
 
 const StyledModal = Modal.styled`
   background: white;
-  height: 80%;
-  width: 80%;
+  border-radius: 20px;
   padding: 10px;
+  height: 75%;
+  width: 80%;
 
   div{
     display: flex;
     justify-content: space-between;
   }
+
+  span{
+    margin-bottom: 10px;
+  }
 `;
 
 const StyledTextarea = styled.textarea`
-  width: 100%;
   height: 600px;
+  width: 100%;
 `;
 
 const DivInModal = styled.div`
   cursor: pointer;
-  color: ${(props) => props.theme.red};
-  margin-left: 400px;
-  background: none;
   text-align: center;
+  background: none;
+  color: ${props => props.theme.red};
+  margin-left: 400px;
 `;
 
 const SubIdInput = styled.input`
-  height: 27px;
+  background: ${props => props.theme.white};
+  color: ${props => props.theme.softblack};
+  border: 1px solid ${props => props.theme.border};
   margin-top: 10px;
-  padding: 7px 10px;
-  border: 1px solid ${(props) => props.theme.lightblack};
-  background: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.softblack};
   margin-right: 5px;
+  padding: 7px 10px;
+  height: 27px;
   width: 200px;
 
-  ${(props) =>
+  ${props =>
     props.disabled &&
     css`
       background: gray;
@@ -46,32 +51,32 @@ const SubIdInput = styled.input`
 `;
 
 const AdminBoardWrap = styled.div`
-  width: 100%;
-  margin: 0 auto;
   display: flex;
+  margin: 0 auto;
   margin-top: 30px;
+  width: 100%;
 `;
 
 const BoardContainer = styled.div`
-  background: ${(props) => props.theme.smoke};
+  background: ${props => props.theme.smoke};
 
   &:first-child {
-    width: 35%;
     margin-left: 1%;
+    width: 35%;
   }
   &:last-child {
-    width: 62%;
     margin-left: 1%;
+    width: 62%;
   }
 `;
 
 const BoardName = styled.div`
-  background: ${(props) => props.theme.dark};
+  background: ${props => props.theme.adminColor};
 
   font-size: 20px;
   padding: 10px 20px;
   span {
-    color: ${(props) => props.theme.smoke};
+    color: ${props => props.theme.white};
     margin-left: 10px;
   }
 `;
@@ -79,25 +84,27 @@ const BoardName = styled.div`
 const BoardTag = styled.div`
   display: flex;
   justify-content: space-around;
-  background: yellow;
+  border-bottom: 1px solid ${props => props.theme.border};
   padding: 10px;
 `;
 
 const Button = styled.button`
-  border: none;
-  background: ${(props) => props.theme.lightblack};
-  color: ${(props) => props.theme.smoke};
   cursor: pointer;
-  padding: 7px 12px;
+  background: ${props => props.theme.button};
+  color: ${props => props.theme.buttonText};
+  border: none;
   margin: 10px;
+  padding: 7px 12px;
 
   &:hover {
-    background: ${(props) => props.theme.softblack};
+    background: ${props => props.theme.hoverButton};
   }
 `;
 
 const BoardContent = styled.div`
-  background: green;
+  background: ${props => props.theme.smoke};
+  padding-top: 20px;
+  padding-left: 30px;
 `;
 
 const ImgInput = styled.input`
@@ -106,10 +113,16 @@ const ImgInput = styled.input`
 
 const ImageBox = styled.img`
   cursor: pointer;
+  border-radius: 25px;
+  border: 1px solid ${props => props.theme.border};
   height: 150px;
   width: 150px;
-  border-radius: 25px;
-  border: 1px solid black;
+`;
+
+const ImageBoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 150px;
 `;
 
 const AdminTermsComp = ({
@@ -158,7 +171,7 @@ const AdminTermsComp = ({
         {tableType === "LOGO" && (
           <BoardContent>
             <form encType="multipart/form-data">
-              <label>
+              <ImageBoxContainer>
                 {admin?.img ? (
                   <ImageBox src={`/assets/${admin.img}`} alt="img" />
                 ) : (
@@ -166,7 +179,7 @@ const AdminTermsComp = ({
                 )}
                 <ImgInput type="file" onChange={onUploadLogo} name="img" />
                 <Button onClick={onChangeLogo}>로고변경</Button>
-              </label>
+              </ImageBoxContainer>
             </form>
           </BoardContent>
         )}
@@ -284,7 +297,7 @@ const AdminTermsComp = ({
               onBackgroundClick={openModal} //esc키 or 오버레이부분 클릭시 함수 실행
             >
               <div>
-                <div>주소검색</div>
+                <span>주소검색</span>
                 <DivInModal onClick={openModal}>X</DivInModal>
               </div>
               <DaumPostcode autoClose onComplete={onCompletePost} />
@@ -314,7 +327,7 @@ const AdminTermsComp = ({
               onBackgroundClick={openModal} //esc키 or 오버레이부분 클릭시 함수 실행
             >
               <div>
-                <div>{changeEditForm}</div>
+                <span>{changeEditForm}</span>
                 <DivInModal onClick={openModal}>X</DivInModal>
               </div>
               <StyledTextarea ref={termsRef} onChange={onChangeTerms} />

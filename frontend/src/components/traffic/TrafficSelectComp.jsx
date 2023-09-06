@@ -3,75 +3,75 @@ import styled from "styled-components";
 
 const TrafficContainer = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   .traffic-btn {
     display: flex;
     justify-content: center;
   }
   button {
-    background: none;
-    padding: 10px 30px;
+    cursor: pointer;
     text-align: center;
+    background: none;
+    font-size: 18px;
     border-radius: 10px;
     margin-left: 10px;
-    font-size: 18px;
+    padding: 10px 30px;
     line-height: 30px;
-    cursor: pointer;
     &.select-btn {
-      border-radius: 30px;
-      background: ${(props) => props.theme.softblack};
+      background: ${props => props.theme.button};
+      color: ${props => props.theme.buttonText};
       border: none;
-      color: ${(props) => props.theme.smoke};
+      border-radius: 30px;
     }
     &.traffic-category {
-      background-color: ${(props) => props.theme.yellow};
+      background-color: ${props => props.theme.yellow};
     }
   }
   .icon {
-    width: 30px;
     display: block;
     margin-top: 10px;
+    width: 30px;
   }
 
   .select-option {
     display: flex;
-    margin-top: 20px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 20px;
 
     .select-area {
-      width: 200px;
+      cursor: pointer;
+      background: ${props => props.theme.mainColor};
+      border: 1px solid ${props => props.theme.border};
+      border-radius: 30px;
       margin-right: 20px;
       padding: 15px 10px;
-      background: ${(props) => props.theme.smoke};
-      border-radius: 30px;
-      border: 1px solid #333;
+      width: 200px;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-      cursor: pointer;
 
       &:hover {
         opacity: 0.7;
       }
 
       span {
-        margin-left: 30px;
-        font-weight: 600;
         font-size: 18px;
+        font-weight: 600;
+        margin-left: 30px;
         line-height: 18px;
       }
 
       input {
+        background: ${props => props.theme.smoke};
         border-radius: 30px;
         padding: 0 30px;
-        background: ${(props) => props.theme.smoke};
       }
 
       select {
-        width: 100px;
-        height: 40px;
-        background: ${(props) => props.theme.smoke};
         cursor: pointer;
+        background: ${props => props.theme.smoke};
+        height: 40px;
+        width: 100px;
       }
     }
 
@@ -83,11 +83,11 @@ const TrafficContainer = styled.div`
         margin-right: 0;
       }
       input {
-        margin-top: 10px;
+        background: ${props => props.theme.smoke};
         border-radius: 30px;
-        width: 200px;
+        margin-top: 10px;
         padding: 13px;
-        background: ${(props) => props.theme.smoke};
+        width: 200px;
       }
     }
   }
@@ -96,8 +96,8 @@ const TrafficContainer = styled.div`
 const SelectListContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 60%;
   margin: 0 auto;
+  width: 60%;
 
   .list {
     display: flex;
@@ -111,16 +111,16 @@ const SelectListContainer = styled.div`
 `;
 
 const SelectListBlock = styled.div`
-  width: 200px;
-  max-height: 810px;
   overflow: auto;
   text-align: center;
   margin: 0 auto;
   margin-top: 50px;
   margin-left: 10px;
+  max-height: 810px;
+  width: 200px;
   .title {
-    background: ${(props) => props.theme.lightblack};
-    color: ${(props) => props.theme.white};
+    background: ${props => props.theme.lightblack};
+    color: ${props => props.theme.white};
     padding: 10px 0;
   }
 
@@ -128,8 +128,8 @@ const SelectListBlock = styled.div`
     border-bottom: 1px solid #333;
     padding: 10px 0;
     &.clicked {
-      background-color: ${(props) => props.theme.lightblack};
-      color: ${(props) => props.theme.smoke};
+      background-color: ${props => props.theme.lightblack};
+      color: ${props => props.theme.smoke};
     }
   }
   li:hover {
@@ -244,7 +244,7 @@ const TrafficSelectComp = ({
             <SelectListBlock>
               <p className="title">출발지</p>
               {stations &&
-                stations.map((item) => (
+                stations.map(item => (
                   <StartItem
                     item={item}
                     key={item.cityCode}
@@ -252,7 +252,7 @@ const TrafficSelectComp = ({
                   />
                 ))}
               {terminals &&
-                terminals.map((item) => (
+                terminals.map(item => (
                   <StartItem
                     item={item}
                     key={item.cityCode}
@@ -263,7 +263,7 @@ const TrafficSelectComp = ({
           ) : null}
           <SelectListBlock>
             {stationStartDetails &&
-              stationStartDetails.map((station) => (
+              stationStartDetails.map(station => (
                 <StartDetailItem
                   item={station}
                   onClick={onClickPlace}
@@ -271,7 +271,7 @@ const TrafficSelectComp = ({
                 />
               ))}
             {terminalStartDetails &&
-              terminalStartDetails.map((terminal) => (
+              terminalStartDetails.map(terminal => (
                 <StartDetailItem
                   item={terminal}
                   onClick={onClickPlace}
@@ -286,7 +286,7 @@ const TrafficSelectComp = ({
             <SelectListBlock>
               <p className="title">도착지</p>
               {stations &&
-                stations.map((item) => (
+                stations.map(item => (
                   <EndItem
                     item={item}
                     key={item.cityCode}
@@ -294,7 +294,7 @@ const TrafficSelectComp = ({
                   />
                 ))}
               {terminals &&
-                terminals.map((item) => (
+                terminals.map(item => (
                   <EndItem
                     item={item}
                     key={item.cityCode}
@@ -305,7 +305,7 @@ const TrafficSelectComp = ({
           ) : null}
           <SelectListBlock>
             {stationEndDetails &&
-              stationEndDetails.map((station) => (
+              stationEndDetails.map(station => (
                 <EndDetailItem
                   item={station}
                   onClick={onClickPlace}
@@ -313,7 +313,7 @@ const TrafficSelectComp = ({
                 />
               ))}
             {terminalEndDetails &&
-              terminalEndDetails.map((terminal) => (
+              terminalEndDetails.map(terminal => (
                 <EndDetailItem
                   item={terminal}
                   onClick={onClickPlace}

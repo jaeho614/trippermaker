@@ -1,61 +1,63 @@
 import React from "react";
+
 import styled from "styled-components";
+
 import PageNavComp2 from "../common/PageNavComp2";
 
 const RoomListContainer = styled.div`
-  width: 800px;
-  height: 1080px;
-  /* background: #333; */
-  position: absolute;
-  left: 0;
-  top: 130px;
   display: flex;
+  position: absolute;
   flex-direction: column;
+  background: ${props => props.theme.mainColor};
   overflow: auto;
+  height: 1080px;
+  width: 800px;
+  top: 130px;
+  left: 0;
 `;
 
 const AreaItemBlock = styled.div`
   display: flex;
-  width: 85%;
-  padding: 30px;
+  border-bottom: 1px solid ${props => props.theme.border};
   margin-left: 27px;
-  border-bottom: 1px solid #333;
+  padding: 30px;
+  width: 85%;
   img {
-    width: 300px;
-    height: 240px;
+    background: ${props => props.theme.smoke};
     border-radius: 20px;
-    background: ${(props) => props.theme.smoke};
+    height: 240px;
+    width: 300px;
   }
 
   .room-text {
     margin-left: 20px;
   }
   .title {
-    margin-top: 10px;
     font-size: 20px;
     font-weight: 600;
+    margin-top: 10px;
   }
 
   .addr {
-    margin-top: 10px;
     font-size: 18px;
+    margin-top: 10px;
   }
 
   .add-btn {
-    padding: 7px 9px;
-    background: ${(props) => props.theme.lightblack};
-    width: 50px;
+    display: block;
+    cursor: pointer;
     text-align: center;
-    color: ${(props) => props.theme.white};
+    background: ${props => props.theme.button};
+    color: ${props => props.theme.buttonText};
     border-radius: 15px;
     margin-top: 50px;
     margin-left: 260px;
-    cursor: pointer;
+    padding: 7px 9px;
+    width: 50px;
     transition: 0.3s;
-    display: block;
 
     &:hover {
-      background: ${(props) => props.theme.subcolor};
+      background: ${props => props.theme.hoverButton};
     }
   }
 `;
@@ -126,7 +128,7 @@ const RoomListComp = ({ areas, error, onClick, loading, addWish }) => {
         {!loading &&
           areas &&
           target &&
-          target.map((area) => (
+          target.map(area => (
             <AreaItem
               area={area}
               onClick={onClick}
