@@ -10,6 +10,7 @@ exports.listStations = async (req, res) => {
   try {
     const stations = await trainstation.findAll({
       attributes: ["cityCode", "cityName"],
+      // attributes: [[sequelize.literal('DISTINCT "cityCode"'), "cityName"]]
       group: ["cityCode", "cityName"],
     });
     return res.json(stations);
