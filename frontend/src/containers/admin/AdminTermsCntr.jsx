@@ -62,7 +62,7 @@ const AdminTermsCntr = () => {
 
   //ref는 modal안에서 작동하지 않는다. 그래서 useCallback을 사용하여 리렌더링을 발생시켜 ref값이 바뀌었다는 것을 알려줘야함.
   const termsRef = useCallback(
-    (ref) => {
+    ref => {
       if (ref !== null) {
         if (getTerms && modal) {
           ref.value = getTerms.content;
@@ -72,17 +72,17 @@ const AdminTermsCntr = () => {
     [getTerms]
   );
 
-  const changeType = (e) => {
+  const changeType = e => {
     const type = e.target.id;
     setTableType(type);
     setChangeForm(false);
   };
 
-  const onUploadLogo = (e) => {
+  const onUploadLogo = e => {
     setContent(e.target.files[0]);
   };
 
-  const onChangeLogo = async (e) => {
+  const onChangeLogo = async e => {
     e.preventDefault();
     if (!content) {
       return alert("사진을 먼저 선택해주세요.");
@@ -92,7 +92,7 @@ const AdminTermsCntr = () => {
     await changePhoto({
       id,
       formData,
-    }).then((res) => {
+    }).then(res => {
       if (res.status === 200) {
         const { img } = res.data;
         setLogo(img);
@@ -116,7 +116,7 @@ const AdminTermsCntr = () => {
     setChangeForm(!changeForm);
   };
 
-  const onChange = (e) => {
+  const onChange = e => {
     const { value, name } = e.target;
     dispatch(
       changeValue({
@@ -143,12 +143,12 @@ const AdminTermsCntr = () => {
     );
   };
 
-  const openModal = (e) => {
+  const openModal = e => {
     e.preventDefault();
     setModal(!modal);
   };
 
-  const onCompletePost = (data) => {
+  const onCompletePost = data => {
     const { roadAddress, zonecode } = data;
     setAddress({ roadAddress, zonecode });
     setModal(!modal);
@@ -162,7 +162,7 @@ const AdminTermsCntr = () => {
     zipcodeRef.current.value = zonecode;
   };
 
-  const onOpenTerms = (type) => {
+  const onOpenTerms = type => {
     setModal(!modal);
     setChangeEditForm(type);
     dispatch(
@@ -183,7 +183,7 @@ const AdminTermsCntr = () => {
     );
   };
 
-  const onChangeTerms = (e) => {
+  const onChangeTerms = e => {
     const { value } = e.target;
     getChangeTerms(value);
   };

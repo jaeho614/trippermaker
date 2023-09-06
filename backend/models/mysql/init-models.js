@@ -9,7 +9,7 @@ var _ticket = require("./ticket");
 var _trainstation = require("./trainstation");
 var _traintype = require("./traintype");
 var _user = require("./user");
-var _wishList = require("./wishList");
+var _wishlist = require("./wishlist");
 
 function initModels(sequelize) {
   var board = _board(sequelize, DataTypes);
@@ -22,22 +22,22 @@ function initModels(sequelize) {
   var trainstation = _trainstation(sequelize, DataTypes);
   var traintype = _traintype(sequelize, DataTypes);
   var user = _user(sequelize, DataTypes);
-  var wishList = _wishList(sequelize, DataTypes);
+  var wishlist = _wishlist(sequelize, DataTypes);
 
-  like.belongsTo(board, { as: "bno_board", foreignKey: "bno" });
-  board.hasMany(like, { as: "likes", foreignKey: "bno" });
-  reply.belongsTo(board, { as: "bno_board", foreignKey: "bno" });
-  board.hasMany(reply, { as: "replies", foreignKey: "bno" });
-  board.belongsTo(user, { as: "id_user", foreignKey: "id" });
-  user.hasMany(board, { as: "boards", foreignKey: "id" });
-  like.belongsTo(user, { as: "id_user", foreignKey: "id" });
-  user.hasMany(like, { as: "likes", foreignKey: "id" });
-  reply.belongsTo(user, { as: "uno_user", foreignKey: "uno" });
-  user.hasMany(reply, { as: "replies", foreignKey: "uno" });
-  ticket.belongsTo(user, { as: "uno_user", foreignKey: "uno" });
-  user.hasMany(ticket, { as: "tickets", foreignKey: "uno" });
-  wishList.belongsTo(user, { as: "id_user", foreignKey: "id" });
-  user.hasMany(wishList, { as: "wishLists", foreignKey: "id" });
+  like.belongsTo(board, { as: "bno_board", foreignKey: "bno"});
+  board.hasMany(like, { as: "likes", foreignKey: "bno"});
+  reply.belongsTo(board, { as: "bno_board", foreignKey: "bno"});
+  board.hasMany(reply, { as: "replies", foreignKey: "bno"});
+  board.belongsTo(user, { as: "id_user", foreignKey: "id"});
+  user.hasMany(board, { as: "boards", foreignKey: "id"});
+  like.belongsTo(user, { as: "id_user", foreignKey: "id"});
+  user.hasMany(like, { as: "likes", foreignKey: "id"});
+  reply.belongsTo(user, { as: "uno_user", foreignKey: "uno"});
+  user.hasMany(reply, { as: "replies", foreignKey: "uno"});
+  ticket.belongsTo(user, { as: "uno_user", foreignKey: "uno"});
+  user.hasMany(ticket, { as: "tickets", foreignKey: "uno"});
+  wishlist.belongsTo(user, { as: "id_user", foreignKey: "id"});
+  user.hasMany(wishlist, { as: "wishlists", foreignKey: "id"});
 
   return {
     board,
@@ -50,7 +50,7 @@ function initModels(sequelize) {
     trainstation,
     traintype,
     user,
-    wishList,
+    wishlist,
   };
 }
 module.exports = initModels;

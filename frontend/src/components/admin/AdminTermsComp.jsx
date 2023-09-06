@@ -128,7 +128,7 @@ const ImageBox = styled.img`
   width: 150px;
 `;
 
-const ImageBoxContainer = styled.div`
+const ImageBoxContainer = styled.label`
   display: flex;
   flex-direction: column;
   width: 150px;
@@ -235,7 +235,7 @@ const AdminTermsComp = ({
                 {admin?.img ? (
                   <ImageBox src={`/assets/${admin.img}`} alt="img" />
                 ) : (
-                  <ImageBox src={"/assets/triplogo.png"} alt="img" />
+                  <ImageBox src={"/assets/triplogo8.png"} alt="img" />
                 )}
                 <ImgInput type="file" onChange={onUploadLogo} name="img" />
                 <Button onClick={onChangeLogo}>로고변경</Button>
