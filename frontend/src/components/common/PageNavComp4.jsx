@@ -5,9 +5,18 @@ import { showPageNo } from "../../modules/search/SearchMod";
 
 const LiBlock = styled.li`
   display: inline-block;
+  cursor: pointer;
+  color: ${props => props.theme.text};
   margin: 10px;
+
+  &:hover {
+    color: ${props => props.theme.text};
+    font-weight: 600;
+  }
+
   &.checkPage {
-    color: steelblue;
+    color: ${props => props.theme.text};
+    font-weight: 600;
   }
 `;
 const PageNavComp4 = ({ totalCount, pageNo }) => {

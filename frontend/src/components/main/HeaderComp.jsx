@@ -111,7 +111,7 @@ const NavList = styled.li`
   }
   span {
     &.click {
-      color: ${props => props.theme.subcolor};
+      color: ${props => props.theme.mainColor};
       font-weight: 600;
     }
   }
@@ -132,7 +132,7 @@ const LoginCategory = styled.span`
   }
   span {
     &.click {
-      color: ${props => props.theme.subcolor};
+      color: ${props => props.theme.mainColor};
       font-weight: 600;
     }
   }
@@ -152,7 +152,7 @@ const LoginCategory = styled.span`
 `;
 
 const Spacer = styled.div`
-  height: 6rem;
+  height: 10rem;
 `;
 
 const HeaderComp = ({ nick, onLogout, grade, onClick }) => {

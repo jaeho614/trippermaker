@@ -13,7 +13,8 @@ const MainBoardWarraper = styled.div`
 
   h2 {
     font-weight: 600;
-    border-bottom: 2px solid #111;
+    color: ${props => props.theme.text};
+    border-bottom: 2px solid ${props => props.theme.border};
     padding: 20px 0;
     span {
       color: ${props => props.theme.red};
@@ -24,6 +25,7 @@ const MainBoardWarraper = styled.div`
   .add-list {
     position: absolute;
     cursor: pointer;
+    color: ${props => props.theme.text};
     padding: 5px;
     top: 30px;
     right: 0;
@@ -43,7 +45,7 @@ const ListContainer = styled.div`
   margin-top: 20px;
   .board-list {
     display: flex;
-    border-bottom: 1px solid ${props => props.theme.lightblack};
+    border-bottom: 1px solid ${props => props.theme.border};
     padding: 10px 10px 20px;
     &:hover {
       opacity: 0.8;
@@ -55,13 +57,15 @@ const ListContainer = styled.div`
   .title {
     font-size: 20px;
     font-weight: 600;
+    color: ${props => props.theme.text};
   }
   .write-id {
+    color: ${props => props.theme.text};
     margin-top: 20px;
   }
 
   .createat {
-    color: ${props => props.theme.lightblack};
+    color: ${props => props.theme.text};
     font-size: 14px;
     margin-top: 10px;
   }

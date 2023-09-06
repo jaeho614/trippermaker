@@ -25,6 +25,10 @@ import MainChatComp from "../components/main/MainChatComp";
 import { useDispatch } from "react-redux";
 import MainBoardCntr from "../containers/main/MainBoardCntr";
 
+const MainContainer = styled.div`
+  background: ${props => props.theme.mainColor};
+`;
+
 const SlideWarraper = styled.div`
   position: relative;
   top: -200px;
@@ -48,24 +52,24 @@ const SlideWarraper = styled.div`
     font-size: 70px;
     font-family: "PyeongChangPeace-Bold";
     line-height: 74px;
-    color: ${(props) => props.theme.white};
-    -webkit-text-stroke: 1px ${(props) => props.theme.black};
+    color: ${props => props.theme.white};
+    -webkit-text-stroke: 1px ${props => props.theme.black};
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
   }
   p {
-    font-size: 20px;
-    background: ${(props) => props.theme.yellow};
-    padding: 10px 40px;
-    border-radius: 50px;
-    margin-top: 10px;
     display: inline-block;
+    cursor: pointer;
+    font-size: 20px;
+    background: ${props => props.theme.yellow};
     color: #fff;
     border: 2px solid #000;
-    cursor: pointer;
+    border-radius: 50px;
+    margin-top: 10px;
+    padding: 10px 40px;
 
     span {
       margin-right: 10px;
-      color: ${(props) => props.theme.black};
+      color: ${props => props.theme.black};
     }
   }
   p:hover {
@@ -124,12 +128,13 @@ const SlideWarraper = styled.div`
 `;
 
 const MainBoardListContainer = styled.div`
-  width: 100%;
-  justify-content: center;
-  margin: 0 auto;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  background: ${props => props.theme.mainColor};
+  margin: 0 auto;
   padding: 20px 0 60px;
+  width: 100%;
 `;
 
 const FadeInLeft = ({ children }) => (
@@ -145,21 +150,20 @@ const Main = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const onSearchArea = (e) => {
+  const onSearchArea = e => {
     if (e.key === "Enter") {
       const keyword = `${e.target.value}`;
       dispatch(showKeyword(keyword));
       navigate("/search");
     } else if (e.button === 0) {
       const keyword = `${e.target.dataset.keyword}`;
-      console.log("keyword : ", e.target);
       dispatch(showKeyword(keyword));
       navigate("/search");
     }
   };
 
   return (
-    <>
+    <MainContainer>
       <SlideWarraper>
         <Swiper
           cssMode={true}
@@ -249,7 +253,7 @@ const Main = () => {
         <MainChatComp />
         <MainBoardCntr />
       </MainBoardListContainer>
-    </>
+    </MainContainer>
   );
 };
 

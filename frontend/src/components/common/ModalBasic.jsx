@@ -8,7 +8,7 @@ import KakaoMapComp from "./KakaoMapComp";
 const ModalBlock = styled.div`
   position: absolute;
   text-align: center;
-  background-color: ${props => props.theme.smoke};
+  background-color: ${props => props.theme.mainColor};
   border-radius: 20px;
   margin: 0 auto;
   height: 100%;
@@ -21,10 +21,13 @@ const ModalBlock = styled.div`
   .title {
     font-size: 24px;
     font-weight: 600;
+    color: ${props => props.theme.text};
   }
 
   .close {
     font-size: 20px;
+    background: none;
+    color: ${props => props.theme.text};
     border: none;
   }
   .Modal-item {
@@ -32,11 +35,13 @@ const ModalBlock = styled.div`
     width: 100%;
     :first-child {
       display: inline-block;
+      color: ${props => props.theme.text};
       padding-left: 5px;
       width: 20%;
     }
     :last-child {
       display: inline-block;
+      color: ${props => props.theme.text};
       width: 75%;
     }
   }

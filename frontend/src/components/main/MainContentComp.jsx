@@ -19,7 +19,6 @@ import WrapperComp from "../common/WrapperComp";
 
 const MainContentWrapper = styled.div`
   display: block;
-  background: ${props => props.theme.mainColor};
   margin-top: 100px;
   padding: 50px 0 100px 0;
   width: 100%;
@@ -100,6 +99,7 @@ const TravelListTitle = styled.div`
   h2 {
     font-family: "SUITE-Regular";
     font-size: 30px;
+    color: ${props => props.theme.text};
     span {
       color: ${props => props.theme.subColor};
       font-size: 36px;
@@ -131,7 +131,6 @@ const MaincontentComp = () => {
 
   const onDetail = e => {
     const { id, type, title } = e.target.dataset;
-    console.log(`${id} / ${type} / ${title}`);
     dispatch(getWishDetail({ title, contentId: id, contentTypeId: type }));
     Swal.fire({
       text: "볼까요",

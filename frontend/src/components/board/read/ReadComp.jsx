@@ -9,7 +9,7 @@ import { faEye, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 
 const ReadContainer = styled.div`
   text-align: left;
-  border-bottom: 2px solid ${props => props.theme.border};
+  border-bottom: 2px solid black;
   margin-top: 50px;
   padding: 13px 25px;
 

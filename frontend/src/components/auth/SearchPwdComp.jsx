@@ -45,7 +45,7 @@ const SearchPwdWrraper = styled.div`
     text-align: center;
     font-size: 20px;
     color: ${props => props.theme.text};
-    border-bottom: 2px solid ${props => props.theme.border};
+    border-bottom: 2px solid ${props => props.theme.text};
     margin: 24px 0;
     padding: 6px 0;
   }

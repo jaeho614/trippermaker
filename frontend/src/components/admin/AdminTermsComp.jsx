@@ -1,22 +1,30 @@
 import { css, styled } from "styled-components";
 import Modal from "styled-react-modal";
+
 import DaumPostcode from "react-daum-postcode";
 
-const StyledModal = Modal.styled`
+const ModalBox = Modal.styled`
   background: white;
-  border-radius: 20px;
-  padding: 10px;
-  height: 75%;
-  width: 80%;
+  border-radius: 15px;
+  padding: 5px;
+`;
 
-  div{
-    display: flex;
-    justify-content: space-between;
-  }
+const StyledModal = styled.div`
+  background: white;
+  height: auto;
+  width: 500px;
+`;
 
-  span{
-    margin-bottom: 10px;
-  }
+const ModalHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  padding: 5px;
+`;
+
+const SpanInModal = styled.span`
+  width: auto;
 `;
 
 const StyledTextarea = styled.textarea`
@@ -29,19 +37,21 @@ const DivInModal = styled.div`
   text-align: center;
   background: none;
   color: ${props => props.theme.red};
-  margin-left: 400px;
 `;
 
 const SubIdInput = styled.input`
   background: ${props => props.theme.white};
   color: ${props => props.theme.softblack};
   border: 1px solid ${props => props.theme.border};
-  margin-top: 10px;
-  margin-right: 5px;
-  padding: 7px 10px;
-  height: 27px;
-  width: 200px;
+  border-radius: 14px;
+  margin-right: 10px;
+  padding: 0 10px;
+  height: 28px;
+  width: 300px;
 
+  &.zipcode {
+    width: 40px;
+  }
   ${props =>
     props.disabled &&
     css`
@@ -103,8 +113,7 @@ const Button = styled.button`
 
 const BoardContent = styled.div`
   background: ${props => props.theme.smoke};
-  padding-top: 20px;
-  padding-left: 30px;
+  padding: 30px;
 `;
 
 const ImgInput = styled.input`
@@ -123,6 +132,57 @@ const ImageBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 150px;
+`;
+
+const CompanyInform = styled.div`
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  height: 40px;
+
+  &.noneBorder {
+    border-bottom: none;
+  }
+
+  &.terms {
+    margin: 10px 0;
+  }
+`;
+
+const NameTag = styled.span`
+  display: inline-block;
+  font-weight: 600;
+  margin-right: 20px;
+  padding: 0px 10px;
+  width: 70px;
+`;
+
+const Detail = styled.div`
+  display: inline-block;
+  padding: 5px 10px;
+`;
+
+const InputBox = styled.input`
+  border-radius: 14px;
+  margin-right: 10px;
+  padding: 0 10px;
+  height: 28px;
+  width: 150px;
+
+  &.detailAddress {
+    width: 370px;
+  }
+`;
+
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: right;
+  margin-top: 18px;
+`;
+
+const InformBox = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const AdminTermsComp = ({
@@ -186,46 +246,51 @@ const AdminTermsComp = ({
         {tableType === "INFORM" && (
           <BoardContent>
             {!changeForm ? (
-              <>
-                <div>
-                  <span>상호 : </span>
-                  <span>
+              <InformBox>
+                <CompanyInform>
+                  <NameTag>상호</NameTag>
+                  <Detail>
                     {admin?.id?.slice(
                       admin?.id?.indexOf("@") + 1,
                       admin?.id?.lastIndexOf(".")
                     )}
-                  </span>
-                </div>
-                <div>
-                  <span>주소 : </span>
-                  <span>{admin?.addr1 + admin?.addr2}</span>
-                </div>
-                <div>
-                  <span>개인정보관리책임자 : </span>
-                  <span>{admin?.nick}</span>
-                </div>
-                <div>
-                  <span>전화번호 : </span>
-                  <span>{admin?.phone}</span>
-                </div>
-                <Button onClick={onChangeForm}>수정</Button>
-              </>
+                  </Detail>
+                </CompanyInform>
+                <CompanyInform>
+                  <NameTag>주소</NameTag>
+                  <Detail>
+                    {admin?.addr1} {admin?.addr2}
+                  </Detail>
+                </CompanyInform>
+                <CompanyInform>
+                  <NameTag>책임자</NameTag>
+                  <Detail>{admin?.nick}</Detail>
+                </CompanyInform>
+                <CompanyInform className="noneBorder">
+                  <NameTag>전화번호</NameTag>
+                  <Detail>{admin?.phone}</Detail>
+                </CompanyInform>
+                <ButtonBox>
+                  <Button onClick={onChangeForm}>수정</Button>
+                </ButtonBox>
+              </InformBox>
             ) : (
-              <>
-                <div>
-                  <span>상호 : </span>
-                  <input
+              <InformBox>
+                <CompanyInform>
+                  <NameTag>상호</NameTag>
+                  <InputBox
                     name="new_id"
                     type="text"
                     ref={businessNameRef}
                     onChange={onChange}
                   />
-                </div>
-                <div>
-                  <span>주소 : </span>
+                </CompanyInform>
+                <CompanyInform>
+                  <NameTag>주소</NameTag>
                   {addr1 ? (
-                    <span>
+                    <>
                       <SubIdInput
+                        className="zipcode"
                         placeholder="우편번호"
                         name="new_zipcode"
                         ref={zipcodeRef}
@@ -238,10 +303,11 @@ const AdminTermsComp = ({
                         ref={address1Ref}
                         disabled={true}
                       />
-                    </span>
+                    </>
                   ) : (
-                    <span>
+                    <>
                       <SubIdInput
+                        className="zipcode"
                         placeholder="우편번호"
                         name="new_zipcode"
                         ref={zipcodeRef}
@@ -254,86 +320,93 @@ const AdminTermsComp = ({
                         ref={address1Ref}
                         disabled={true}
                       />
-                    </span>
+                    </>
                   )}
-                  <button onClick={openModal}>주소찾기</button>
-                </div>
-                <div>
-                  <span>상세주소 : </span>
-                  <input
+                  <Button onClick={openModal}>주소찾기</Button>
+                </CompanyInform>
+                <CompanyInform>
+                  <NameTag>상세주소</NameTag>
+                  <InputBox
+                    className="detailAddress"
                     placeholder="상세주소"
                     name="new_addr2"
                     type="text"
                     ref={address2Ref}
                     onChange={onChange}
                   />
-                </div>
-                <div>
-                  <span>개인정보관리책임자 : </span>
-                  <input
+                </CompanyInform>
+                <CompanyInform>
+                  <NameTag>책임자</NameTag>
+                  <InputBox
                     name="new_nick"
                     type="text"
                     ref={masterNameRef}
                     onChange={onChange}
                   />
-                </div>
-                <div>
-                  <span>전화번호 : </span>
-                  <input
+                </CompanyInform>
+                <CompanyInform className="noneBorder">
+                  <NameTag>전화번호</NameTag>
+                  <InputBox
                     name="new_phone"
                     type="text"
                     ref={phoneNumberRef}
                     onChange={onChange}
                   />
-                </div>
-                <Button onClick={onChangeInform}>수정완료</Button>
-                <Button onClick={onChangeForm}>취소</Button>
-              </>
+                </CompanyInform>
+                <ButtonBox>
+                  <Button onClick={onChangeInform}>수정완료</Button>
+                  <Button onClick={onChangeForm}>취소</Button>
+                </ButtonBox>
+              </InformBox>
             )}
-            <StyledModal
+            <ModalBox
               isOpen={modal} //true = 열림 / false = 닫힘
               ariahideapp={"false"} //에러 안뜨게하기
               onEscapeKeydown={openModal} //esc키 눌렀을경우 함수 실행
               onBackgroundClick={openModal} //esc키 or 오버레이부분 클릭시 함수 실행
             >
-              <div>
-                <span>주소검색</span>
-                <DivInModal onClick={openModal}>X</DivInModal>
-              </div>
-              <DaumPostcode autoClose onComplete={onCompletePost} />
-            </StyledModal>
+              <StyledModal>
+                <ModalHeader>
+                  <SpanInModal>주소검색</SpanInModal>
+                  <DivInModal onClick={openModal}>X</DivInModal>
+                </ModalHeader>
+                <DaumPostcode autoClose onComplete={onCompletePost} />
+              </StyledModal>
+            </ModalBox>
           </BoardContent>
         )}
         {tableType === "TERMS" && (
           <BoardContent>
-            <div>
-              <span>이용약관</span>
+            <CompanyInform className="noneBorder terms">
+              <NameTag>이용약관</NameTag>
               <Button onClick={() => onOpenTerms("이용약관")}>수정</Button>
-            </div>
-            <div>
-              <span>개인정보처리방침</span>
+            </CompanyInform>
+            <CompanyInform className="noneBorder terms">
+              <NameTag>개인정보처리방침</NameTag>
               <Button onClick={() => onOpenTerms("개인정보처리방침")}>
                 수정
               </Button>
-            </div>
-            <div>
-              <span>이용안내</span>
+            </CompanyInform>
+            <CompanyInform className="noneBorder terms">
+              <NameTag>이용안내</NameTag>
               <Button onClick={() => onOpenTerms("이용안내")}>수정</Button>
-            </div>
-            <StyledModal
+            </CompanyInform>
+            <ModalBox
               isOpen={modal} //true = 열림 / false = 닫힘
               ariahideapp={"false"} //에러 안뜨게하기
               onEscapeKeydown={openModal} //esc키 눌렀을경우 함수 실행
               onBackgroundClick={openModal} //esc키 or 오버레이부분 클릭시 함수 실행
             >
-              <div>
-                <span>{changeEditForm}</span>
-                <DivInModal onClick={openModal}>X</DivInModal>
-              </div>
-              <StyledTextarea ref={termsRef} onChange={onChangeTerms} />
-              <Button onClick={onEditTerms}>수정</Button>
-              <Button onClick={openModal}>취소</Button>
-            </StyledModal>
+              <StyledModal>
+                <ModalHeader>
+                  <SpanInModal>{changeEditForm}</SpanInModal>
+                  <DivInModal onClick={openModal}>X</DivInModal>
+                </ModalHeader>
+                <StyledTextarea ref={termsRef} onChange={onChangeTerms} />
+                <Button onClick={onEditTerms}>수정</Button>
+                <Button onClick={openModal}>취소</Button>
+              </StyledModal>
+            </ModalBox>
           </BoardContent>
         )}
       </BoardContainer>

@@ -14,12 +14,9 @@ const SelectButton = styled.button`
   padding: 10px 20px;
   transition: 0.3s;
 
-  &:focus {
-    background: ${props => props.theme.button};
-    color: ${props => props.theme.buttonText};
-  }
-
-  &:hover {
+  &:focus,
+  &:hover,
+  &:active {
     background: ${props => props.theme.button};
     color: ${props => props.theme.buttonText};
   }

@@ -11,7 +11,7 @@ const TitleInput = styled.input`
   outline: none;
   font-size: 24px;
   border: none;
-  border-bottom: 2px solid ${props => props.theme.border};
+  border-bottom: 2px solid black;
   margin: 0 auto;
   padding: 10px 20px;
   width: 80%;

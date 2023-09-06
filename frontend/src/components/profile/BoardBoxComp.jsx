@@ -13,7 +13,7 @@ const BoardListTitle = styled.ul`
   justify-content: space-around;
   text-align: center;
   font-weight: 600;
-  border-bottom: 1px solid ${props => props.theme.border};
+  border-bottom: 1px solid black;
   padding: 10px;
 
   li:first-child {

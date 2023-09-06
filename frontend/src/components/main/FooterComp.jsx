@@ -2,7 +2,8 @@ import { styled } from "styled-components";
 import Modal from "styled-react-modal";
 
 const StyledModal = Modal.styled`
-  background: white;
+  background: ${props => props.theme.mainColor};
+  border-radius: 20px;
   padding: 10px;
   height: 50%;
   width: 50%;
@@ -10,14 +11,18 @@ const StyledModal = Modal.styled`
   div{
     display: flex;
     justify-content: space-between;
+    color: ${props => props.theme.text};
   }
 `;
 
 const DivInModal = styled.div`
+  dispaly: flex;
+  align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   text-align: center;
   color: ${props => props.theme.red};
-  margin-left: 400px;
+  margin: 10px 0;
 `;
 
 const FooterComp = styled.div`
@@ -25,7 +30,8 @@ const FooterComp = styled.div`
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  background-color: ${props => props.theme.smoke};
+  background-color: ${props => props.theme.mainColor};
+  color: ${props => props.theme.text};
   border-top: 2px solid ${props => props.theme.border};
   padding: 50px 0;
   height: 100%;
@@ -117,10 +123,10 @@ const Footer = ({ onGetMainTerms, modal, mainTerms, mainInform }) => {
           onEscapeKeydown={onGetMainTerms} //esc키 눌렀을경우 함수 실행
           onBackgroundClick={onGetMainTerms} //esc키 or 오버레이부분 클릭시 함수 실행
         >
-          <div>
+          <DivInModal>
             <div>{mainTerms?.title}</div>
-            <DivInModal onClick={onGetMainTerms}>X</DivInModal>
-          </div>
+            <div onClick={onGetMainTerms}>X</div>
+          </DivInModal>
           <div>{mainTerms?.content}</div>
         </StyledModal>
         <div className="info">

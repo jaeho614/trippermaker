@@ -6,9 +6,8 @@ const AreaItemBlock = styled.div`
   background: ${props => props.theme.mainColor};
   border-bottom: 1px solid ${props => props.theme.border};
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 30px 20px;
   width: 100%;
-
   div {
     display: flex;
   }
@@ -21,16 +20,18 @@ const AreaItemBlock = styled.div`
   .des {
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
+    margin-left: 60px;
 
     .title {
       font-size: 20px;
       font-weight: 600;
+      color: ${props => props.theme.text};
       border-bottom: 2px solid ${props => props.theme.border};
       padding: 10px 0;
     }
 
     .addr {
+      color: ${props => props.theme.text};
       margin-top: 10px;
     }
 
@@ -60,10 +61,9 @@ const RoomListContainer = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   margin: 0 auto;
-  margin-top: 50px;
   height: 1080px;
   width: 800px;
-  top: 70px;
+  top: 120px;
   left: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
@@ -71,9 +71,10 @@ const RoomListContainer = styled.div`
 const RoomList = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
-  margin-left: 65px;
+  background: ${props => props.theme.mainColor};
+  margin-top: 90px;
 `;
+
 const AreaItem = ({ area, onClick, addWish }) => {
   return (
     <AreaItemBlock>
