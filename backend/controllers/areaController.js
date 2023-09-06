@@ -8,9 +8,8 @@ exports.areaList = async (req, res) => {
   const { pageNo, contentTypeId, numOfRows } = req.query;
 
   try {
-    const originAreas = await axios.get(
-      `https://apis.data.go.kr/B551011/KorService1/areaBasedList1?serviceKey=${KNTO_TOUR_KEY}&numOfRows=${numOfRows}&pageNo=${pageNo}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=A&areaCode=${areaCode}&contentTypeId=${contentTypeId}`
-    );
+    console.log('KNTO_TOUR_KEY ====>', KNTO_TOUR_KEY);
+    const originAreas = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?serviceKey=${KNTO_TOUR_KEY}&numOfRows=${numOfRows}&pageNo=${pageNo}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=A&areaCode=${areaCode}&contentTypeId=${contentTypeId}`);
     const areas = originAreas?.data;
 
     return res.json(areas); // id , 지역 ==> 가공

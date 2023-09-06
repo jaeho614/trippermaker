@@ -226,6 +226,7 @@ exports.doneNotice = async (req, res) => {
   }
 };
 
+
 //adminTerms
 exports.getAdmin = async (req, res) => {
   const { id } = req.params;
@@ -373,6 +374,7 @@ exports.getStyle = async (req, res) => {
   }
 };
 
+
 exports.changeStyle = async (req, res) => {
   const { id, adminStyle } = req.params;
 
@@ -387,3 +389,4 @@ exports.changeStyle = async (req, res) => {
     return res.status(400).json({ adminStyleError: true });
   }
 };
+

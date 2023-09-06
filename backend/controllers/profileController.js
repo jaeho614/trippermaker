@@ -86,18 +86,19 @@ exports.nickChk = async (req, res) => {
 
 exports.withdraw = async (req, res) => {
   const { id } = req.params;
-
+  console.log(id);
   try {
     const exUser = await user.findOne({
       where: {
         id,
-      },
+      }
     });
     if (exUser) {
       exUser.destroy();
       res.clearCookie("access_token");
       return res.status(200).json({ withdrawAuth: true });
     }
+
   } catch (e) {
     console.error(e);
     return res.status(400).json({ withdrawError: true });
@@ -146,21 +147,17 @@ exports.deleteBoard = async (req, res) => {
 
 exports.getReplyList = async (req, res) => {
   const { uno } = req.params;
-
   try {
     const replyList = await reply.findAll({
       where: {
-        uno,
+        uno
       },
-      include: [
-        {
-          model: user,
-          as: "uno_user",
-        },
-      ],
+      include: [{
+        model: user,
+        as: "uno_user"
+      }]
     });
     const totalReply = replyList.length;
-
     if (replyList) {
       return res.status(200).json({ replyList, totalReply });
     }

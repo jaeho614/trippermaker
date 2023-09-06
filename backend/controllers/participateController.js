@@ -30,7 +30,6 @@ exports.createParticipates = async (req, res) => {
       users,
     });
     const room = await Room.findById(newParticipate.roomId);
-
     return res.json(room);
   } catch (error) {
     return res.json(error);

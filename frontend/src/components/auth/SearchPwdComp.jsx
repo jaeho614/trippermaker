@@ -66,6 +66,8 @@ const SearchPwdWrraper = styled.div`
       margin-left: 20px;
       padding: 17px;
       padding-left: 10px;
+      padding: 17px;
+      margin-left: 20px;
       width: 100%;
     }
   }

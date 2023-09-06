@@ -37,6 +37,7 @@ exports.createTicket = async (req, res) => {
       endDate,
       seats,
     } = req.body;
+
     const formatStartDate = dateFormatting(startDate.toString());
     const formatEndDate = dateFormatting(endDate.toString());
     const jsonSeats = JSON.parse(seats);
@@ -61,9 +62,10 @@ exports.createTicket = async (req, res) => {
     console.error(error);
     return res.status(400).json(error);
   }
-};
+}
+const dateFormatting = (originDate) => {
+  console.log('originDate : ', typeof originDate);
 
-const dateFormatting = originDate => {
   const year = parseInt(originDate.slice(0, 4));
   const month = parseInt(originDate.slice(4, 6)) - 1;
   const day = parseInt(originDate.slice(6, 8));
@@ -72,4 +74,5 @@ const dateFormatting = originDate => {
   const sec = parseInt(originDate.slice(12, 14));
   const wantDate = new Date(year, month, day, hour, min, sec);
   return wantDate;
-};
+}
+

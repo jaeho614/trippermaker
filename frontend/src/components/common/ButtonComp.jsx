@@ -30,7 +30,7 @@ const StyledButton = styled.button`
   ${ButtonStyle}
 `;
 
-const Button = props => {
+const Button = (props) => {
   return props.to ? <ButtonLink {...props} /> : <StyledButton {...props} />;
 };
 

@@ -178,19 +178,8 @@ const TrafficListCntr = () => {
       ? resultItem.arrPlandTime
       : resultItem.arrplandtime;
     const seats = JSON.stringify(selectedSeat);
-    dispatch(
-      createTicket({
-        category,
-        uno,
-        type,
-        price,
-        startPlace,
-        startDate,
-        endPlace,
-        endDate,
-        seats,
-      })
-    );
+    // console.log('되냥!!!!!!')
+    dispatch(createTicket({ category, uno, type, price, startPlace, startDate, endPlace, endDate, seats }))
     onCancel();
   };
   const onCancel = () => {

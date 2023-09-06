@@ -14,6 +14,7 @@ const Fullscreen = styled.div`
 `;
 
 const ModalBlock = styled.div`
+  width: 40%;
   background-color: ${props => props.theme.white};
   border: 1px solid ${props => props.theme.border};
   border-radius: 4px;

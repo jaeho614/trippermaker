@@ -76,8 +76,8 @@ const AreaItem = ({ area, onClick, addWish }) => {
                 area.firstimage !== ""
                   ? area.firstimage
                   : area.firstimge2
-                  ? area.firstimge2
-                  : "/assets/triplogo.png"
+                    ? area.firstimge2
+                    : "/assets/triplogo.png"
               }
               alt="이미지없음"
               loading="lazy"

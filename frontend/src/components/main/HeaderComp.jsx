@@ -17,6 +17,9 @@ const HeaderContainer = styled.div`
   width: 100%;
   z-index: 999;
   transform: translate(-50%);
+  z-index: 999;
+  padding: 5px;
+  align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: 0.8s;
 

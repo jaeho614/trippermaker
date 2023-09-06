@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-
 const { MONGO_ID, MONGO_PASSWORD, NODE_ENV, MONGO_URL } = process.env;
 const connect = () => {
   if (NODE_ENV !== "production") {
     mongoose.set("debug", true);
   }
+
   mongoose
     .connect(MONGO_URL)
     .then(() => {
