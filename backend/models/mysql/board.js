@@ -60,10 +60,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(10),
       allowNull: false,
       defaultValue: "여행후기"
-    },
-    Column1: {
-      type: DataTypes.STRING(2048),
-      allowNull: true
     }
   }, {
     sequelize,
