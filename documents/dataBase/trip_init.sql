@@ -15,8 +15,8 @@ CREATE TABLE `board` (
   CONSTRAINT `board_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- trip.busTerminal definition
-CREATE TABLE `busTerminal` (
+-- trip.busterminal definition
+CREATE TABLE `busterminal` (
   `no` int NOT NULL AUTO_INCREMENT,
   `cityCode` int NOT NULL,
   `cityName` varchar(30) NOT NULL,
@@ -91,8 +91,8 @@ CREATE TABLE `theme` (
   PRIMARY KEY (`no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- trip.trainStation definition
-CREATE TABLE `trainStation` (
+-- trip.trainstation definition
+CREATE TABLE `trainstation` (
   `no` int NOT NULL AUTO_INCREMENT,
   `cityName` varchar(5) NOT NULL,
   `cityCode` int NOT NULL,

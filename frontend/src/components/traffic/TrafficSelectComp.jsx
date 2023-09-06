@@ -144,6 +144,7 @@ const StartItem = ({ item, onClick }) => {
       onClick={onClick}
       data-type="start"
       className="start-area"
+      key={item.cityCode}
     >
       {item.cityName}
     </li>
@@ -158,6 +159,7 @@ const StartDetailItem = ({ item, onClick }) => {
       data-value={item.stationId || item.terminalId}
       data-name={item.stationName || item.terminalName}
       className="start-detail"
+      key={item.stationId || item.terminalId}
     >
       {item.stationName || item.terminalName}
     </li>
@@ -170,6 +172,7 @@ const EndItem = ({ item, onClick }) => {
       onClick={onClick}
       data-type="end"
       className="end-area"
+      key={item.cityCode}
     >
       {item.cityName}
     </li>
@@ -183,6 +186,7 @@ const EndDetailItem = ({ item, onClick }) => {
       data-value={item.stationId || item.terminalId}
       data-name={item.stationName || item.terminalName}
       className="end-detail"
+      key={item.stationId || item.terminalId}
     >
       {item.stationName || item.terminalName}
     </li>
