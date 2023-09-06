@@ -1,13 +1,14 @@
 const { Sequelize, DATE } = require("sequelize");
 const axios = require("axios");
 const dotenv = require("dotenv");
-const { busTerminal, trainStation } = require("../models/mysql");
+// const { busterminal, trainstation } = require("../models/mysql");
+const { busterminal, trainstation } = require('../models/mysql');
 dotenv.config();
 const { TAGO_BUS_KEY, TAGO_TRAIN_KEY } = process.env;
 
 exports.listStations = async (req, res) => {
   try {
-    const stations = await trainStation.findAll({
+    const stations = await trainstation.findAll({
       attributes: ["cityCode", "cityName"],
       group: ["cityCode", "cityName"],
     });
@@ -21,7 +22,7 @@ exports.listStations = async (req, res) => {
 exports.detailStations = async (req, res) => {
   const { cityCode } = req.params;
   try {
-    const stations = await trainStation.findAll({
+    const stations = await trainstation.findAll({
       where: {
         cityCode,
       },
@@ -50,7 +51,7 @@ exports.listTrains = async (req, res) => {
 
 exports.listTerminals = async (req, res) => {
   try {
-    const terminals = await busTerminal.findAll();
+    const terminals = await busterminal.findAll();
     return res.json(terminals);
   } catch (error) {
     console.error(error);
@@ -61,7 +62,7 @@ exports.listTerminals = async (req, res) => {
 exports.detailTerminals = async (req, res) => {
   const { cityCode } = req.params;
   try {
-    const terminals = await busTerminal.findAll({
+    const terminals = await busterminal.findAll({
       where: {
         cityCode,
       },

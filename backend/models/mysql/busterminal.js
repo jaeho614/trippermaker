@@ -1,32 +1,32 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('trainStation', {
+  return sequelize.define('busterminal', {
     no: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    cityName: {
-      type: DataTypes.STRING(5),
-      allowNull: false
-    },
     cityCode: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    stationId: {
-      type: DataTypes.STRING(15),
-      allowNull: false,
-      unique: "stationId"
+    cityName: {
+      type: DataTypes.STRING(30),
+      allowNull: false
     },
-    stationName: {
-      type: DataTypes.STRING(10),
+    terminalId: {
+      type: DataTypes.STRING(30),
+      allowNull: false,
+      unique: "terminalId"
+    },
+    terminalName: {
+      type: DataTypes.STRING(30),
       allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'trainStation',
+    tableName: 'busterminal',
     timestamps: false,
     indexes: [
       {
@@ -38,11 +38,11 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "stationId",
+        name: "terminalId",
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "stationId" },
+          { name: "terminalId" },
         ]
       },
     ]
