@@ -109,11 +109,14 @@ const LoginCntr = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    if (!authError) {
+      setError(false);
+      return;
+    }
     if (authError) {
       setError(authError);
       return;
     }
-
     if (auth) {
       dispatch(check());
     }
