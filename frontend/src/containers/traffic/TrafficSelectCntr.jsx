@@ -4,6 +4,7 @@ import { listTerminals, startTerminals, selectStartTerminal, endTerminals, selec
 import { listStations, startStations, selectStartStation, endStations, selectEndStation, selectDateTrain, unloadTrain } from "../../modules/traffic/TrainMod";
 import TrafficSelectComp from '../../components/traffic/TrafficSelectComp';
 import LoadingComp from '../../components/common/LoadingComp';
+import Swal from 'sweetalert2';
 
 const TrafficSelectCntr = () => {
   const [target, setTarget] = useState(null);
@@ -127,6 +128,13 @@ const TrafficSelectCntr = () => {
       }
     })
   }
+
+  useEffect(() => {
+    Swal.fire({
+      icon: 'info',
+      text: '교통수단 선택 후 출발지, 도착지, 날짜를 골라주세요!'
+    })
+  }, [])
 
   useEffect(() => {
     if (target === 'train') {

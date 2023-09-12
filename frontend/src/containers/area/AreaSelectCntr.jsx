@@ -5,8 +5,9 @@ import {
   showPageNo,
   unloadPage,
 } from "../../modules/area/AreaMod";
-import React from "react";
+import React,{useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from 'sweetalert2';
 
 const areas = [
   { name: "서울", code: 1 },
@@ -47,6 +48,13 @@ const AreaSelectCntr = () => {
       loading: LoadingMod,
     })
   );
+
+    useEffect(() => {
+    Swal.fire({
+      icon: 'info',
+      text: '오른쪽 지도에서 지역 선택 후 왼쪽영역 관광지, 문화시설 등을 선택해주세요! 지역을 재 선택시 앞에 말한대로 해주세요!'
+    })
+  }, [])
 
   const onClickArea = e => {
     const areaCode = e.target.dataset.value;

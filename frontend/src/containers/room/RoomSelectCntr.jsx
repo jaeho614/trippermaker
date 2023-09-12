@@ -1,6 +1,6 @@
 import RoomSelectComp from "../../components/room/RoomSelectComp";
 import { showAreaCode, showContentTypeId, showPageNo } from "../../modules/room/LodgingMod"
-import React from "react";
+import React,{useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const areas = [
@@ -10,6 +10,13 @@ const areas = [
   { "name": "충청남도", "code": 34 }, { "name": "경상북도", "code": 35 }, { "name": "경상남도", "code": 36 },
   { "name": "전라북도", "code": 37 }, { "name": "전라남도", "code": 38 }, { "name": "제주특별자치도", "code": 39 }
 ];
+
+useEffect(() => {
+  Swal.fire({
+    icon: 'info',
+    text: '지도에서 지역을 눌러주세요!'
+  })
+}, [])
 
 const RoomSelectCntr = () => {
   const dispatch = useDispatch();
