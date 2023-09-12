@@ -33,13 +33,14 @@ const FooterComp = styled.div`
   background-color: ${props => props.theme.mainColor};
   color: ${props => props.theme.text};
   border-top: 2px solid ${props => props.theme.border};
+  padding: 10px 0;
   height: 100%;
   width: 100%;
 
   .footer-menu {
     display: flex;
     justify-content: center;
-    li {W
+    li {
       cursor: pointer;
       color: ${props => props.theme.text};
       margin-left: 20px;
@@ -58,9 +59,11 @@ const FooterComp = styled.div`
   }
 
   .logo {
-    margin-top: 20px;
+    margin-top: 10px;
+
     img {
-      width: 300px;
+      height: 90px;
+      width: 250px;
     }
   }
 

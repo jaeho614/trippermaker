@@ -9,7 +9,7 @@ const MainBoardWarraper = styled.div`
   overflow: hidden;
   margin-top: 30px;
   height: 600px;
-  width: 45%;
+  width: 35%;
 
   h2 {
     font-weight: 600;
