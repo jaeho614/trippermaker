@@ -486,14 +486,13 @@ const ProfileCntr = () => {
   }, [withdrawAuth, withdrawError]);
 
   useEffect(() => {
-    if (nickAuth === null) {
-      dispatch(
-        getProfile({
-          id,
-        })
-      );
-      dispatch(check()); //닉네임 변경시 check해줌으로써 UserMod.user 값 갱신해줌
-    }
+    const fetchData = async () => {
+      if (nickAuth === null) {
+        await dispatch(getProfile({ id }));
+        dispatch(check()); //닉네임 변경시 check해줌으로써 UserMod.user 값 갱신해줌
+      }
+    };
+    fetchData();
   }, [nickAuth]);
 
   useEffect(() => {

@@ -86,7 +86,7 @@ exports.nickChk = async (req, res) => {
 
 exports.withdraw = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
+
   try {
     const exUser = await user.findOne({
       where: {
