@@ -486,6 +486,7 @@ const ProfileCntr = () => {
   }, [withdrawAuth, withdrawError]);
 
   useEffect(() => {
+    //async await 으로 실행시켜주면서 dispatch를 순차적으로 실행함.
     const fetchData = async () => {
       if (nickAuth === null) {
         await dispatch(getProfile({ id }));

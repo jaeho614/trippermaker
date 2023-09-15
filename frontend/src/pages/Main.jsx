@@ -26,7 +26,7 @@ import { useDispatch } from "react-redux";
 import MainBoardCntr from "../containers/main/MainBoardCntr";
 
 const MainContainer = styled.div`
-  background: ${props => props.theme.mainColor};
+  background: ${props => props.theme.white};
 `;
 
 const SlideWarraper = styled.div`
@@ -131,7 +131,7 @@ const MainBoardListContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background: ${props => props.theme.mainColor};
+  background: ${props => props.theme.white};
   margin: 0 auto;
   padding: 20px 0 60px;
   width: 100%;

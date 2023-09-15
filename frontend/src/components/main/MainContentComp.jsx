@@ -100,7 +100,7 @@ const TravelListTitle = styled.div`
     font-size: 30px;
     color: ${props => props.theme.text};
     span {
-      color: ${props => props.theme.subColor};
+      color: ${props => props.theme.mainColor};
       font-size: 36px;
       font-family: "OAGothic-ExtraBold";
       font-weight: 600;
