@@ -227,7 +227,7 @@ const AdminBoardComp = ({
               key={board.no}
               className={board.grade === 2 ? "notice" : null}
             >
-              <BoardInfo onClick={getBoardInform}>
+              <BoardInfo onClick={() => getBoardInform(board)}>
                 <Detail>{board.no}</Detail>
                 <Detail>{board.id}</Detail>
                 <Detail className="title">{board.title}</Detail>

@@ -7,6 +7,7 @@ import { styled } from "styled-components";
 
 import AdminUserGraph from "./AdminUserGraph";
 import PaginationComp from "../common/PaginationComp";
+import { makeCreatedAt } from "../../lib/makeCreatedAt";
 
 const AdminUserWrap = styled.div`
   display: flex;
@@ -225,7 +226,7 @@ const AdminUserComp = ({
                   </tr>
                   <tr>
                     <th>가입날짜</th>
-                    <td colSpan="3">{user.reg}</td>
+                    <td colSpan="3">{makeCreatedAt(user.reg)}</td>
                   </tr>
                 </tbody>
               </table>

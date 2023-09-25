@@ -28,9 +28,9 @@ const AdminBoardCnrt = () => {
     setModal(!modal);
   };
 
-  const getBoardInform = e => {
-    const { id } = e.currentTarget; //자식 요소를 클릭할 경우 이벤트가 제대로 발생하지 않음. e.target과 차이가 있음.
-    dispatch(getBoardDetail({ no: id }));
+  const getBoardInform = board => {
+    const { no } = board;
+    dispatch(getBoardDetail({ no }));
     switchModal();
   };
 

@@ -107,7 +107,7 @@ const AdminMainComp = () => {
             <li>
               <Link to={"/admin/terms"}>
                 <FontAwesomeIcon icon={faList} style={{ color: "#fff" }} />
-                <span>약관관리</span>
+                <span>정보관리</span>
               </Link>
             </li>
             <li>
