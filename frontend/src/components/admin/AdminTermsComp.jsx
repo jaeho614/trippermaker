@@ -394,8 +394,6 @@ const AdminTermsComp = ({
             <ModalBox
               isOpen={modal} //true = 열림 / false = 닫힘
               ariahideapp={"false"} //에러 안뜨게하기
-              onEscapeKeydown={openModal} //esc키 눌렀을경우 함수 실행
-              onBackgroundClick={openModal} //esc키 or 오버레이부분 클릭시 함수 실행
             >
               <StyledModal>
                 <ModalHeader>

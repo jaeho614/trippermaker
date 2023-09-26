@@ -4,14 +4,17 @@ import Modal from "styled-react-modal";
 const StyledModal = Modal.styled`
   background: ${props => props.theme.mainColor};
   border-radius: 20px;
-  padding: 10px;
-  height: 50%;
-  width: 50%;
+  padding: 20px;
 
-  div{
+
+  div {
     display: flex;
     justify-content: space-between;
     color: ${props => props.theme.text};
+  }
+
+  textarea {
+    padding: 10px;
   }
 `;
 
@@ -129,7 +132,11 @@ const Footer = ({ onGetMainTerms, modal, mainTerms, mainInform }) => {
             <div>{mainTerms?.title}</div>
             <div onClick={onGetMainTerms}>X</div>
           </DivInModal>
-          <div>{mainTerms?.content}</div>
+          <textarea
+            rows="30"
+            cols="70"
+            defaultValue={mainTerms?.content}
+          ></textarea>
         </StyledModal>
         <div className="info">
           <span>상호</span> {mainInform?.name} <br />
