@@ -109,10 +109,10 @@ const LoginCntr = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    // if (!authError) {
-    //   setError(false);
-    //   return;
-    // }
+    if (!authError) {
+      setError(false);
+      return;
+    }
     if (authError) {
       setError(authError);
       return;
@@ -120,10 +120,6 @@ const LoginCntr = () => {
     if (auth) {
       dispatch(check());
     }
-    //unmount될 때 실행시킴으로써 위 주석처리된 코드를 대체할 수 있다.
-    return () => {
-      dispatch(initializeLoginForm());
-    };
   }, [auth, authError]);
 
   useEffect(() => {
