@@ -87,13 +87,22 @@ const LoginCntr = () => {
   };
 
   const onFindPwd = () => {
-    const valid = email => {
+    const eValid = email => {
       return /^[A-Za-z0-9.\-_]+@([A-Za-z0-9-]+\.)+[A-Za-z]{2,6}$/.test(email);
     };
-    const emailValid = valid(email);
+    const emailValid = eValid(email);
+
+    const pValid = phone => {
+      return /^[0-1]{3}[0-9]{4}[0-9]{4}$/.test(phone);
+    };
+    const phoneValid = pValid(phone);
 
     if (!emailValid) {
       return alert("이메일을 확인해주세요.");
+    }
+
+    if (!phoneValid) {
+      return alert("전화번호를 확인해주세요.");
     }
 
     dispatch(

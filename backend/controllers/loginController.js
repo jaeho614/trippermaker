@@ -34,7 +34,7 @@ exports.login = async (req, res) => {
     }
 
     if (!exUser) {
-      return res.status(401).json({ authError: "가입된 회원이 아닙니다." }); //아이디 빈칸 및 확인
+      return res.status(401).json({ authError: "가입된 회원이 아닙니다." }); //아이디 확인
     }
 
     const hashedPwd = exUser.pwd;
@@ -73,7 +73,7 @@ exports.check = (req, res) => {
     return res.status(400).json({ checkError: true });
   }
 
-  return res.json(jwt.verify(exUser, process.env.JWT_TOKEN));
+  return res.json(jwt.verify(exUser, process.env.JWT_TOKEN)); //userMoad user에 token 정보 들어감
 };
 
 exports.logout = async (req, res) => {
