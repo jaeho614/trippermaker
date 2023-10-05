@@ -284,7 +284,7 @@ const RegisterCntr = () => {
   }, [nickError]);
   //id + domain으로 이메일 만들기
   useEffect(() => {
-    if (id !== null || domain !== null) {
+    if (id !== null && domain !== null) {
       setEmail(`${id}@${domain}`);
     }
   }, [id, domain]);
