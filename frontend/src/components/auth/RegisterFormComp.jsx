@@ -163,6 +163,14 @@ const NameTag = styled.span`
   width: 110px;
 `;
 
+const PhoneMessage = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin: 5px 0 5px 125px;
+  height: 20px;
+`;
+
 const ConfirmMessage = styled.div`
   font-size: 15px;
   margin: 5px 0 5px 125px;
@@ -186,7 +194,7 @@ const ConfirmMessage = styled.div`
 
   .count {
     font-weight: 600;
-    margin-left: 10px;
+    margin-left: -80px;
   }
 `;
 
@@ -346,16 +354,18 @@ const RegisterFormComp = ({
                 인증확인
               </button>
               {
-                <ConfirmMessage autherror="true">
-                  {phoneMsg}
-                  {count === 60 || authNum === true ? (
-                    ""
-                  ) : count !== 0 && phoneAuth ? (
-                    <span className="count">인증 유효시간 {count}초</span>
-                  ) : (
-                    ""
-                  )}
-                </ConfirmMessage>
+                <PhoneMessage>
+                  <ConfirmMessage autherror="true">{phoneMsg}</ConfirmMessage>
+                  <ConfirmMessage className="count">
+                    {count === 60 || authNum === true ? (
+                      ""
+                    ) : count !== 0 ? (
+                      <span className="count">인증 유효시간 {count}초</span>
+                    ) : (
+                      ""
+                    )}
+                  </ConfirmMessage>
+                </PhoneMessage>
               }
             </div>
             <div>

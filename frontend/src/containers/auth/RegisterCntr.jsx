@@ -322,11 +322,12 @@ const RegisterCntr = () => {
   }, [phone]);
   //인증번호 유효시간
   const [count, setCount] = useState(60);
+  console.log(count, "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ");
   useEffect(() => {
     if (authNum === true || !phoneAuth) {
       setCount(60);
     }
-  }, [authNum, phone]);
+  }, [authNum, phone, phoneAuth]);
 
   useInterval(
     () => {
