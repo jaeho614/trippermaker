@@ -215,7 +215,7 @@ const AdminTermsComp = ({
     <AdminBoardWrap>
       <BoardContainer>
         <BoardName>
-          <span>약관관리</span>
+          <span>정보관리</span>
         </BoardName>
         <BoardTag>
           <Button id="LOGO" onClick={changeType}>
